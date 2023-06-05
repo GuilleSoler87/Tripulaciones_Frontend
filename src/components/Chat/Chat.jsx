@@ -5,9 +5,12 @@ import { ChatContext } from "../../context/ChatContext/ChatState";
 // import { UserContext } from "../../context/UserContext/UserState";
 
 const Chat = () => {
-  const { chat, history, getSingleChat } = useContext(ChatContext);
+  const { chat, history, getSingleChat, sendMessage } = useContext(ChatContext);
   const { _id } = useParams();
   const [loading, setLoading] = useState(true);
+  const [data, setData] = useState({
+    message: "",
+  });
 
   useEffect(() => {
     getSingleChat(_id).then(() => setLoading(false));
@@ -49,8 +52,34 @@ const Chat = () => {
     return `${day} ${month} ${year}`;
   };
 
+  const handleInputChange = (event) => {
+    setData({
+      ...data,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSubmit(event);
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!data.message) {
+      return null;
+    }
+    sendMessage(chat._id, sender, data);
+    setData({
+      message: "",
+    });
+  };
+
   const threadDiv = history.map((item, index) => {
-    const isNewDay = index === 0 || formatDate(history[index - 1].date) !== formatDate(item.date);
+    const isNewDay =
+      index === 0 ||
+      formatDate(history[index - 1].date) !== formatDate(item.date);
     const speakerId = item.speakerId === sender ? "sender" : "receiver";
     return (
       <>
@@ -86,7 +115,21 @@ const Chat = () => {
           </div>
         </div>
         <div className="chatThread">{threadDiv}</div>
-        <div className="sendMessage"></div>
+        <div className="sendMessage">
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Message"
+              value={data.message}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+              name="message"
+            />
+            <button type="submit" className="submitLR">
+              <span class="material-symbols-outlined">send</span>
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );

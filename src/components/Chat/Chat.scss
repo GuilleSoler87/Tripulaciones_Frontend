@@ -97,5 +97,32 @@
     font-size: 0.8rem;
     color: darkgrey;
   }
+}
 
+// --- SEND MESSAGE ---
+.sendMessage {
+  margin-bottom: 15px;
+  form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    input {
+      width: 79%;
+      height: 40px;
+      border: none;
+      border-radius: 10px;
+      margin-left: 3%;
+    }
+    button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      span {
+        margin-left: 2px;
+      }
+    }
+  }
 }

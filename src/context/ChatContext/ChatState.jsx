@@ -26,6 +26,30 @@ export const ChatProvider = ({ children }) => {
     }
   };
 
+  const sendMessage = async (chatId, speakerId, message, token) => {
+    try {
+      const url = API_URL + "chats/update/" + chatId;
+      const body = {
+        speakerId: speakerId,
+        message: message.message, // HTML gives an object: {message: ...}
+      };
+      // const config = {
+      //   headers: {
+      //     Authorization: token
+      //   }
+      // };
+
+      // const res = await axios.put(url, body, config);
+      const res = await axios.put(url, body);
+      // dispatch({
+      //   type: "SEND_MESSAGE",
+      //   payload: res.data,
+      // });
+    } catch (error) {
+      console.error(error);      
+    }
+  };
+
 
   return (
     <ChatContext.Provider
@@ -33,6 +57,7 @@ export const ChatProvider = ({ children }) => {
         chat: state.chat,
         history: state.history,
         getSingleChat,
+        sendMessage,
       }}
     >
       {children}
