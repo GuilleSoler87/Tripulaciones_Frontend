@@ -1,0 +1,53 @@
+main {
+  background-color: #004368;
+  width: 100vw;
+  height: 100vh;
+  .logoDiv {
+    position: absolute;
+    width: 341px;
+    height: 308px;
+    left: calc(50% - 341px / 2 + 0.5px);
+    top: 258px;
+  }
+  .appTitle {
+    position: absolute;
+    width: 111.88px;
+    height: 43.6px;
+    left: 158px;
+    top: 654px;
+    h2 {
+      color: #cb7862;
+    }
+  }
+  .introText {
+    position: absolute;
+    width: 336px;
+    height: 74px;
+    left: calc(50% - 336px / 2);
+    top: 713px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    p {
+      font-family: "Atkinson Hyperlegible";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+      color: #e6dfcf;
+    }
+  }
+  .startButton {
+    position: absolute;
+    width: 336px;
+    height: 42px;
+    left: 46px;
+    top: 828px;
+    button {
+      background-color: #ffffff;
+      border: 1px solid #cb7862;
+      border-radius: 1px;
+      color: #cb7862;
+    }
+  }
+}

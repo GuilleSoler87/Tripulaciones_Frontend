@@ -83,15 +83,17 @@ const Chat = () => {
     const speakerId = item.speakerId === sender ? "sender" : "receiver";
     return (
       <>
-        {isNewDay && (
-          <div key={index} className="dateDisplay">
-            <span>{formatDate(item.date)}</span>
+        <React.Fragment key={index}>
+          {isNewDay && (
+            <div className="dateDisplay">
+              <span>{formatDate(item.date)}</span>
+            </div>
+          )}
+          <div className="messageLine" id={`${speakerId}`}>
+            <span className="textMessage">{item.message}</span>
+            <span className="textTime">{formatTime(item.date)}</span>
           </div>
-        )}
-        <div key={item.date} className="messageLine" id={`${speakerId}`}>
-          <span className="textMessage">{item.message}</span>
-          <span className="textTime">{formatTime(item.date)}</span>
-        </div>
+        </React.Fragment>
       </>
     );
   });
@@ -126,7 +128,7 @@ const Chat = () => {
               name="message"
             />
             <button type="submit" className="submitLR">
-              <span class="material-symbols-outlined">send</span>
+              <span className="material-symbols-outlined">send</span>
             </button>
           </form>
         </div>

@@ -43,6 +43,7 @@
 // --- THREAD ---
 .chatThread {
   padding: 2% 3%;
+  z-index: 1;
 }
 
 .messageLine {
@@ -102,15 +103,20 @@
 // --- SEND MESSAGE ---
 .sendMessage {
   margin-bottom: 15px;
+  padding: 6px 0;
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  background-color: rgb(116, 255, 255);
   form {
     display: flex;
     align-items: center;
     gap: 10px;
     input {
-      width: 79%;
+      width: 85%;
       height: 40px;
       border: none;
-      border-radius: 10px;
+      border-radius: 20px;
       margin-left: 3%;
     }
     button {
