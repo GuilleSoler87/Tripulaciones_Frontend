@@ -4,7 +4,6 @@ const users = (state, action) => {
       return {
         ...state,
         token: action.payload.token,
-        isLoggedIn: true,
       };
     case "GET_USER":
       return {
@@ -17,7 +16,6 @@ const users = (state, action) => {
         ...state,
         user: null,
         token: null,
-        isLoggedIn: false,
       };
     case "REGISTER_SUCCESS":
       console.log("Success!!!");

@@ -5,7 +5,7 @@ import { UserContext } from "../../context/UserContext/UserState";
 
 
 const Login = () => {
-  const { login, isLoggedIn,token } = useContext(UserContext);
+  const { login, token } = useContext(UserContext);
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -13,9 +13,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/profile");
-    }
     if (token) {
       setTimeout(() => {
         navigate("/profile");
