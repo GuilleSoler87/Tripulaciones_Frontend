@@ -1,19 +1,12 @@
 import React from "react";
-import "./Welcome.scss";
+import "./Login.scss";
 
-const Welcome = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
+const Login = () => {
   return (
     <>
       <main>
-        <div className="logoDiv">
-          <img src="../../../src/images/agora_logo.png" />
-        </div>
         <div className="appTitle">
-          <h1>Àgora</h1>
+          <h1>À</h1>
         </div>
         <div className="introText">
           <p>
@@ -31,4 +24,4 @@ const Welcome = () => {
   );
 };
 
-export default Welcome;
+export default Login;
