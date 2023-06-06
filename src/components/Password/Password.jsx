@@ -1,14 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.scss";
+import "./Password.scss";
 // import { UserContext } from "../../context/UserContext/UserState";
 
 
-const Login = () => {
-  // const { login, token } = useContext(UserContext);
+const Password = () => {
+  // const { recoverPassword } = useContext(UserContext);
   const [data, setData] = useState({
     username: "",
-    password: "",
   });
   const navigate = useNavigate();
 
@@ -31,10 +30,9 @@ const Login = () => {
     if (!data.message) {
       return null;
     }
-    login(data);
+    recoverPassword(data);
     setData({
       username: "",
-      password: "",
     });
   };
 
@@ -43,11 +41,16 @@ const Login = () => {
       <main>
         <div className="welcome">
           <img src="../../../src/images/A.png" alt="" />
-          <p>¡Bienvenido!</p>
         </div>
-        <div className="loginForm">
+        <div className="recoveryTitle">
+          <p>¿Has olvidado la contraseña?</p>
+        </div>
+        <div className="pwRecoveryForm">
           <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Usuario de MdE</label>
+            <div className="pwHeader">
+              <label htmlFor="username">Usuario de MdE</label>
+              <p className="hidden">Usuario incorrecto</p>
+            </div>
             <input
               type="text"
               placeholder="username@edem.es"
@@ -56,31 +59,14 @@ const Login = () => {
               onKeyDown={handleKeyDown}
               name="username"
             />
-            <label htmlFor="password">Contraseña</label>
-            <input
-              type="password"
-              placeholder="•••••••"
-              value={data.password}
-              onChange={handleInputChange}
-              onKeyDown={handleKeyDown}
-              name="password"
-            />
-            <button type="submit" className="submitLogin">
-              Empezar
+            <button type="submit" className="submitRecovery">
+            Recuperar contraseña
             </button>
           </form>
-        </div>
-        <div className="passwordRecovery">
-          <Link to="/passwordrecover" className="link">
-            <p>Recuperar contraseña</p>
-          </Link>
-        </div>
-        <div className="alert hidden">
-          <p>Usuario o contraseña incorrectos. Vuelve a intentarlo.</p>
         </div>
       </main>
     </>
   );
 };
 
-export default Login;
+export default Password;

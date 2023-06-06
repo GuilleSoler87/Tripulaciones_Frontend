@@ -2,6 +2,7 @@ import './App.css'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Welcome from "./components/Welcome/Welcome";
 import Login from './components/Login/Login';
+import Password from './components/Password/Password';
 import Chat from "./components/Chat/Chat";
 import { ChatProvider } from './context/ChatContext/ChatState';
 
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/password" element={<Password />} />
             <Route path="/chat/:_id" element={<Chat />} />
           </Routes>
         </ChatProvider>
