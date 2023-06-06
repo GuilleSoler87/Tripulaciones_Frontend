@@ -1,16 +1,33 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.scss";
-// import { UserContext } from "../../context/UserContext/UserState";
+import { UserContext } from "../../context/UserContext/UserState";
 
 
 const Login = () => {
-  // const { login, token } = useContext(UserContext);
+  const { login, isLoggedIn,token } = useContext(UserContext);
   const [data, setData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/profile");
+    }
+    if (token) {
+      setTimeout(() => {
+        navigate("/profile");
+      }, 1900);
+    }
+    if (token && token.length > 0) {
+      console.log("You have successfully logged in");
+    }
+    if (!token) {
+      console.log("Oooooooooooooops");
+    }
+  }, [token]);
 
 
   const handleInputChange = (event) => {
@@ -28,12 +45,13 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!data.message) {
+    if (!data.email || !data.password) {
       return null;
     }
+    console.log(data);
     login(data);
     setData({
-      username: "",
+      email: "",
       password: "",
     });
   };
@@ -47,14 +65,14 @@ const Login = () => {
         </div>
         <div className="loginForm">
           <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Usuario de MdE</label>
+            <label htmlFor="email">Usuario de MdE</label>
             <input
               type="text"
               placeholder="username@edem.es"
-              value={data.username}
+              value={data.email}
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
-              name="username"
+              name="email"
             />
             <label htmlFor="password">Contraseña</label>
             <input
