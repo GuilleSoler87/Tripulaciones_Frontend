@@ -1,78 +1,78 @@
-main {
-  background-color: #004368;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  .welcome {
-    width: 80%;
-    height: 30%;
-    img {
-      position: relative;
-      top: 20%;
-      left: -45%;
-    }
-    p {
-      position: relative;
-      top: 15%;
-      left: -37%;
-      font-family: "Spectral";
-      font-style: normal;
-      font-weight: 700;
-      font-size: 30;
-      line-height: 46px;
-      color: #cb7862;
-    }
-  }
-  .loginForm {
-    width: 80%;
-    height: 30%;
-    form {
-      position: relative;
-      top: 10%;
-      display: flex;
-      flex-direction: column;
-      label {
-        color: #e6dfcf;
-        text-align: left;
-      }
-      input {
-        height: 32px;
-        padding: 5px 8px;
-      }
-      button {
-      }
-    }
-  }
-  .passwordRecovery {
-    .link {
-      font-family: "Atkinson Hyperlegible";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 15px;
-      line-height: 19px;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      text-decoration-line: underline;
-      color: #e6dfcf;
-    }
-  }
-  .alert {
-    p {
-      font-family: "Atkinson Hyperlegible";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 17px;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      color: #e6dfcf;
-    }
-  }
-}
+// main {
+//   background-color: #004368;
+//   width: 100vw;
+//   height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   .welcome {
+//     width: 80%;
+//     height: 30%;
+//     img {
+//       position: relative;
+//       top: 20%;
+//       left: -45%;
+//     }
+//     p {
+//       position: relative;
+//       top: 15%;
+//       left: -37%;
+//       font-family: "Spectral";
+//       font-style: normal;
+//       font-weight: 700;
+//       font-size: 30;
+//       line-height: 46px;
+//       color: #cb7862;
+//     }
+//   }
+//   .loginForm {
+//     width: 80%;
+//     height: 30%;
+//     form {
+//       position: relative;
+//       top: 10%;
+//       display: flex;
+//       flex-direction: column;
+//       label {
+//         color: #e6dfcf;
+//         text-align: left;
+//       }
+//       input {
+//         height: 32px;
+//         padding: 5px 8px;
+//       }
+//       button {
+//       }
+//     }
+//   }
+//   .passwordRecovery {
+//     .link {
+//       font-family: "Atkinson Hyperlegible";
+//       font-style: normal;
+//       font-weight: 400;
+//       font-size: 15px;
+//       line-height: 19px;
+//       display: flex;
+//       align-items: center;
+//       text-align: center;
+//       text-decoration-line: underline;
+//       color: #e6dfcf;
+//     }
+//   }
+//   .alert {
+//     p {
+//       font-family: "Atkinson Hyperlegible";
+//       font-style: normal;
+//       font-weight: 400;
+//       font-size: 14px;
+//       line-height: 17px;
+//       display: flex;
+//       align-items: center;
+//       text-align: center;
+//       color: #e6dfcf;
+//     }
+//   }
+// }
 
-.hidden {
-  display: none;
-}
+// .hidden {
+//   display: none;
+// }

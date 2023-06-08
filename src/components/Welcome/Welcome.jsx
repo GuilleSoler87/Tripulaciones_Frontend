@@ -1,21 +1,29 @@
 import React from "react";
 import "./Welcome.scss";
-import { Link, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import AgoraIllustration from "../../../src/images/agora_illustration.png";
+import RiskyPeople from "../../../src/images/risky_people.png";
+import LogoAgora from "../../../src/images/logo_agora.png";
 
 const Welcome = () => {
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    navigate("/login");
   };
 
   return (
     <>
-      <main>
+      <div className="main-container-welcome">
+        <div className="logo-risky-people">
+          <img src={RiskyPeople} />
+        </div>
         <div className="logoDiv">
-          <img src="../../../src/images/agora_logo.png" />
+          <img src={AgoraIllustration} />
         </div>
         <div className="appTitle">
-          <h1>Àgora</h1>
+          <img src={LogoAgora} />
         </div>
         <div className="introText">
           <p>
@@ -25,12 +33,10 @@ const Welcome = () => {
             Lanzadera y Angels
           </p>
         </div>
-        <div className="startButton">
-          <Link to={"/login"}>
-            <button>Empezar</button>
-          </Link>
+        <div className="startButton" onClick={handleSubmit}>
+          <button>Empezar</button>
         </div>
-      </main>
+      </div>
     </>
   );
 };
