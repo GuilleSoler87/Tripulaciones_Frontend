@@ -3,57 +3,93 @@ import { createContext, useReducer } from "react";
 import UserReducer from "./UserReducer";
 
 const token = JSON.parse(localStorage.getItem("token"));
+const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
-  user: null,
-  token: token ? token : "",
+  token: token ? token : null,
+  user: user ? user : null,
+  users: [],
   chats: [],
+  message: "",
+  logoutMessage: ""
 };
 
-const API_URL = "http://localhost:8080/";
+const API_URL = "http://localhost:8080";
 
 export const UserContext = createContext(initialState);
 
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(UserReducer, initialState);
 
-  const login = async (data) => {
-    const res = await axios.post(API_URL + "users/login", data);
-    if (res.data.token) {
+  const login = async (user) => {
+    try {
+      const res = await axios.post(API_URL + "/users/login", user);
+      // Guardamos el token en el estado
       dispatch({
         type: "LOGIN",
-        payload: res.data,
+        payload: res.data
       });
-      localStorage.setItem("token", JSON.stringify(res.data.token));
+
+      // Guardamos el token en el localStorage
+      if (res.data && res.data.token) {
+        localStorage.setItem("token", JSON.stringify(res.data.token));
+      }
+      if (res.data && res.data.user) {
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+      }
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: "LOGIN_ERROR",
+        payload: error.response.data.message
+      });
     }
   };
 
   const getUser = async () => {
-    const token = JSON.parse(localStorage.getItem("token"));
-    const res = await axios.get(API_URL + "users/getuser", {
-      headers: {
-        Authorization: token,
-      },
-    });
-    dispatch({
-      type: "GET_USER",
-      payload: res.data,
-    });
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const res = await axios.get(API_URL + "/users/getUser", {
+        headers: {
+          Authorization: token
+        }
+      });
+      dispatch({
+        type: "GET_USER_INFO",
+        payload: res.data
+      });
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: "GET_USER_INFO_ERROR",
+        payload: "Error al obtener la información del usuario."
+      });
+    }
   };
 
+
   const logout = async () => {
-    const token = JSON.parse(localStorage.getItem("token"));
-    const res = await axios.delete(API_URL + "users/logout", {
-      headers: {
-        Authorization: token,
-      },
-    });
-    dispatch({
-      type: "LOGOUT",
-      payload: res.data,
-    });
-    if (res.data) {
-      localStorage.removeItem("token");
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const res = await axios.delete(API_URL + "/users/logout", {
+        headers: {
+          Authorization: token
+        }
+      });
+      dispatch({
+        type: "LOGOUT",
+        payload: res.data
+      });
+      if (res.data) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+      }
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: "LOGOUT_ERROR",
+        payload: "Error al cerrar sesión."
+      });
     }
   };
 
@@ -85,23 +121,20 @@ export const UserProvider = ({ children }) => {
   //   }
   // };
 
-  const clearState = () => {
-    dispatch({
-      type: "CLEAR_STATE",
-    });
-  };
+
 
   return (
     <UserContext.Provider
       value={{
         token: state.token,
         user: state.user,
+        message: state.message,
+        logoutMessage: state.logoutMessage,
         chats: state.chats,
         login,
         getUser,
         getChatsFromUser,
         logout,
-        // clearState,
       }}
     >
       {children}

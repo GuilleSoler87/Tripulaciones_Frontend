@@ -3,6 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Login.scss";
 import { UserContext } from "../../context/UserContext/UserState";
 import ReCAPTCHA from "react-google-recaptcha";
+import ALogo from "../../../src/images/A.png";
+import PuntoSup from "../../../src/images/puntos_sup.png";
+import PointsDown from "../../../src/images/points_down.png";
+
 
 
 const Login = () => {
@@ -76,19 +80,24 @@ const Login = () => {
 
   return (
     <>
-      <main>
-        <div className="welcome">
-          <img src="../../../src/images/A.png" alt="" />
-          <p>¡Bienvenido!</p>
+      <div className="main-cont-login">
+
+        <div className="a_logo">
+          <img src={ALogo} />
         </div>
+        <div className="points_up">
+          <img src={PuntoSup} />
+        </div>
+        <p className="p_welcome">¡Bienvenido!</p>
 
 
-        <div className="loginForm">
+        <div className="div_loginForm">
           {/* Recaptcha */}
           {!userValidate &&
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="email">Usuario de MdE</label>
+            <form className="login_form" onSubmit={handleSubmit}>
+              <label className="email_label" htmlFor="email">Usuario de MdE</label>
               <input
+                className="email_input"
                 type="text"
                 placeholder="username@edem.es"
                 value={data.email}
@@ -96,8 +105,9 @@ const Login = () => {
                 onKeyDown={handleKeyDown}
                 name="email"
               />
-              <label htmlFor="password">Contraseña</label>
+              <label className="password_label" htmlFor="password_label">Contraseña</label>
               <input
+                className="password_input"
                 type="password"
                 placeholder="•••••••"
                 value={data.password}
@@ -105,8 +115,11 @@ const Login = () => {
                 onKeyDown={handleKeyDown}
                 name="password"
               />
+              <div className="alert_hidden">
+                <p>Usuario o contraseña incorrectos.<br/> Vuelve a intentarlo.</p>
+              </div>
               <button type="submit" className="submitLogin">
-                Empezar
+                Iniciar sesión
               </button>
 
               {/* Recaptcha */}
@@ -117,25 +130,29 @@ const Login = () => {
                   onChange={onChangeCapt}
                 />
               </div>
-              {captchaValidate === false && <div className="error-captcha">Por favor acepta el captcha</div>}
+              {captchaValidate === false && (
+                <div className={`error-captcha ${captchaValidate ? 'hidden' : ''}`}>
+                  <p><b>Por favor, acepta el captcha</b></p>
+                </div>
+              )}
             </form>
           }
 
         </div>
 
-
-
         <div className="passwordRecovery">
           {!userValidate &&
             <Link to="/passwordrecover" className="link">
-              <p>Recuperar contraseña</p>
+              <p className="recover_pass">Recuperar contraseña</p>
             </Link>
           }
         </div>
-        <div className="alert hidden">
-          <p>Usuario o contraseña incorrectos. Vuelve a intentarlo.</p>
+        <div className="points_down">
+          <img src={PointsDown} />
         </div>
-      </main>
+
+
+      </div>
     </>
   );
 };

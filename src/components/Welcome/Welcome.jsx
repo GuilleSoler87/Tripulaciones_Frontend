@@ -26,7 +26,7 @@ const Welcome = () => {
           <img src={LogoAgora} />
         </div>
         <div className="introText">
-          <p>
+          <p className="p_introtext">
             {" "}
             Únete a la comunidad de <strong>MdE</strong> para informarte de las
             últimas noticias y conectar con alumnos de EDEM, startups de
