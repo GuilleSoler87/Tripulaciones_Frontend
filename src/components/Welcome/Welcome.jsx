@@ -1,11 +1,13 @@
 import React from "react";
 import "./Welcome.scss";
-import { Link, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 const Welcome = () => {
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    navigate("/login");
   };
 
   return (
@@ -25,10 +27,8 @@ const Welcome = () => {
             Lanzadera y Angels
           </p>
         </div>
-        <div className="startButton">
-          <Link to={"/login"}>
-            <button>Empezar</button>
-          </Link>
+        <div className="startButton" onClick={handleSubmit}>
+          <button>Empezar</button>
         </div>
       </main>
     </>
