@@ -21,7 +21,7 @@ const Login = () => {
   useEffect(() => {
     if (token, userValidate) {
       setTimeout(() => {
-        navigate("/");
+        navigate("/home");
       }, 100);
     }
     if (token && token.length > 0) {

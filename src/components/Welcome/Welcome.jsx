@@ -1,9 +1,13 @@
 import React from "react";
 import "./Welcome.scss";
+import { useNavigate } from "react-router-dom";
 
 const Welcome = () => {
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    navigate("/login");
   };
 
   return (
@@ -19,11 +23,11 @@ const Welcome = () => {
           <p>
             {" "}
             Únete a la comunidad de <strong>MdE</strong> para informarte de las
-            últimas noticias y conectar con alumnos de EDEM, startuos de
+            últimas noticias y conectar con alumnos de EDEM, startups de
             Lanzadera y Angels
           </p>
         </div>
-        <div className="startButton">
+        <div className="startButton" onClick={handleSubmit}>
           <button>Empezar</button>
         </div>
       </main>
