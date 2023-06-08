@@ -7,6 +7,7 @@ const token = JSON.parse(localStorage.getItem("token"));
 const initialState = {
   user: null,
   token: token ? token : "",
+  chats: [],
 };
 
 const API_URL = "http://localhost:8080/";
@@ -56,36 +57,51 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const register = async (data) => {
-    try {
-      const res = await axios.post(API_URL + "users/create", data);
-      dispatch({ type: "REGISTER_SUCCESS", payload: res.data });
-    } catch (error) {
-      if (error.res) {
-        dispatch({ type: "REGISTER_FAIL", payload: error.res.data });
-      } else if (error.request) {
-        dispatch({ type: "REGISTER_FAIL", payload: "Email address already in use" });
-      } else {
-        dispatch({ type: "REGISTER_FAIL", payload: error.message });
-      }
-    }
+  const getChatsFromUser = async (chatIdArray) => {
+    const token = JSON.parse(localStorage.getItem("token"));
+    const res = await axios.get(API_URL + "chats/getchatsfromuser", {
+      headers: {
+        Authorization: token,
+      },
+    });
+    dispatch({
+      type: "GET_CHATS_FROM_USER",
+      payload: res.data,
+    });
   };
+
+  // const register = async (data) => {
+  //   try {
+  //     const res = await axios.post(API_URL + "users/create", data);
+  //     dispatch({ type: "REGISTER_SUCCESS", payload: res.data });
+  //   } catch (error) {
+  //     if (error.res) {
+  //       dispatch({ type: "REGISTER_FAIL", payload: error.res.data });
+  //     } else if (error.request) {
+  //       dispatch({ type: "REGISTER_FAIL", payload: "Email address already in use" });
+  //     } else {
+  //       dispatch({ type: "REGISTER_FAIL", payload: error.message });
+  //     }
+  //   }
+  // };
 
   const clearState = () => {
     dispatch({
       type: "CLEAR_STATE",
-    })
-  }
+    });
+  };
 
   return (
     <UserContext.Provider
       value={{
         token: state.token,
         user: state.user,
+        chats: state.chats,
         login,
         getUser,
+        getChatsFromUser,
         logout,
-        clearState,
+        // clearState,
       }}
     >
       {children}

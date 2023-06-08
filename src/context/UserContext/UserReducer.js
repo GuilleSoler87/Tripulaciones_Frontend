@@ -17,6 +17,14 @@ const users = (state, action) => {
         user: null,
         token: null,
       };
+
+    case "GET_CHATS_FROM_USER":
+      return {
+        ...state,
+        chats: action.payload,
+      };
+      
+      
     case "REGISTER_SUCCESS":
       console.log("Success!!!");
       return {

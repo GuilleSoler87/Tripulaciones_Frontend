@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import "./Chat.scss";
 import { ChatContext } from "../../context/ChatContext/ChatState";
-// import { UserContext } from "../../context/UserContext/UserState";
+import { UserContext } from "../../context/UserContext/UserState";
 
 const Chat = () => {
   const { chat, history, getSingleChat, sendMessage } = useContext(ChatContext);
+  const { user, getUser } = useContext(UserContext);
   const { _id } = useParams();
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState({
@@ -13,8 +14,13 @@ const Chat = () => {
   });
 
   useEffect(() => {
+    getUser();
     getSingleChat(_id).then(() => setLoading(false));
-  }, [history]);
+  }, []);
+  
+  if (loading) {
+    return <div> </div>;
+  }
 
   // const sender = chat.users[0]._id;
   // const receiver = chat.users[1]._id;
@@ -98,9 +104,6 @@ const Chat = () => {
     );
   });
 
-  if (loading) {
-    return <div> </div>;
-  }
 
   return (
     <>
@@ -113,7 +116,7 @@ const Chat = () => {
             <span className="material-symbols-outlined">image</span>
           </div>
           <div className="receiverUsername">
-            <span>Username</span>
+            <span>{user.username}</span>
           </div>
         </div>
         <div className="chatThread">{threadDiv}</div>

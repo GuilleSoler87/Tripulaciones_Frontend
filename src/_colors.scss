@@ -1,20 +1,21 @@
 //colors
-$creammde:#E6DFCF;
-$graymde:#847C7B;
-$orangemde:#CB7862;
-$darkbluemde:#004368;
-$lightbluemde:#D3E3E3;
-$yellownde:#F3E3B3;
-
-//fonts
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Inter&family=Spectral:ital,wght@0,500;1,700&display=swap');
+$creammde: #E6DFCF;
+$orangemde: #CB7862;
+$darkbluemde: #004368;
+$graymde: #847C7B;
+$blackmde: #161616;
+$whitemde: #F8F8F8;
+$lightbluemde: #D3E3E3;
+$purplemde: #CFD0E4;
+$yellownde: #F3E3B3;
 
 
 //Spectral 500 & 700 (weight)
-$fontspectmde:'Spectral', serif;
+$spectralmde: "Spectral serif";
 
 //Atkinson 400 & 700 (weight)
-$fontsatktmde:'Atkinson Hyperlegible', sans-serif;
+// $atkinsonmde: "Atkinson Hyperlegible sans-serif";
+$atkinsonmde: "Atkinson Hyperlegible";
 
 //inter 400 (weight)
-$fontintermde: 'Inter', sans-serif;
+$intermde: "Inter sans-serif";

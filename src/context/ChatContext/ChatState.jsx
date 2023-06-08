@@ -3,6 +3,7 @@ import ChatReducer from "./ChatReducer";
 import axios from "axios";
 
 const API_URL = "http://localhost:8080/";
+const token = JSON.parse(localStorage.getItem("token"));
 
 const initialState = {
   chat: null,
@@ -14,9 +15,13 @@ export const ChatContext = createContext(initialState);
 export const ChatProvider = ({ children }) => {
   const [state, dispatch] = useReducer(ChatReducer, initialState);
 
-  const getSingleChat = async (_id) => {
+  const getSingleChat = async (chatId) => {
     try {
-      const res = await axios.get(API_URL + "chats/getone/" + _id);
+      const res = await axios.get(API_URL + "chats/getone/" + chatId, {
+        headers: {
+          Authorization: token,
+        },
+      });
       dispatch({
         type: "GET_SINGLE_CHAT",
         payload: res.data,
@@ -33,14 +38,15 @@ export const ChatProvider = ({ children }) => {
         speakerId: speakerId,
         message: message.message, // HTML gives an object: {message: ...}
       };
-      // const config = {
-      //   headers: {
-      //     Authorization: token
-      //   }
-      // };
+      const config = {
+        headers: {
+          Authorization: token
+        }
+      };
 
-      // const res = await axios.put(url, body, config);
-      const res = await axios.put(url, body);
+      const res = await axios.put(url, body, config);
+      // const res = await axios.put(url, body); // uncomment to enable authentication
+      await getSingleChat(chatId);
       // dispatch({
       //   type: "SEND_MESSAGE",
       //   payload: res.data,

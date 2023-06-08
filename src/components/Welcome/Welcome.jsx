@@ -1,5 +1,7 @@
 import React from "react";
 import "./Welcome.scss";
+import { Link, useNavigate } from "react-router-dom";
+
 
 const Welcome = () => {
   const handleSubmit = (event) => {
@@ -19,12 +21,14 @@ const Welcome = () => {
           <p>
             {" "}
             Únete a la comunidad de <strong>MdE</strong> para informarte de las
-            últimas noticias y conectar con alumnos de EDEM, startuos de
+            últimas noticias y conectar con alumnos de EDEM, startups de
             Lanzadera y Angels
           </p>
         </div>
         <div className="startButton">
-          <button>Empezar</button>
+          <Link to={"/login"}>
+            <button>Empezar</button>
+          </Link>
         </div>
       </main>
     </>

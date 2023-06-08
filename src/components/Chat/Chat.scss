@@ -1,133 +1,140 @@
-// --- CHAT ---
+@import "../../colors";
+
 .chatContainer {
-  height: 100%;
-  background-color: rgb(116, 255, 255);
-  // overflow-y: scroll;
-}
-
-// --- HEADER ---
-.singleChatHeader {
-  position: sticky;
-  top: 0;
+  min-height: 100vh;
+  height: auto;
+  background-color: $whitemde;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 9vh;
-  width: 100%;
-  background-color: rgb(67, 158, 67);
-}
-
-.backArrow {
-  width: 8%;
-  span {
-    color: whitesmoke;
-  }
-}
-
-.receiverImage {
-  width: 15%;
-}
-
-.receiverUsername {
-  width: 77%;
-  display: flex;
-  justify-content: left;
-  span {
-    margin-left: 10px;
-    color: whitesmoke;
-    font-weight: 600;
-  }
-}
-
-
-// --- THREAD ---
-.chatThread {
-  padding: 2% 3%;
-  z-index: 1;
-}
-
-.messageLine {
-  width: fit-content;
-  max-width: 80%;
-  margin: 15px 0 5px 0;
-  padding: 1%;
-  border-radius: 10px;
-  span {
-    padding: 0 8px;
-  }
-}
-
-.textMessage {
-  text-align: left;
-}
-
-.textTime {
-  font-size: 0.75rem;
-  color: rgb(126, 126, 126);
-}
-
-#sender {
-  background-color: rgb(207, 255, 136);
-  margin-left: auto; 
-  margin-right: 0;
-}
-
-#receiver {
-  background-color: rgb(240, 255, 216);
-}
-
-#receiver + #receiver {
-  margin: 5px 0 5px 0;
-}
-
-#sender + #sender {
-  margin: 5px 0 5px 0;
-  margin-left: auto; 
-  margin-right: 0;  
-}
-
-.dateDisplay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  span {
-    background-color: rgb(234, 234, 234);
-    border-radius: 9px;
-    width: fit-content;
-    padding: 0 8px;
-    font-size: 0.8rem;
-    color: darkgrey;
-  }
-}
-
-// --- SEND MESSAGE ---
-.sendMessage {
-  margin-bottom: 15px;
-  padding: 6px 0;
-  position: sticky;
-  bottom: 0;
-  z-index: 2;
-  background-color: rgb(116, 255, 255);
-  form {
+  flex-direction: column;
+  // --- HEADER ---
+  .singleChatHeader {
+    position: sticky;
+    top: 0;
+    z-index: 2;
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
-    input {
-      width: 85%;
-      height: 40px;
-      border: none;
-      border-radius: 20px;
-      margin-left: 3%;
+    height: 9vh;
+    width: 100%;
+    background-color: $darkbluemde;
+    .backArrow {
+      width: 8%;
+      span {
+        color: $creammde;
+      }
     }
-    button {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
+    .receiverImage {
+      width: 15%;
+    }
+    .receiverUsername {
+      width: 77%;
+      display: flex;
+      justify-content: left;
+      span {
+        margin-left: 10px;
+        color: $creammde;
+        font-weight: 600;
+      }
+    }
+  }
+  // --- THREAD ---
+  .chatThread {
+    height: fit-content;
+    padding: 2% 3%;
+    z-index: 1;
+    .messageLine {
+      width: fit-content;
+      max-width: 80%;
+      margin: 15px 0 5px 0;
+      padding: 1%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      span {
+        padding: 0 8px;
+      }
+      .textMessage {
+        text-align: left;
+      }
+    }
+    #sender {
+      background-color: $orangemde;
+      border-radius: 4px 4px 0px 4px;
+      margin-left: auto;
+      margin-right: 0;
+      .textMessage,
+      .textTime {
+        color: $creammde;
+        font-family: $atkinsonmde;
+      }
+      .textTime {
+        font-size: 0.75rem;
+      }
+    }
+    #receiver {
+      background-color: $creammde;
+      border-radius: 4px 4px 4px 0px;
+      color: $blackmde;
+      .textTime {
+        font-size: 0.75rem;
+        color: $graymde;
+      }
+    }
+    #receiver + #receiver {
+      margin: 5px 0 5px 0;
+    }
+    #sender + #sender {
+      margin: 5px 0 5px 0;
+      margin-left: auto;
+      margin-right: 0;
+    }
+    .dateDisplay {
       display: flex;
       justify-content: center;
       align-items: center;
       span {
-        margin-left: 2px;
+        display: inline-flex;
+        align-items: center;
+        height: 18px;
+        background-color: $lightbluemde;
+        border-radius: 4px;
+        width: fit-content;
+        padding: 0px 8px;
+        font-size: 11px;
+        line-height: 14px;
+        color: $darkbluemde;
+      }
+    }
+  }
+  // --- SEND MESSAGE ---
+  .sendMessage {
+    height: 45px;
+    margin-top: auto;
+    padding: 6px 0;
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    background-color: $whitemde;
+    form {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      input {
+        width: 85%;
+        height: 40px;
+        border: none;
+        border-radius: 20px;
+        margin-left: 3%;
+      }
+      button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+          margin-left: 2px;
+        }
       }
     }
   }

@@ -5,16 +5,18 @@ import { UserContext } from "../../context/UserContext/UserState";
 
 
 const Profile = () => {
-  const { user, token, getUser } = useContext(UserContext);
+  const { user, token, chats, getUser, getChatsFromUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     getUser();
+    getChatsFromUser();
   }, [])
 
   if (!user) {
     return "loading";
   }
+
 
   return (
     <>

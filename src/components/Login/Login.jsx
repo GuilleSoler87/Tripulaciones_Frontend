@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Login.scss";
 import { UserContext } from "../../context/UserContext/UserState";
 
-
 const Login = () => {
   const { login, token } = useContext(UserContext);
   const [data, setData] = useState({
@@ -11,6 +10,13 @@ const Login = () => {
     password: "",
   });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const tokenFromLS = JSON.parse(localStorage.getItem("token"));
+    if (token) {
+      navigate("/profile");
+    }
+  }, []);
 
   useEffect(() => {
     if (token) {
@@ -25,7 +31,6 @@ const Login = () => {
       console.log("Oooooooooooooops");
     }
   }, [token]);
-
 
   const handleInputChange = (event) => {
     setData({
