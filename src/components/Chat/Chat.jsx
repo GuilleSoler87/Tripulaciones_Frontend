@@ -1,23 +1,58 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import io from "socket.io-client";
+import { useParams, useNavigate } from "react-router-dom";
 import "./Chat.scss";
 import { ChatContext } from "../../context/ChatContext/ChatState";
 import { UserContext } from "../../context/UserContext/UserState";
+
+let socket;
 
 const Chat = () => {
   const { chat, history, getSingleChat, sendMessage } = useContext(ChatContext);
   const { user, getUser } = useContext(UserContext);
   const { _id } = useParams();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState({
     message: "",
   });
+  const messagesEndRef = useRef(null);
 
   useEffect(() => {
     getUser();
     getSingleChat(_id).then(() => setLoading(false));
   }, []);
-  
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView();
+  }, [history]);
+
+  useEffect(() => {
+    socket = io("http://localhost:8080"); // CHANGE this with your server URL
+    return () => {
+      socket.disconnect();
+      socket.off();
+    };
+  }, [_id]);
+
+  useEffect(() => {
+    const handler = () => {
+      console.log("HANDLED!!!!!!!!!!!!!!!!!");
+      getSingleChat(_id);
+    };
+    socket.on("chat update", handler);
+    // console.log(socket);
+    // socket.on("connect_error", (err) => {
+    //   console.log(`connect_error due to ${err.message}`);
+    // });
+    socket.on("connect", () => {
+      console.log(socket);
+    });
+    return () => {
+      socket.on("chat update", handler);
+    };
+  }, []);
+
   if (loading) {
     return <div> </div>;
   }
@@ -77,6 +112,7 @@ const Chat = () => {
       return null;
     }
     sendMessage(chat._id, sender, data);
+    socket.emit("chat update", { chatId: chat._id });
     setData({
       message: "",
     });
@@ -104,12 +140,11 @@ const Chat = () => {
     );
   });
 
-
   return (
     <>
       <div className="chatContainer">
         <div className="singleChatHeader">
-          <div className="backArrow">
+          <div className="backArrow" onClick={() => navigate("/chatlist")}>
             <span className="material-symbols-outlined">arrow_back</span>
           </div>
           <div className="receiverImage">
@@ -120,6 +155,7 @@ const Chat = () => {
           </div>
         </div>
         <div className="chatThread">{threadDiv}</div>
+        <div ref={messagesEndRef} /> {/* Add this line */}
         <div className="sendMessage">
           <form onSubmit={handleSubmit}>
             <input
