@@ -2,6 +2,10 @@ import './App.css'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Welcome from "./components/Welcome/Welcome";
 import Login from './components/Login/Login';
+import Home from './components/Home/Home';
+import Calendar from './components/Calendar/Calendar';
+import Contacts from './components/Contacts/Contacts';
+import Notification from './components/Notification/Notification';
 import Password from './components/Password/Password';
 import Profile from './components/Profile/Profile';
 import Chat from "./components/Chat/Chat";
@@ -20,6 +24,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Welcome />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/contacts" element={<Contacts />} />
+              <Route path="/notification" element={<Notification />} />
               <Route path="/password" element={<Password />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/chatlist" element={<ChatList />} />

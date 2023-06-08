@@ -1,0 +1,25 @@
+@import "../../colors.scss";
+
+.buttonsContainer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-evenly;
+  height: 76px;
+  // background-color: #ffffff;
+  background-color: beige;
+  .icon {
+    margin-top: 22px;
+    span {
+      color: $graymde;
+      font-size: 35px;
+    }
+    #central-icon {
+      color: $orangemde;
+    }
+  }
+}

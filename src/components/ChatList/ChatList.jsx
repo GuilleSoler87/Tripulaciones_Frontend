@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ChatList.scss";
 import { UserContext } from "../../context/UserContext/UserState";
+import Footer from "../Footer/Footer";
 
 const ChatList = () => {
   const { user, chats, getUser, getChatsFromUser } = useContext(UserContext);
@@ -63,6 +64,7 @@ const ChatList = () => {
       <div className="chatListDiv">
         {chatList}
       </div>
+      <Footer />
     </>
   );
 };
