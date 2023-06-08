@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.scss";
 import { UserContext } from "../../context/UserContext/UserState";
+import ReCAPTCHA from "react-google-recaptcha";
 
 
 const Login = () => {
@@ -18,7 +19,7 @@ const Login = () => {
   });
 
   useEffect(() => {
-    if (token) {
+    if (token, userValidate) {
       setTimeout(() => {
         navigate("/home");
       }, 100);
@@ -30,6 +31,7 @@ const Login = () => {
       console.log("Oooooooooooooops");
     }
   }, [token, userValidate]);
+
 
   const handleInputChange = (event) => {
     setData({
