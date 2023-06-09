@@ -57,16 +57,19 @@ const Chat = () => {
     return <div> </div>;
   }
 
+  const getUserID = (chat) => {
+    const usersArray = chat.users;
+    const sender = usersArray.find(x => x.username === user.username);
+    return sender._id;
+  }
   const getReceiver = (chat) => {
     const usersArray = chat.users;
     const receiver = usersArray.find(x => x.username !== user.username);
-    console.log(receiver);
-    console.log(receiver._id);
-    console.log(receiver.username);
     return receiver;
   }
 
-  const sender = user._id
+  const sender = getUserID(chat)
+  console.log("sender", sender);
   const receiver = getReceiver(chat)._id;
 
   const formatTime = (utcDate) => {
