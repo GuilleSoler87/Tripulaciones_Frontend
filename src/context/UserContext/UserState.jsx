@@ -21,20 +21,21 @@ export const UserContext = createContext(initialState);
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(UserReducer, initialState);
 
-  const login = async (user) => {
+  const login = async (user, captchaValidate) => {
     try {
       const res = await axios.post(API_URL + "/users/login", user);
+      
       // Guardamos el token en el estado
       dispatch({
         type: "LOGIN",
         payload: res.data
       });
-
-      // Guardamos el token en el localStorage
-      if (res.data && res.data.token) {
+  
+      // Guardamos el token en el localStorage si captchaValidate es verdadero
+      if (captchaValidate && res.data && res.data.token) {
         localStorage.setItem("token", JSON.stringify(res.data.token));
       }
-      if (res.data && res.data.user) {
+      if (captchaValidate && res.data && res.data.user) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
       }
     } catch (error) {
@@ -83,6 +84,7 @@ export const UserProvider = ({ children }) => {
       if (res.data) {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
+        localStorage.removeItem("_grecaptcha");
       }
     } catch (error) {
       console.error(error);
