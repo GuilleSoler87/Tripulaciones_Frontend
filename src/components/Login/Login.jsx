@@ -53,7 +53,7 @@ const Login = () => {
     }
 
     if (attempts === 0) { // Bloquear acceso si los intentos se han agotado
-      setErrorMessage("Cuenta bloqueada, número de intentos excedido");
+      navigate("/blocked");
       return;
     }
 

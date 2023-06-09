@@ -10,6 +10,7 @@ import Password from './components/Password/Password';
 import Profile from './components/Profile/Profile';
 import Chat from "./components/Chat/Chat";
 import ChatList from './components/ChatList/ChatList';
+import Blocked from './components/Blocked/Blocked';
 import { ChatProvider } from './context/ChatContext/ChatState';
 import { UserProvider } from './context/UserContext/UserState';
 
@@ -24,6 +25,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Welcome />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/blocked" element={<Blocked />} />
               <Route path="/home" element={<Home />} />
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/contacts" element={<Contacts />} />
