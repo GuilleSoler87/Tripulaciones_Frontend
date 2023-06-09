@@ -17,7 +17,7 @@ export const ChatProvider = ({ children }) => {
 
   const getSingleChat = async (chatId) => {
     try {
-      const res = await axios.get(API_URL + "chats/getone/" + chatId, {
+      const res = await axios.get(API_URL + "/chats/getone/" + chatId, {
         headers: {
           Authorization: token,
         },
@@ -33,7 +33,7 @@ export const ChatProvider = ({ children }) => {
 
   const sendMessage = async (chatId, speakerId, message, token) => {
     try {
-      const url = API_URL + "chats/update/" + chatId;
+      const url = API_URL + "/chats/update/" + chatId;
       const body = {
         speakerId: speakerId,
         message: message.message, // HTML gives an object: {message: ...}

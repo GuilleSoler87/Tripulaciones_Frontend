@@ -28,7 +28,7 @@ const Chat = () => {
   }, [history]);
 
   useEffect(() => {
-    socket = io("http://localhost:8080"); // CHANGE this with your server URL
+    socket = io("https://desafio-backend-production.up.railway.app/"); // CHANGE this with your server URL
     return () => {
       socket.disconnect();
       socket.off();
@@ -57,10 +57,17 @@ const Chat = () => {
     return <div> </div>;
   }
 
-  // const sender = chat.users[0]._id;
-  // const receiver = chat.users[1]._id;
-  const sender = "647b38a970447a0d33b3188b"; // CHANGE needs update
-  const receiver = "647a9c3b85940b5bc2e37356";
+  const getReceiver = (chat) => {
+    const usersArray = chat.users;
+    const receiver = usersArray.find(x => x.username !== user.username);
+    console.log(receiver);
+    console.log(receiver._id);
+    console.log(receiver.username);
+    return receiver;
+  }
+
+  const sender = user._id
+  const receiver = getReceiver(chat)._id;
 
   const formatTime = (utcDate) => {
     let date = new Date(utcDate);
@@ -94,7 +101,7 @@ const Chat = () => {
   };
 
   const extractFilePathFromImage = (path) => {
-    const url = "http://localhost:8080/"; //CHANGE to pertinent URL
+    const url = "https://desafio-backend-production.up.railway.app/"; //CHANGE to pertinent URL
     const match = path.match(/uploads[\\\/](.+)/);
     return match ? url + match[1].replace(/\\/g, '/') : null;
   }
@@ -154,10 +161,10 @@ const Chat = () => {
             <span className="material-symbols-outlined">arrow_back</span>
           </div>
           <div className="receiverImage">
-            <img src={extractFilePathFromImage(user.img)} width={50} />
+            {/* <img src={extractFilePathFromImage(user.img)} width={50} /> */}
           </div>
           <div className="receiverUsername">
-            <span>{user.username}</span>
+            <span>{getReceiver(chat).username}</span>
           </div>
         </div>
         <div className="chatThread">{threadDiv}</div>

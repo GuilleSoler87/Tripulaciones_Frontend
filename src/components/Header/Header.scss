@@ -1,0 +1,17 @@
+@import "../../colors.scss";
+
+.headerContainer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-evenly;
+  height: 132px;
+  background-color: $darkbluemde;
+  h1 {
+    color: white;
+  }
+}

@@ -33,7 +33,7 @@ const ChatList = () => {
   }
 
   const extractFilePathFromImage = (path) => {
-    const url = "http://localhost:8080/"; //CHANGE to pertinent URL
+    const url = "https://desafio-backend-production.up.railway.app"; //CHANGE to pertinent URL
     const match = path.match(/uploads[\\\/](.+)/);
     return match ? url + match[1].replace(/\\/g, '/') : null;
   }
@@ -45,7 +45,7 @@ const ChatList = () => {
       <div key={index} className="chatItem" onClick={() => navigate(`/chat/${chat._id}`)}>
         <div className="imageDiv">
           <div className="imageContainer">
-            <img src={extractFilePathFromImage(getReceiver(chat).img)} width={150} />
+            {/* <img src={extractFilePathFromImage(getReceiver(chat).img)} width={150} /> */}
           </div>
         </div>
         <div className="chatInfo">
@@ -60,7 +60,7 @@ const ChatList = () => {
     <>
       <h1>ChatList</h1>
       <p>{sender.username}</p>
-      <img src={extractFilePathFromImage(user.img)} width={150} />
+      {/* <img src={extractFilePathFromImage(user.img)} width={150} /> */}
       <div className="chatListDiv">
         {chatList}
       </div>
