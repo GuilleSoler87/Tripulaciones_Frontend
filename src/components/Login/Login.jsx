@@ -13,6 +13,7 @@ const Login = () => {
   const [captchaValidate, setCaptchaValidate] = useState(null);
   const [userValidate, setUserValidate] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [attempts, setAttempts] = useState(3);
 
   const navigate = useNavigate();
   const [data, setData] = useState({
@@ -47,8 +48,13 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!data.email || !data.password)  {
+    if (!data.email || !data.password) {
       return null;
+    }
+
+    if (attempts === 0) { // Bloquear acceso si los intentos se han agotado
+      setErrorMessage("Cuenta bloqueada, número de intentos excedido");
+      return;
     }
 
     if (captcha.current.getValue()) {
@@ -68,18 +74,21 @@ const Login = () => {
           password: "",
         });
         setErrorMessage(null);
-        
+
       } else {
         // El login falló, se muestra el mensaje de error correspondiente
-        setErrorMessage(response.message);
+        setErrorMessage(response.data.message);
+        setAttempts(attempts - 1);
       }
     } catch (error) {
       console.log("Error:", error);
       if (error.response && error.response.data && error.response.data.message) {
         setErrorMessage(error.response.data.message);
       } else {
-        setErrorMessage("Usuario o contraseña incorrectos");
+        setErrorMessage("Usuario y contraseña incorrectos");
       }
+
+
       setData({
         email: "",
         password: "",
@@ -88,6 +97,7 @@ const Login = () => {
       setTimeout(() => {
         setErrorMessage(null);
       }, 3000);
+      setAttempts(attempts - 1);
     }
   };
 
@@ -138,6 +148,7 @@ const Login = () => {
             <div className="alert_hidden">
               {errorMessage && <p>{errorMessage}</p>}
             </div>
+
             <button type="submit" className="submitLogin">
               Iniciar sesión
             </button>
