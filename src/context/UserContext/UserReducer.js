@@ -15,7 +15,7 @@ const users = (state, action) => {
         message: action.payload
       };
 
-    case "GET_USER":
+    case "GET_USER_INFO":
       return {
         ...state,
         user: action.payload,

@@ -97,7 +97,8 @@ export const UserProvider = ({ children }) => {
 
   const getChatsFromUser = async (chatIdArray) => {
     const token = JSON.parse(localStorage.getItem("token"));
-    const res = await axios.get(API_URL + "chats/getchatsfromuser", {
+    console.log(API_URL + "chats/getchatsfromuser");
+    const res = await axios.get(API_URL + "/chats/getchatsfromuser", {
       headers: {
         Authorization: token,
       },

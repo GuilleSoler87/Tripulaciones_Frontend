@@ -59,7 +59,7 @@ const Chat = () => {
 
   // const sender = chat.users[0]._id;
   // const receiver = chat.users[1]._id;
-  const sender = "647b38a970447a0d33b3188b";
+  const sender = "647b38a970447a0d33b3188b"; // CHANGE needs update
   const receiver = "647a9c3b85940b5bc2e37356";
 
   const formatTime = (utcDate) => {
@@ -92,6 +92,12 @@ const Chat = () => {
     const month = months[date.getUTCMonth()];
     return `${day} ${month} ${year}`;
   };
+
+  const extractFilePathFromImage = (path) => {
+    const url = "http://localhost:8080/"; //CHANGE to pertinent URL
+    const match = path.match(/uploads[\\\/](.+)/);
+    return match ? url + match[1].replace(/\\/g, '/') : null;
+  }
 
   const handleInputChange = (event) => {
     setData({
@@ -148,7 +154,7 @@ const Chat = () => {
             <span className="material-symbols-outlined">arrow_back</span>
           </div>
           <div className="receiverImage">
-            <span className="material-symbols-outlined">image</span>
+            <img src={extractFilePathFromImage(user.img)} width={50} />
           </div>
           <div className="receiverUsername">
             <span>{user.username}</span>
