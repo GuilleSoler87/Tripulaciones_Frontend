@@ -7,34 +7,18 @@ import ALogo from "../../../src/images/A.png";
 import PuntoSup from "../../../src/images/puntos_sup.png";
 import PointsDown from "../../../src/images/points_down.png";
 
-
-
 const Login = () => {
   const { login, token } = useContext(UserContext);
-  {/* Recaptcha */ }
   const captcha = useRef(null);
-  const [captchaValidate, changeCaptchaValidate] = useState(null);
-  const [userValidate, changeUserValidate] = useState(false);
+  const [captchaValidate, setCaptchaValidate] = useState(null);
+  const [userValidate, setUserValidate] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const navigate = useNavigate();
   const [data, setData] = useState({
     email: "",
     password: "",
   });
-
-  useEffect(() => {
-    if (token, userValidate) {
-      setTimeout(() => {
-        navigate("/home");
-      }, 100);
-    }
-    if (token && token.length > 0) {
-      console.log("You have successfully logged in");
-    }
-    if (!token) {
-      console.log("Oooooooooooooops");
-    }
-  }, [token, userValidate]);
 
 
   const handleInputChange = (event) => {
@@ -50,108 +34,140 @@ const Login = () => {
     }
   };
 
-  const handleSubmit = (event) => {
+  useEffect(() => {
+    if (token && token.length > 0 && userValidate) {
+      setTimeout(() => {
+        navigate("/home");
+      }, 50);
+    }
+  }, [token, userValidate]);
+
+
+
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!data.email || !data.password) {
+    if (!data.email || !data.password)  {
       return null;
     }
-    {/* Recaptcha */ }
+
     if (captcha.current.getValue()) {
-      changeUserValidate(true);
-      changeCaptchaValidate(true);
+      setUserValidate(true);
+      setCaptchaValidate(true);
     } else {
-      changeUserValidate(false);
-      changeCaptchaValidate(false);
+      setUserValidate(false);
+      setCaptchaValidate(false);
     }
 
-    console.log(data);
-    login(data);
-    setData({
-      email: "",
-      password: "",
-    });
-  };
-  {/* Recaptcha */ }
-  const onChangeCapt = () => {
-    if (captcha.current.getValue()) {
-      changeCaptchaValidate(true);
+    try {
+      const response = await login(data, captchaValidate); // Pasa captchaValidate como parámetro
+      if (response.success) {
+        // El login fue exitoso y el captcha se ha aceptado
+        setData({
+          email: "",
+          password: "",
+        });
+        setErrorMessage(null);
+        
+      } else {
+        // El login falló, se muestra el mensaje de error correspondiente
+        setErrorMessage(response.message);
+      }
+    } catch (error) {
+      console.log("Error:", error);
+      if (error.response && error.response.data && error.response.data.message) {
+        setErrorMessage(error.response.data.message);
+      } else {
+        setErrorMessage("Usuario o contraseña incorrectos");
+      }
+      setData({
+        email: "",
+        password: "",
+      });
+      captcha.current.reset();
+      setTimeout(() => {
+        setErrorMessage(null);
+      }, 3000);
     }
-  }
+  };
+
+  const onChangeCaptcha = (value) => {
+    if (value) {
+      setCaptchaValidate(true);
+    }
+  };
 
   return (
     <>
       <div className="main-cont-login">
-
         <div className="a_logo">
-          <img src={ALogo} />
+          <img src={ALogo} alt="Logo de A" />
         </div>
         <div className="points_up">
-          <img src={PuntoSup} />
+          <img src={PuntoSup} alt="Puntos superiores" />
         </div>
         <p className="p_welcome">¡Bienvenido!</p>
 
-
         <div className="div_loginForm">
-          {/* Recaptcha */}
-          {!userValidate &&
-            <form className="login_form" onSubmit={handleSubmit}>
-              <label className="email_label" htmlFor="email">Usuario de MdE</label>
-              <input
-                className="email_input"
-                type="text"
-                placeholder="username@edem.es"
-                value={data.email}
-                onChange={handleInputChange}
-                onKeyDown={handleKeyDown}
-                name="email"
-              />
-              <label className="password_label" htmlFor="password_label">Contraseña</label>
-              <input
-                className="password_input"
-                type="password"
-                placeholder="•••••••"
-                value={data.password}
-                onChange={handleInputChange}
-                onKeyDown={handleKeyDown}
-                name="password"
-              />
-              <div className="alert_hidden">
-                <p>Usuario o contraseña incorrectos.<br/> Vuelve a intentarlo.</p>
-              </div>
-              <button type="submit" className="submitLogin">
-                Iniciar sesión
-              </button>
 
-              {/* Recaptcha */}
-              <div className="recaptcha">
-                <ReCAPTCHA
-                  ref={captcha}
-                  sitekey="6LdRwnomAAAAAAk7f8Oi04ddDXjI0Yb3q0_YkYcV"
-                  onChange={onChangeCapt}
-                />
+          <form className="login_form" onSubmit={handleSubmit}>
+            <label className="email_label" htmlFor="email">
+              Usuario de MdE
+            </label>
+            <input
+              className="email_input"
+              type="text"
+              placeholder="username@edem.es"
+              value={data.email}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+              name="email"
+            />
+            <label className="password_label" htmlFor="password_label">
+              Contraseña
+            </label>
+            <input
+              className="password_input"
+              type="password"
+              placeholder="•••••••"
+              value={data.password}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+              name="password"
+            />
+            <div className="alert_hidden">
+              {errorMessage && <p>{errorMessage}</p>}
+            </div>
+            <button type="submit" className="submitLogin">
+              Iniciar sesión
+            </button>
+
+            <div className="recaptcha">
+              <ReCAPTCHA
+                ref={captcha}
+                sitekey="6LdRwnomAAAAAAk7f8Oi04ddDXjI0Yb3q0_YkYcV"
+                onChange={onChangeCaptcha}
+              />
+            </div>
+            {captchaValidate === false && (
+              <div className={`error-captcha ${captchaValidate ? 'hidden' : ''}`}>
+                <p><b>Por favor, acepta el captcha</b></p>
               </div>
-              {captchaValidate === false && (
-                <div className={`error-captcha ${captchaValidate ? 'hidden' : ''}`}>
-                  <p><b>Por favor, acepta el captcha</b></p>
-                </div>
-              )}
-            </form>
-          }
+            )}
+          </form>
 
         </div>
 
         <div className="passwordRecovery">
-          {!userValidate &&
+          {!userValidate && (
             <Link to="/passwordrecover" className="link">
               <p className="recover_pass">Recuperar contraseña</p>
             </Link>
-          }
+          )}
         </div>
         <div className="points_down">
-          <img src={PointsDown} />
+          <img src={PointsDown} alt="Puntos inferiores" />
         </div>
-
-
       </div>
     </>
   );

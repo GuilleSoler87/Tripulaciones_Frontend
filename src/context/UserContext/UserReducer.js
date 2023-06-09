@@ -27,6 +27,7 @@ const users = (state, action) => {
         ...state,
         user: null,
         token: null,
+        _grecaptcha: null,
         message: "",
       };
 
