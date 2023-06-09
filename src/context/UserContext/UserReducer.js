@@ -42,6 +42,11 @@ const users = (state, action) => {
         ...state,
         chats: action.payload,
       };
+    case "TURN_OFF_MESSAGE":
+      return {
+        ...state,
+        message: null,
+      }
 
 
     default:

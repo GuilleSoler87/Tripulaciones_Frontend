@@ -13,6 +13,7 @@ import ChatList from './components/ChatList/ChatList';
 import Blocked from './components/Blocked/Blocked';
 import { ChatProvider } from './context/ChatContext/ChatState';
 import { UserProvider } from './context/UserContext/UserState';
+import Mailer from './components/Mailer/Mailer';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Welcome />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/mailer" element={<Mailer />} />
               <Route path="/blocked" element={<Blocked />} />
               <Route path="/home" element={<Home />} />
               <Route path="/calendar" element={<Calendar />} />

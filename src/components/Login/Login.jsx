@@ -8,11 +8,10 @@ import PuntoSup from "../../../src/images/puntos_sup.png";
 import PointsDown from "../../../src/images/points_down.png";
 
 const Login = () => {
-  const { login, token } = useContext(UserContext);
+  const { login, token, message, turnOffMessage } = useContext(UserContext);
   const captcha = useRef(null);
   const [captchaValidate, setCaptchaValidate] = useState(null);
   const [userValidate, setUserValidate] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
   const [attempts, setAttempts] = useState(3);
 
   const navigate = useNavigate();
@@ -44,14 +43,12 @@ const Login = () => {
   }, [token, userValidate]);
 
 
-
-
   const handleSubmit = async (event) => {
+
     event.preventDefault();
     if (!data.email || !data.password) {
       return null;
     }
-
     if (attempts === 0) { // Bloquear acceso si los intentos se han agotado
       navigate("/blocked");
       return;
@@ -67,27 +64,21 @@ const Login = () => {
 
     try {
       const response = await login(data, captchaValidate); // Pasa captchaValidate como parámetro
+      console.log("mostrando response", response)
       if (response.success) {
+
         // El login fue exitoso y el captcha se ha aceptado
         setData({
           email: "",
           password: "",
         });
-        setErrorMessage(null);
+        turnOffMessage();
 
       } else {
-        // El login falló, se muestra el mensaje de error correspondiente
-        setErrorMessage(response.data.message);
         setAttempts(attempts - 1);
       }
     } catch (error) {
-      console.log("Error:", error);
-      if (error.response && error.response.data && error.response.data.message) {
-        setErrorMessage(error.response.data.message);
-      } else {
-        setErrorMessage("Usuario y contraseña incorrectos");
-      }
-
+      console.log(error);
 
       setData({
         email: "",
@@ -95,7 +86,7 @@ const Login = () => {
       });
       captcha.current.reset();
       setTimeout(() => {
-        setErrorMessage(null);
+        turnOffMessage();
       }, 3000);
       setAttempts(attempts - 1);
     }
@@ -146,7 +137,7 @@ const Login = () => {
               name="password"
             />
             <div className="alert_hidden">
-              {errorMessage && <p>{errorMessage}</p>}
+              {message && <p>{message}</p>}
             </div>
 
             <button type="submit" className="submitLogin">
