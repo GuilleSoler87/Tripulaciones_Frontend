@@ -1,3 +1,93 @@
+@import "../../colors";
+
 .contactsContainer {
-  margin-top: 132px;
+  margin-top: 283px;
+  background-color: $backcolormde;
+  width: 100vw;
+  min-height: 650px;
+  .searchBarContainer {
+    min-height: 151px;
+    // background-color: $backcolormde;
+    background-color: aqua;
+    margin-top: 132px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1000;
+    justify-content: space-evenly;
+    height: 132px;
+    .titleAndButtonContainer {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 30px;
+      h1 {
+        font-family: $spectralmde;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 26px;
+        line-height: 40px;
+        display: flex;
+        align-items: center;
+        color: $darkbluemde;
+      }
+      button {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+      }
+    }
+    .searchBar {
+      form {
+        input {
+          width: 336px;
+          height: 32px;
+          margin: 0 auto;
+          font-family: $atkinsonmde;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 13px;
+          line-height: 16px;
+          display: flex;
+          align-items: center;
+          background: $whitemde;
+          border: 1px solid $creammde;
+          border-radius: 4px;
+        }
+        ::placeholder {
+          color: rgba(132, 124, 123, 0.5);
+          padding-left: 10px;
+        }
+      }
+    }
+  }
+  .noContactText {
+    padding-top: 25px;
+    p {
+      color: $darkbluemde;
+      font-family: $atkinsonmde;
+      font-style: normal;
+      text-align: center;
+    }
+    .nope1 {
+      font-weight: 700;
+      font-size: 25px;
+      line-height: 31px;
+    }
+    .nope2 {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 25px;
+    }
+    .nope3 {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
 }

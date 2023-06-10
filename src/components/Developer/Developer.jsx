@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useReducer } from "react";
 
 const Developer = () => {
   const formatTime = (utcDate) => {
@@ -13,16 +13,25 @@ const Developer = () => {
     let yesterday = new Date();
     yesterday.setDate(today.getDate() - 1);
     if (date.toDateString() === yesterday.toDateString()) {
-        return "Ayer";
+      return "Ayer";
     }
 
     var lastMonday = new Date();
     lastMonday.setDate(today.getDate() - ((today.getDay() + 6) % 7));
     if (date > lastMonday) {
-        return ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'][date.getDay() - 1];
+      return [
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sábado",
+        "Domingo",
+      ][date.getDay() - 1];
     }
 
-    return ('0' + date.getDate()).slice(-2) + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear();
+    return (
+      ("0" + date.getDate()).slice(-2) + "/" + ("0" + (date.getMonth() + 1)).slice(-2) + "/" + date.getFullYear());
   };
 
   const date1 = "2023-06-10T01:07:06.855Z"; // today
