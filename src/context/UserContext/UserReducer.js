@@ -38,9 +38,12 @@ const users = (state, action) => {
       };
 
     case "GET_CHATS_FROM_USER":
+      const sortedChats = action.payload.sort((a, b) =>
+        a.updatedAt < b.updatedAt ? 1 : -1
+      );
       return {
         ...state,
-        chats: action.payload,
+        chats: sortedChats,
       };
     case "TURN_OFF_MESSAGE":
       return {

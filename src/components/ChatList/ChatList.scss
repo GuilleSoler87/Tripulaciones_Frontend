@@ -1,10 +1,18 @@
 @import "../../colors";
 
+.chatListTitleContainer {
+  margin-top: 132px;
+  background-color: $backcolormde;
+  height: 116px;
+}
+
 .chatListDiv {
+  margin-bottom: 76px;
+  background-color: $backcolormde;
   .chatItem {
     display: flex;
     margin: 10px 0px;
-    background-color: $creammde;
+    background-color: $whitemde;
     .imageDiv {
       display: flex;
       justify-content: center;
@@ -18,13 +26,27 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: white;
         img {
-          width: 80px;
+          width: 60px;
         }
       }
     }
     .chatInfo {
       margin-left: 20px;
+      width: 304px;
+      .namePlusDate {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        .leftUsername {
+          text-align: left;
+        }
+        .rightTime {
+          text-align: right;
+          margin-right: 20px;
+        }
+      }
       p {
         text-align: left;
       }
