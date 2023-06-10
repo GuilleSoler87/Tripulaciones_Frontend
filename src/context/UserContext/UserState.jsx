@@ -133,6 +133,22 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const resetPassword = async (newPassword , recoverToken) => {
+    try {
+      const res = await axios.put(API_URL + `/users/resetPassword/${recoverToken}`, {password:newPassword});
+      dispatch({
+        type: "RESET_PASSWORD_SUCCESS",
+        payload: res.data,
+      });
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: "RESET_PASSWORD_ERROR",
+        payload: error.response.data.message,
+      });
+    }
+  };
+
 
   // const register = async (data) => {
   //   try {
@@ -165,6 +181,7 @@ export const UserProvider = ({ children }) => {
         logout,
         turnOffMessage,
         recoverPassword,
+        resetPassword
       }}
     >
       {children}
