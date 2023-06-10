@@ -134,13 +134,8 @@ export const UserProvider = ({ children }) => {
   };
 
   const resetPassword = async (newPassword , recoverToken) => {
-    console.log("WHATS AAAAAAAAAAAAP")
     try {
-      function base64UrlEncode(str) {
-        return str.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '').replace(/\./g, '¿');
-      };
-      const encodedToken = base64UrlEncode(recoverToken)
-      const res = await axios.put(API_URL + `/users/resetPassword/${encodedToken}`, { password: newPassword } );
+      const res = await axios.put(API_URL + `/users/resetPassword/${recoverToken}`, { password: newPassword } );
       dispatch({
         type: "RESET_PASSWORD_SUCCESS",
         payload: res.data,

@@ -9,16 +9,6 @@ import Flechaizq from "../../../src/images/flechizq.png";
 
 const RecoverPass = () => {
     const { recoverToken } = useParams();
-    const decodedToken = base64UrlDecode(recoverToken);
-
-    function base64UrlDecode(str) {
-        // Pad with '=' to make length a multiple of 4
-        while (str.length % 4) {
-            str += '=';
-        }
-        return str.replace(/-/g, '+').replace(/_/g, '/').replace(/¿/g, '.');
-    }
-
     const { resetPassword, message, turnOffMessage } = useContext(UserContext);
 
     const navigate = useNavigate();
@@ -47,14 +37,13 @@ const RecoverPass = () => {
 
 
     const handleSubmit = async (event) => {
-        console.log("this is the decoded Token",decodedToken)
         event.preventDefault();
         if (!data.password) {
             return null;
         }
 
         try {
-            const response = await resetPassword(data.password, decodedToken);
+            const response = await resetPassword(data.password, recoverToken);
             if (response.success) {
                 // La contraseña es válida
                 setData({
