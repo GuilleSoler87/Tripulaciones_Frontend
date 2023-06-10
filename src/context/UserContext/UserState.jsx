@@ -14,8 +14,8 @@ const initialState = {
   logoutMessage: ""
 };
 
-// const API_URL = "https://desafio-backend-production.up.railway.app";
-const API_URL = "http://localhost:8080";
+const API_URL = "https://desafio-backend-production.up.railway.app";
+// const API_URL = "http://localhost:8080";
 
 export const UserContext = createContext(initialState);
 
@@ -133,6 +133,27 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const resetPassword = async (newPassword , recoverToken) => {
+    console.log("WHATS AAAAAAAAAAAAP")
+    try {
+      function base64UrlEncode(str) {
+        return str.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '').replace(/\./g, '¿');
+      };
+      const encodedToken = base64UrlEncode(recoverToken)
+      const res = await axios.put(API_URL + `/users/resetPassword/${encodedToken}`, { password: newPassword } );
+      dispatch({
+        type: "RESET_PASSWORD_SUCCESS",
+        payload: res.data,
+      });
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: "RESET_PASSWORD_ERROR",
+        payload: error.response.data.message,
+      });
+    }
+  };
+
 
   // const register = async (data) => {
   //   try {
@@ -165,6 +186,7 @@ export const UserProvider = ({ children }) => {
         logout,
         turnOffMessage,
         recoverPassword,
+        resetPassword
       }}
     >
       {children}

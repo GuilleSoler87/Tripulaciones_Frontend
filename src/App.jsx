@@ -15,6 +15,7 @@ import { ChatProvider } from './context/ChatContext/ChatState';
 import { UserProvider } from './context/UserContext/UserState';
 import Developer from './components/Developer/Developer';
 import Mailer from './components/Mailer/Mailer';
+import RecoverPass from './components/RecoverPass/RecoverPass';
 
 
 function App() {
@@ -29,11 +30,12 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/mailer" element={<Mailer />} />
               <Route path="/blocked" element={<Blocked />} />
+              <Route path="/password" element={<Password />} />
+              <Route path="/recoverPass/:recoverToken" element={<RecoverPass />} />
               <Route path="/home" element={<Home />} />
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/notification" element={<Notification />} />
-              <Route path="/password" element={<Password />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/chatlist" element={<ChatList />} />
               <Route path="/chat/:_id" element={<Chat />} />
