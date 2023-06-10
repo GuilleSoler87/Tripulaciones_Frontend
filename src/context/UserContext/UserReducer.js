@@ -45,6 +45,22 @@ const users = (state, action) => {
         ...state,
         chats: sortedChats,
       };
+    case "TURN_OFF_MESSAGE":
+      return {
+        ...state,
+        message: null,
+      };
+    case "RECOVER_PASSWORD_SUCCESS":
+      return {
+        ...state,
+        message: action.payload,
+      };
+
+    case "RECOVER_PASSWORD_ERROR":
+      return {
+        ...state,
+        message: action.payload,
+      };
 
 
     default:

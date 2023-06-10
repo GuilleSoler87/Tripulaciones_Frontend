@@ -25,13 +25,13 @@ export const UserProvider = ({ children }) => {
   const login = async (user, captchaValidate) => {
     try {
       const res = await axios.post(API_URL + "/users/login", user);
-      
+
       // Guardamos el token en el estado
       dispatch({
         type: "LOGIN",
         payload: res.data
       });
-  
+
       // Guardamos el token en el localStorage si captchaValidate es verdadero
       if (captchaValidate && res.data && res.data.token) {
         localStorage.setItem("token", JSON.stringify(res.data.token));
@@ -108,7 +108,31 @@ export const UserProvider = ({ children }) => {
       type: "GET_CHATS_FROM_USER",
       payload: res.data,
     });
+   
   };
+  
+  const turnOffMessage = () => {
+    dispatch({
+      type: "TURN_OFF_MESSAGE",
+    })
+  };
+
+  const recoverPassword = async (email) => {
+    try {
+      const res = await axios.get(API_URL + `/users/recoverPassword/${email}`);
+      dispatch({
+        type: "RECOVER_PASSWORD_SUCCESS",
+        payload: res.data,
+      });
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: "RECOVER_PASSWORD_ERROR",
+        payload: "Error al recuperar la contraseña",
+      });
+    }
+  };
+
 
   // const register = async (data) => {
   //   try {
@@ -139,6 +163,8 @@ export const UserProvider = ({ children }) => {
         getUser,
         getChatsFromUser,
         logout,
+        turnOffMessage,
+        recoverPassword,
       }}
     >
       {children}
