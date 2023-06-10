@@ -14,8 +14,8 @@ const initialState = {
   logoutMessage: ""
 };
 
-// const API_URL = "https://desafio-backend-production.up.railway.app";
-const API_URL = "http://localhost:8080";
+const API_URL = "https://desafio-backend-production.up.railway.app";
+// const API_URL = "http://localhost:8080";
 
 export const UserContext = createContext(initialState);
 
@@ -135,7 +135,7 @@ export const UserProvider = ({ children }) => {
 
   const resetPassword = async (newPassword , recoverToken) => {
     try {
-      const res = await axios.put(API_URL + `/users/resetPassword/${recoverToken}`, {password:newPassword});
+      const res = await axios.put(API_URL + `/users/resetPassword/${recoverToken}`, );
       dispatch({
         type: "RESET_PASSWORD_SUCCESS",
         payload: res.data,

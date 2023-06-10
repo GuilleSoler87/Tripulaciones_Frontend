@@ -18,7 +18,7 @@ const RecoverPass = () => {
         }
         return str.replace(/-/g, '+').replace(/_/g, '/').replace(/¿/g, '.');
     }
-    
+
     const { resetPassword, message, turnOffMessage } = useContext(UserContext);
 
     const navigate = useNavigate();
@@ -47,20 +47,20 @@ const RecoverPass = () => {
 
 
     const handleSubmit = async (event) => {
-
+        console.log("this is the decoded Token",decodedToken)
         event.preventDefault();
         if (!data.password) {
             return null;
         }
 
         try {
-            const response = await resetPassword(data.password, decodedToken );
+            const response = await resetPassword(data.password, decodedToken);
             if (response.success) {
                 // La contraseña es válida
                 setData({
                     password: "",
                 });
-                turnOffMessage();               
+                turnOffMessage();
 
             }
         } catch (error) {
