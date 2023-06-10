@@ -162,7 +162,7 @@ const Login = () => {
 
         <div className="passwordRecovery">
           {!userValidate && (
-            <Link to="/passwordrecover" className="link">
+            <Link to="/password" className="link">
               <p className="recover_pass">Recuperar contraseña</p>
             </Link>
           )}

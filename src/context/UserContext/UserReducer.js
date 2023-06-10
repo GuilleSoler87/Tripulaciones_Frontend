@@ -46,7 +46,18 @@ const users = (state, action) => {
       return {
         ...state,
         message: null,
-      }
+      };
+    case "RECOVER_PASSWORD_SUCCESS":
+      return {
+        ...state,
+        message: action.payload,
+      };
+
+    case "RECOVER_PASSWORD_ERROR":
+      return {
+        ...state,
+        message: action.payload,
+      };
 
 
     default:

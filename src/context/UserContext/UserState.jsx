@@ -114,7 +114,24 @@ export const UserProvider = ({ children }) => {
     dispatch({
       type: "TURN_OFF_MESSAGE",
     })
-  }
+  };
+
+  const recoverPassword = async (email) => {
+    try {
+      const res = await axios.get(API_URL + `/users/recoverPassword/${email}`);
+      dispatch({
+        type: "RECOVER_PASSWORD_SUCCESS",
+        payload: res.data,
+      });
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: "RECOVER_PASSWORD_ERROR",
+        payload: "Error al recuperar la contraseña",
+      });
+    }
+  };
+
 
   // const register = async (data) => {
   //   try {
@@ -146,6 +163,7 @@ export const UserProvider = ({ children }) => {
         getChatsFromUser,
         logout,
         turnOffMessage,
+        recoverPassword,
       }}
     >
       {children}
