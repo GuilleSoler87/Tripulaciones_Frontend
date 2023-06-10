@@ -117,7 +117,7 @@ const Login = () => {
             </label>
             <input
               className="email_input"
-              type="text"
+              type="email"
               placeholder="username@edem.es"
               value={data.email}
               onChange={handleInputChange}

@@ -21,10 +21,11 @@ const Password = () => {
   };
 
   const handleInputChange = (event) => {
-    setData({
-      ...data,
-      [event.target.name]: event.target.value,
-    });
+    const { name, value } = event.target;
+    setData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleKeyDown = (event) => {
@@ -42,7 +43,7 @@ const Password = () => {
     }
 
     try {
-      const response = await recoverPassword(data);
+      const response = await recoverPassword(data.email);
       if (response.success) {
         // El correo es válido
         setData({
@@ -82,7 +83,7 @@ const Password = () => {
             </label>
             <input
               className="email_input_forgot"
-              type="text"
+              type="email"
               placeholder="username@edem.es"
               value={data.email}
               onChange={handleInputChange}
@@ -98,7 +99,7 @@ const Password = () => {
         </div>
 
         <div className="alert_hidden_forgot">
-          {message && <p>{message}</p>}
+          {message && typeof message === "object" ? <p>{message.message}</p> : null}
         </div>
 
         <Link to="/login" className="return_to_login_forgot" onClick={handleButtonClick}>

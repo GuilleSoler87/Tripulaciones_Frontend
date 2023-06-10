@@ -127,7 +127,7 @@ export const UserProvider = ({ children }) => {
       console.error(error);
       dispatch({
         type: "RECOVER_PASSWORD_ERROR",
-        payload: "Error al recuperar la contraseña",
+        payload: error.response.data.message,
       });
     }
   };
