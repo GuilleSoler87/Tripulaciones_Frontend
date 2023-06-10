@@ -28,7 +28,8 @@ const Chat = () => {
   }, [history]);
 
   useEffect(() => {
-    socket = io("https://desafio-backend-production.up.railway.app/"); // CHANGE this with your server URL
+    // socket = io("https://desafio-backend-production.up.railway.app/"); // CHANGE this with your server URL
+    socket = io("http://localhost:8080/"); // CHANGE this with your server URL
     return () => {
       socket.disconnect();
       socket.off();
@@ -69,7 +70,6 @@ const Chat = () => {
   }
 
   const sender = getUserID(chat)
-  console.log("sender", sender);
   const receiver = getReceiver(chat)._id;
 
   const formatTime = (utcDate) => {
@@ -104,7 +104,8 @@ const Chat = () => {
   };
 
   const extractFilePathFromImage = (path) => {
-    const url = "https://desafio-backend-production.up.railway.app/"; //CHANGE to pertinent URL
+    // const url = "https://desafio-backend-production.up.railway.app/"; //CHANGE to pertinent URL
+    const url = "http://localhost:8080/"; //CHANGE to pertinent URL
     const match = path.match(/uploads[\\\/](.+)/);
     return match ? url + match[1].replace(/\\/g, '/') : null;
   }

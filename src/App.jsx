@@ -12,6 +12,7 @@ import Chat from "./components/Chat/Chat";
 import ChatList from './components/ChatList/ChatList';
 import { ChatProvider } from './context/ChatContext/ChatState';
 import { UserProvider } from './context/UserContext/UserState';
+import Developer from './components/Developer/Developer';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/chatlist" element={<ChatList />} />
               <Route path="/chat/:_id" element={<Chat />} />
+              <Route path="/developer" element={<Developer />} />
             </Routes>
           </ChatProvider>
         </UserProvider>
