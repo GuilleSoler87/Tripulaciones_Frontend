@@ -8,22 +8,80 @@
     flex-direction: column;
     align-items: center;
     z-index: -2;
-  
+
     .events_top_header {
-      position: absolute;
-      margin-top: 32%;
-      display: flex;
-      flex-direction: row;
-      width: 88%;
-      align-items: center;
-      justify-content: space-between;
-  
-      .events_title {
-        font-family: $spectralmde;
-        font-weight: 800;
-        font-size: 28px;
-        color: $darkbluemde;
-      }
-  
+        position: absolute;
+        margin-top: 32%;
+        display: flex;
+        flex-direction: row;
+        width: 88%;
+        align-items: baseline;
+        justify-content: space-between;
+
+        .events_title {
+            font-family: $spectralmde;
+            font-weight: 800;
+            font-size: 28px;
+            color: $darkbluemde;
+        }
+
+        .tipImgContainer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            column-gap: 10px;
+            ;
+
+            .toolTipFather {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                
+
+                .tooltipArrow {
+                    border-radius: 0.2rem;
+                    width: 0;
+                    height: 0;
+                    border: 8px solid $lightbluemde;
+                    transform: rotate(45deg);
+                    margin-left: -8px;
+                }
+            }
+
+            .tooltipText {
+                font-family: $atkinsonmde;
+                font-weight: 200;
+                font-size: 16px;
+                color: $darkbluemde;
+                margin-left: 10px;
+                margin-right: 10px;
+
+            }
+        }
+    }
+
+    .img_points_white {
+        position: absolute;
+        margin-top: 15%;
+        left: 50%;
+        transform: translateX(60%);
+        z-index: 0;
+    }
+
+    .tooltipTextContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: $lightbluemde;
+        border-radius: 0.6rem;
+        height: 4.5vh;
+    }
+
+    .go_to_calendar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        // height: 7vh;
     }
 }
