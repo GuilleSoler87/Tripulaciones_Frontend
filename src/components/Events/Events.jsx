@@ -8,10 +8,17 @@ const Events = () => {
     return (
         <>
             <Header />
-            <div className='main_container_events'>
+            <div className='main_eventsContainer'>
                 <div className='events_top_header'>
+                <p className="events_title">Eventos</p>
+<div className='toolTipFather'>
+    <div className='tooltipTextContainer'>
+        <p className='tooltipText'>Mis eventos</p>
+    </div>
+    <div className='tooltipArrow'>
 
-
+    </div>
+</div>
                 </div>
 
 
