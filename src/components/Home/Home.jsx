@@ -29,12 +29,15 @@ const Home = () => {
       <Header />
       <div className="main_homeContainer">
 
-        <div className="top_notices">
-          <p className="notices_title">Noticias</p>
-          <Link to="/menu" className="go_to_menu" onClick={handleMenuClick}>
-            <img src={MenuImg} alt="Menu" className="img_menu" />
-          </Link>
-        </div>
+        
+          <div className="top_notices">
+            <p className="notices_title">Noticias</p>
+            <Link to="/menu" className="go_to_menu" onClick={handleMenuClick}>
+              <img src={MenuImg} alt="Menu" className="img_menu" />
+            </Link>
+          </div>
+        
+
         <div className="div_img_points">
           <img src={PointsUpAll} alt="Points" className="img_points_up_all" />
         </div>
