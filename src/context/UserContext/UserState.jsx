@@ -51,7 +51,6 @@ export const UserProvider = ({ children }) => {
   const getUser = async () => {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
-      console.log(API_URL + "/users/getUser");
       const res = await axios.get(API_URL + "/users/getUser", {
         headers: {
           Authorization: token

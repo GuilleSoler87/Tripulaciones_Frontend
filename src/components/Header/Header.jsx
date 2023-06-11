@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import FoldableMenu from "../FoldableMenu/FoldableMenu";
 import profileLogo from "../../../src/images/profile_logo.png";
-import IconClose from '../../images/icon_close.png';
-import { FiMenu } from "react-icons/fi";
+import { FiMenu, FiX } from "react-icons/fi";
 import "./Header.scss";
 
 const Header = () => {
@@ -18,11 +17,11 @@ const Header = () => {
       <div className="headerContainer">
         <div className="foldableMenuContainer">
           <button className="openFoldableButton" onClick={toggleMenu}>
-            <FiMenu className="hamburger"/>
+            <FiMenu className="hamburger" />
           </button>
           <FoldableMenu className="foldableMenu" isOpen={isMenuOpen}>
             <button className="closeFoldableButton" onClick={toggleMenu}>
-              <img src={IconClose} alt="Cerrar" />
+              <FiX className="closeIcon" />
             </button>
             <ul className="bulletList">
               <li>
@@ -39,6 +38,14 @@ const Header = () => {
               </li>
               <li>
                 <a href="/contact">Contactar</a>
+              </li>
+            </ul>
+            <ul className="helpAndLogout">
+              <li>
+                <a href="/contact">Ayuda</a>
+              </li>
+              <li>
+                <a href="/contact">Cerrar sesión</a>
               </li>
             </ul>
           </FoldableMenu>

@@ -25,8 +25,8 @@ const ChatList = () => {
   }
 
   const extractFilePathFromImage = (path) => {
-    // const url = "https://desafio-backend-production.up.railway.app"; //CHANGE to pertinent URL
-    const url = "http://localhost:8080/"; //CHANGE to pertinent URL
+    const url = "https://desafio-backend-production.up.railway.app"; //CHANGE to pertinent URL
+    // const url = "http://localhost:8080/"; //CHANGE to pertinent URL
     try {
       const match = path.match(/uploads[\\\/](.+)/);
       return match ? url + match[1].replace(/\\/g, '/') : null;

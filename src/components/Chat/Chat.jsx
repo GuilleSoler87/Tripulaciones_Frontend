@@ -28,8 +28,8 @@ const Chat = () => {
   }, [history]);
 
   useEffect(() => {
-    // socket = io("https://desafio-backend-production.up.railway.app/"); // CHANGE this with your server URL
-    socket = io("http://localhost:8080/"); // CHANGE this with your server URL
+    socket = io("https://desafio-backend-production.up.railway.app/"); // CHANGE this with your server URL
+    // socket = io("http://localhost:8080/"); // CHANGE this with your server URL
     return () => {
       socket.disconnect();
       socket.off();
