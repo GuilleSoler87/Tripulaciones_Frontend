@@ -74,8 +74,12 @@ const users = (state, action) => {
         message: action.payload,
       };
 
-
-
+    case "MAKE_CONTACT_FAVOURITE":
+      return {
+        ...state,
+        user: action.payload,
+      };
+      
     default:
       return state;
   }

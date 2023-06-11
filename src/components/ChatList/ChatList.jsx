@@ -10,16 +10,13 @@ const ChatList = () => {
   const navigate = useNavigate();
   // const [receiver, setReceiver] = useState(null);
 
+  useEffect(() => {
+    getUser(),
+    getChatsFromUser();
+  })
+
   const API_URL = "http://localhost:8080/"
 
-  useEffect(() => {
-    getUser();
-    getChatsFromUser();
-  }, []);
-  
-  if (!user) {
-    return "loading";
-  }
   
   const getReceiver = (chat) => {
     const usersArray = chat.users;

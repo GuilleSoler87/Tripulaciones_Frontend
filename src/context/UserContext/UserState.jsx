@@ -51,6 +51,7 @@ export const UserProvider = ({ children }) => {
   const getUser = async () => {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
+      console.log(API_URL + "/users/getUser");
       const res = await axios.get(API_URL + "/users/getUser", {
         headers: {
           Authorization: token
@@ -98,7 +99,6 @@ export const UserProvider = ({ children }) => {
 
   const getChatsFromUser = async (chatIdArray) => {
     const token = JSON.parse(localStorage.getItem("token"));
-    console.log(API_URL + "chats/getchatsfromuser");
     const res = await axios.get(API_URL + "/chats/getchatsfromuser", {
       headers: {
         Authorization: token,
@@ -165,6 +165,31 @@ export const UserProvider = ({ children }) => {
   //   }
   // };
 
+  const makeContactFavourite = async (contactId) => {
+    try {
+      console.log(API_URL + `/users/makecontactfavourite`);
+      const res = await axios.put(API_URL + "/users/makecontactfavourite", {
+        userId: contactId,
+      },
+      { 
+        headers: {
+          Authorization: token,
+        }
+      });
+      console.log("EUREKAAAAAAAAAAAAAAA");
+      dispatch({
+        type: "MAKE_CONTACT_FAVOURITE",
+        payload: res.data,
+      });
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: "RECOVER_PASSWORD_ERROR",
+        payload: error.response.data.message,
+      });
+    }
+  };
+
 
 
   return (
@@ -181,7 +206,8 @@ export const UserProvider = ({ children }) => {
         logout,
         turnOffMessage,
         recoverPassword,
-        resetPassword
+        resetPassword,
+        makeContactFavourite,
       }}
     >
       {children}
