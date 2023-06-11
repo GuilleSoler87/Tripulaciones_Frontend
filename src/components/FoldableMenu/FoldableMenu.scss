@@ -1,0 +1,40 @@
+@import "../../colors.scss";
+
+.foldable-menu {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.1s ease-in-out;
+  overflow: hidden;
+}
+
+.foldable-menu.open {
+  transform: scaleX(1);
+}
+
+#foldableMenu {
+  width: 340px;
+  height: 830px;
+  background-color: $darkbluemde;
+  .bulletList {
+    margin-top: 160px;
+    .closeFoldableButton {
+      background: none;
+
+    }
+
+    li {
+      list-style-type: none;
+      text-align: left;
+      margin-bottom: 20px;
+      a {
+        font-family: $atkinsonmde;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 20px;
+        color: $creammde;
+        text-decoration: none;
+      }
+    }
+  }
+}

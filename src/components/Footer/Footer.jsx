@@ -1,15 +1,8 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import "./Footer.scss";
 
 const Footer = () => {
-
-  const navigate = useNavigate();
-
-  
-  useEffect(() => {
-  }, []);
-  
 
   return (
     <>
