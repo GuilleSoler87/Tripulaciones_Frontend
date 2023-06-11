@@ -1,7 +1,7 @@
 @import "../../colors";
 
 
-.main_homeContainer {
+.main_homeTabContainer {
   background-color: $backcolormde;
   width: 100vw;
   height: 100vh;
@@ -10,7 +10,7 @@
   align-items: center;
   z-index: -2;
 
-  .top_notices {
+  .top_Tabnotices {
     position: absolute;
     margin-top: 32%;
     display: flex;
@@ -19,7 +19,7 @@
     align-items: center;
     justify-content: space-between;
 
-    .notices_title {
+    .noticesTab_title {
       font-family: $spectralmde;
       font-weight: 800;
       font-size: 28px;
@@ -35,27 +35,14 @@
     transform: translateX(-50%);
   }
 
-  .div_buttons_home {
+  .div_buttons_homeTab {
     position: absolute;
     margin-top: 57%;
     display: flex;
     flex-direction: row;
     width: 100%;
 
-    .submit_MdE {
-      width: 50%;
-      height: 41px;
-      background-color: $darkbluemde;
-      font-family: $atkinsonmde;
-      color: $creammde;
-      font-weight: bold;
-      font-size: 15px;
-      border: none;
-
-
-    }
-
-    .submit_tab_not {
+    .submit_MdEtab {
       width: 50%;
       height: 41px;
       background-color: $creammde;
@@ -65,9 +52,21 @@
       border: none;
 
     }
+
+    .submit_tabtab_not {
+      width: 50%;
+      height: 41px;
+      background-color: $orangemde;
+      font-weight: bold;
+      font-family: $atkinsonmde;
+      font-size: 15px;
+      color: $creammde;
+      border: none;
+
+    }
   }
 
-  .navigation_homeContainer {
+  .navigation_homeContainerTab {
     background-color: aqua;
     position: absolute;
     margin-top: 66.7%;

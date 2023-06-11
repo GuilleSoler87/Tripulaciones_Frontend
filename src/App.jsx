@@ -16,6 +16,8 @@ import { UserProvider } from './context/UserContext/UserState';
 import Developer from './components/Developer/Developer';
 import Mailer from './components/Mailer/Mailer';
 import RecoverPass from './components/RecoverPass/RecoverPass';
+import HomeTab from './components/HomeTab/HomeTab';
+import Menu from './components/Menu/Menu';
 
 
 function App() {
@@ -33,6 +35,8 @@ function App() {
               <Route path="/password" element={<Password />} />
               <Route path="/recoverPass/:recoverToken" element={<RecoverPass />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/homeTab" element={<HomeTab />} /> 
+              <Route path="/menu" element={<Menu />} />            
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/notification" element={<Notification />} />
