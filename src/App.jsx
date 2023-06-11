@@ -18,6 +18,7 @@ import Mailer from './components/Mailer/Mailer';
 import RecoverPass from './components/RecoverPass/RecoverPass';
 import HomeTab from './components/HomeTab/HomeTab';
 import Menu from './components/Menu/Menu';
+import Events from './components/Events/Events';
 
 
 function App() {
@@ -36,7 +37,8 @@ function App() {
               <Route path="/recoverPass/:recoverToken" element={<RecoverPass />} />
               <Route path="/home" element={<Home />} />
               <Route path="/homeTab" element={<HomeTab />} /> 
-              <Route path="/menu" element={<Menu />} />            
+              <Route path="/menu" element={<Menu />} /> 
+              <Route path="/events" element={<Events />} />        
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/notification" element={<Notification />} />
