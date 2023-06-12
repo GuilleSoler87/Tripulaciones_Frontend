@@ -8,6 +8,7 @@ import Contacts from './components/Contacts/Contacts';
 import Notification from './components/Notification/Notification';
 import Password from './components/Password/Password';
 import Profile from './components/Profile/Profile';
+import OtherProfile from './components/OtherProfile/OtherProfile';
 import Chat from "./components/Chat/Chat";
 import ChatList from './components/ChatList/ChatList';
 import Blocked from './components/Blocked/Blocked';
@@ -43,6 +44,7 @@ function App() {
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/notification" element={<Notification />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/otherprofile/:_id" element={<OtherProfile />} />
               <Route path="/chatlist" element={<ChatList />} />
               <Route path="/chat/:_id" element={<Chat />} />
               <Route path="/developer" element={<Developer />} />

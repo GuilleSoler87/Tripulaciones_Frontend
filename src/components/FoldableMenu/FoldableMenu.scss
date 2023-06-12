@@ -12,14 +12,14 @@
 }
 
 #foldableMenu {
-  width: 340px;
+  width: 270px;
   height: 830px;
   background-color: $darkbluemde;
   z-index: 2000;
   .closeFoldableButton {
     position: relative;
     top: 20px;
-    right: 115px;
+    right: 85px;
     background: none;
     border: none;
     .closeIcon {
@@ -37,7 +37,7 @@
         font-family: $atkinsonmde;
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
+        font-size: 26px;
         line-height: 20px;
         color: $creammde;
         text-decoration: none;
@@ -54,7 +54,7 @@
         font-family: $atkinsonmde;
         font-style: normal;
         font-weight: 400;
-        font-size: 24px;
+        font-size: 20px;
         line-height: 20px;
         color: $creammde;
         text-decoration: none;

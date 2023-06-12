@@ -40,14 +40,21 @@
         font: inherit;
         cursor: pointer;
         outline: inherit;
+        width: 30px;
+        .filterFavouriteButton {
+          color: $darkbluemde;
+          font-size: 28px;
+        }
       }
     }
     .searchBar {
       form {
+        position: relative;
         input {
           width: 336px;
           height: 32px;
           margin: 0 auto;
+          padding-left: 10px;
           font-family: $atkinsonmde;
           font-style: normal;
           font-weight: 400;
@@ -61,7 +68,17 @@
         }
         ::placeholder {
           color: rgba(132, 124, 123, 0.5);
-          padding-left: 10px;
+        }
+        .searchButton {
+          position: absolute;
+          top: 6.5px;
+          right: 48px;
+          background: none;
+          border: none;
+          .searchIcon {
+            font-size: 20px;
+            color: $graymde;
+          }
         }
       }
     }

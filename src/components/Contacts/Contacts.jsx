@@ -7,23 +7,56 @@ import Header from "../Header/Header";
 import noContacts from "../../../src/images/no_contacts.png";
 import noPic from "../../../src/images/no_pic.png";
 import { MdStar, MdStarBorder } from "react-icons/md";
-
+import { FaSearch } from "react-icons/fa";
 
 const Contacts = () => {
-  const { user, getUser, makeContactFavourite } = useContext(UserContext);
+  const { user, getUser, makeContactFavourite, filterByUsername } =
+    useContext(UserContext);
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(true); // Add this line
   const [data, setData] = useState({
-    email: "",
-    password: "",
+    username: "",
   });
 
   useEffect(() => {
-    getUser();
+    async function fetchData() {
+      await getUser();
+      setLoading(false); // Set loading to false when data has been loaded
+    }
+    fetchData();
   }, []);
 
-  if (!user) {
-    return null;
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <div className="contactsContainer">
+          <div className="searchBarContainer">
+            <div className="titleAndButtonContainer">
+              <h1>Contactos</h1>
+              <button>
+                <MdStar className="filterFavouriteButton" />
+              </button>
+            </div>
+            <div className="searchBar">
+              <form>
+                <input
+                  className="usernameInput"
+                  type="text"
+                  placeholder="Buscar contacto"
+                  value="Buscar contacto"
+                  name="username"
+                />
+                <button className="searchButton" type="submit">
+                  <FaSearch className="searchIcon" />
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </>
+    );
   }
 
   const handleInputChange = (event) => {
@@ -38,21 +71,26 @@ const Contacts = () => {
       handleSubmit(event);
     }
   };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    filterByUsername(data.username);
+  };
 
   const handleMakeFavourite = (userId) => {
     makeContactFavourite(userId);
     setTimeout(() => {
       getUser();
     }, 500);
-  }
+  };
 
   const extractFilePathFromImage = (path) => {
-    const url = "https://desafio-backend-production.up.railway.app";
-    // const url = "http://localhost:8080/"; //CHANGE to pertinent URL
-    const match = path.match(/uploads[\\\/](.+)/);
-    return match ? url + "/" + match[1].replace(/\\/g, '/') : null;
-  }
-  
+    const url = "https://desafio-backend-production.up.railway.app/";
+    return url + path.replace("uploads/", "");
+    // const url = "https://desafio-backend-production.up.railway.app";
+    // const match = path.match(/uploads[\\\/](.+)/);
+    // return match ? url + "/" + match[1].replace(/\\/g, '/') : null;
+  };
+
   const noContactsDisplay = (
     <>
       <div className="noContactText">
@@ -71,31 +109,38 @@ const Contacts = () => {
 
   const contactsList = (
     <div className="contactsList">
-      {user.contacts.map(usero => {
-        if (!usero.userId.img) {
-          usero.userId.img = "../../src/images/no_pic.png";
+      {user.contacts.map((item) => {
+        if (!item.userId.img) {
+          item.userId.img = noPic;
         } else {
-          usero.userId.img = extractFilePathFromImage(usero.userId.img);
+          item.userId.img = extractFilePathFromImage(item.userId.img);
         }
-        if (!usero.userId.cargo) {
-          usero.userId.cargo = "Estudiante";
+        if (!item.userId.cargo) {
+          item.userId.cargo = "Estudiante";
         }
         return (
           <div className="contactCard">
-            <button className="favourite" onClick={() => handleMakeFavourite(usero.userId._id)} >
-              {usero.favourite ? <MdStar className="favouriteButton" /> : <MdStarBorder className="favouriteButton" />}
+            <button
+              className="favourite"
+              onClick={() => handleMakeFavourite(item.userId._id)}
+            >
+              {item.favourite ? (
+                <MdStar className="favouriteButton" />
+              ) : (
+                <MdStarBorder className="favouriteButton" />
+              )}
             </button>
             <div className="contactImage">
-              <img src={usero.userId.img} />
+              <img src={item.userId.img} />
             </div>
-            <p className="contactUsername">{usero.userId.username}</p>
-            <p className="contactPosition">{usero.userId.cargo}</p>
-            <button className="seeProfile">Ver perfil</button>
+            <p className="contactUsername">{item.userId.username}</p>
+            <p className="contactPosition">{item.userId.cargo}</p>
+            <button className="seeProfile" onClick={() => navigate(`/otherprofile/${item.userId._id}`)}>Ver perfil</button>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 
   return (
     <>
@@ -105,12 +150,11 @@ const Contacts = () => {
           <div className="titleAndButtonContainer">
             <h1>Contactos</h1>
             <button>
-              <MdStar />
+              <MdStar className="filterFavouriteButton" />
             </button>
           </div>
           <div className="searchBar">
-            {/* <form action={handleSearch}> */}
-            <form>
+            <form onSubmit={handleSubmit}>
               <input
                 className="usernameInput"
                 type="text"
@@ -120,6 +164,9 @@ const Contacts = () => {
                 onKeyDown={handleKeyDown}
                 name="username"
               />
+              <button className="searchButton" type="submit">
+                <FaSearch className="searchIcon" />
+              </button>
             </form>
           </div>
         </div>

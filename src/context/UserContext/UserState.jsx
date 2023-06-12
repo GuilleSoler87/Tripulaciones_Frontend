@@ -69,6 +69,26 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const getUserById = async (_id) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const res = await axios.get(API_URL + "/users/getbyid/" + _id, {
+        headers: {
+          Authorization: token
+        }
+      });
+      dispatch({
+        type: "GET_USER_INFO",
+        payload: res.data
+      });
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: "GET_USER_INFO_ERROR",
+        payload: "Error al obtener la información del usuario."
+      });
+    }
+  };
 
   const logout = async () => {
     try {
@@ -166,7 +186,6 @@ export const UserProvider = ({ children }) => {
 
   const makeContactFavourite = async (contactId) => {
     try {
-      console.log(API_URL + `/users/makecontactfavourite`);
       const res = await axios.put(API_URL + "/users/makecontactfavourite", {
         userId: contactId,
       },
@@ -175,7 +194,6 @@ export const UserProvider = ({ children }) => {
           Authorization: token,
         }
       });
-      console.log("EUREKAAAAAAAAAAAAAAA");
       dispatch({
         type: "MAKE_CONTACT_FAVOURITE",
         payload: res.data,
@@ -189,6 +207,16 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const filterByUsername = (pattern) => {
+    try {
+      dispatch({
+        type: "FILTER_BY_USERNAME",
+        payload: pattern,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
 
   return (
@@ -201,12 +229,14 @@ export const UserProvider = ({ children }) => {
         chats: state.chats,
         login,
         getUser,
+        getUserById,
         getChatsFromUser,
         logout,
         turnOffMessage,
         recoverPassword,
         resetPassword,
         makeContactFavourite,
+        filterByUsername,
       }}
     >
       {children}
