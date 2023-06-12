@@ -13,6 +13,7 @@ import ChatList from './components/ChatList/ChatList';
 import Blocked from './components/Blocked/Blocked';
 import { ChatProvider } from './context/ChatContext/ChatState';
 import { UserProvider } from './context/UserContext/UserState';
+import { NoticeProvider } from './context/NoticeContext/NoticeState';
 import Developer from './components/Developer/Developer';
 import Mailer from './components/Mailer/Mailer';
 import RecoverPass from './components/RecoverPass/RecoverPass';
@@ -28,25 +29,27 @@ function App() {
       <BrowserRouter>
         <UserProvider>
           <ChatProvider>
-            <Routes>
-              <Route path="/" element={<Welcome />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/mailer" element={<Mailer />} />
-              <Route path="/blocked" element={<Blocked />} />
-              <Route path="/password" element={<Password />} />
-              <Route path="/recoverPass/:recoverToken" element={<RecoverPass />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/homeTab" element={<HomeTab />} /> 
-              <Route path="/menu" element={<Menu />} /> 
-              <Route path="/events" element={<Events />} />        
-              <Route path="/calendar" element={<Calendar />} />
-              <Route path="/contacts" element={<Contacts />} />
-              <Route path="/notification" element={<Notification />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/chatlist" element={<ChatList />} />
-              <Route path="/chat/:_id" element={<Chat />} />
-              <Route path="/developer" element={<Developer />} />
-            </Routes>
+            <NoticeProvider>
+              <Routes>
+                <Route path="/" element={<Welcome />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/mailer" element={<Mailer />} />
+                <Route path="/blocked" element={<Blocked />} />
+                <Route path="/password" element={<Password />} />
+                <Route path="/recoverPass/:recoverToken" element={<RecoverPass />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/homeTab" element={<HomeTab />} />
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/events" element={<Events />} />
+                <Route path="/calendar" element={<Calendar />} />
+                <Route path="/contacts" element={<Contacts />} />
+                <Route path="/notification" element={<Notification />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/chatlist" element={<ChatList />} />
+                <Route path="/chat/:_id" element={<Chat />} />
+                <Route path="/developer" element={<Developer />} />
+              </Routes>
+            </NoticeProvider>
           </ChatProvider>
         </UserProvider>
       </BrowserRouter>
