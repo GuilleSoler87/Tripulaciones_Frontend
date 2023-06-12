@@ -11,7 +11,8 @@ const initialState = {
   users: [],
   chats: [],
   message: "",
-  logoutMessage: ""
+  logoutMessage: "",
+  createChatId: null,
 };
 
 const API_URL = "https://desafio-backend-production.up.railway.app";
@@ -29,7 +30,7 @@ export const UserProvider = ({ children }) => {
       // Guardamos el token en el estado
       dispatch({
         type: "LOGIN",
-        payload: res.data
+        payload: res.data,
       });
 
       // Guardamos el token en el localStorage si captchaValidate es verdadero
@@ -43,7 +44,7 @@ export const UserProvider = ({ children }) => {
       console.error(error);
       dispatch({
         type: "LOGIN_ERROR",
-        payload: error.response.data.message
+        payload: error.response.data.message,
       });
     }
   };
@@ -53,34 +54,54 @@ export const UserProvider = ({ children }) => {
       const token = JSON.parse(localStorage.getItem("token"));
       const res = await axios.get(API_URL + "/users/getUser", {
         headers: {
-          Authorization: token
-        }
+          Authorization: token,
+        },
       });
       dispatch({
         type: "GET_USER_INFO",
-        payload: res.data
+        payload: res.data,
       });
     } catch (error) {
       console.error(error);
       dispatch({
         type: "GET_USER_INFO_ERROR",
-        payload: "Error al obtener la información del usuario."
+        payload: "Error al obtener la información del usuario.",
       });
     }
   };
 
+  const getUserById = async (_id) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const res = await axios.get(API_URL + "/users/getbyid/" + _id, {
+        headers: {
+          Authorization: token,
+        },
+      });
+      dispatch({
+        type: "GET_USER_INFO",
+        payload: res.data,
+      });
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: "GET_USER_INFO_ERROR",
+        payload: "Error al obtener la información del usuario.",
+      });
+    }
+  };
 
   const logout = async () => {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const res = await axios.delete(API_URL + "/users/logout", {
         headers: {
-          Authorization: token
-        }
+          Authorization: token,
+        },
       });
       dispatch({
         type: "LOGOUT",
-        payload: res.data
+        payload: res.data,
       });
       if (res.data) {
         localStorage.removeItem("token");
@@ -91,7 +112,7 @@ export const UserProvider = ({ children }) => {
       console.error(error);
       dispatch({
         type: "LOGOUT_ERROR",
-        payload: "Error al cerrar sesión."
+        payload: "Error al cerrar sesión.",
       });
     }
   };
@@ -107,13 +128,12 @@ export const UserProvider = ({ children }) => {
       type: "GET_CHATS_FROM_USER",
       payload: res.data,
     });
-   
   };
-  
+
   const turnOffMessage = () => {
     dispatch({
       type: "TURN_OFF_MESSAGE",
-    })
+    });
   };
 
   const recoverPassword = async (email) => {
@@ -132,9 +152,12 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const resetPassword = async (newPassword , recoverToken) => {
+  const resetPassword = async (newPassword, recoverToken) => {
     try {
-      const res = await axios.put(API_URL + `/users/resetPassword/${recoverToken}`, { password: newPassword } );
+      const res = await axios.put(
+        API_URL + `/users/resetPassword/${recoverToken}`,
+        { password: newPassword }
+      );
       dispatch({
         type: "RESET_PASSWORD_SUCCESS",
         payload: res.data,
@@ -147,7 +170,6 @@ export const UserProvider = ({ children }) => {
       });
     }
   };
-
 
   // const register = async (data) => {
   //   try {
@@ -166,16 +188,17 @@ export const UserProvider = ({ children }) => {
 
   const makeContactFavourite = async (contactId) => {
     try {
-      console.log(API_URL + `/users/makecontactfavourite`);
-      const res = await axios.put(API_URL + "/users/makecontactfavourite", {
-        userId: contactId,
-      },
-      { 
-        headers: {
-          Authorization: token,
+      const res = await axios.put(
+        API_URL + "/users/makecontactfavourite",
+        {
+          userId: contactId,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
         }
-      });
-      console.log("EUREKAAAAAAAAAAAAAAA");
+      );
       dispatch({
         type: "MAKE_CONTACT_FAVOURITE",
         payload: res.data,
@@ -189,7 +212,16 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-
+  const filterByUsername = (pattern) => {
+    try {
+      dispatch({
+        type: "FILTER_BY_USERNAME",
+        payload: pattern,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <UserContext.Provider
@@ -201,12 +233,14 @@ export const UserProvider = ({ children }) => {
         chats: state.chats,
         login,
         getUser,
+        getUserById,
         getChatsFromUser,
         logout,
         turnOffMessage,
         recoverPassword,
         resetPassword,
         makeContactFavourite,
+        filterByUsername,
       }}
     >
       {children}
