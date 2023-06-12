@@ -1,1 +1,78 @@
 @import "../../colors";
+
+
+.main_container_navigation_events {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    margin-top: 250px;
+    width: 92vw;
+    height: 80vh;
+}
+
+.eventRecomendFixed {
+    width: 100%;
+    height: vh;
+    border-radius: 15px;
+    display: block;
+    padding-top: 65%;
+    background-image: url('/src/images/Event_UpFixed.png');
+    background-size: contain;
+    background-position: center;
+}
+
+
+.eventSideScroll {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-x: auto;
+}
+
+.sideText {
+    align-self: flex-end;
+    font-family: $spectralmde;
+    font-weight: 600;
+    font-size: 17px;
+    color: $darkbluemde;
+}
+
+.eventSideArray {
+    // overflow-x: scroll;
+    // white-space: nowrap;
+    // height: 100%;
+    display: flex;
+    flex-direction: row;
+    // width: fit-content;
+
+}
+
+.eventside1 {
+    flex-shrink: 0;
+    width: 300px;
+    height: 200px;
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center;
+    background-image: url('/src/images/Ev_recom_1.png');
+}
+
+.eventside2 {
+    flex-shrink: 0;
+    width: 300px;
+    height: 200px;
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center;
+    background-image: url('/src/images/Ev_recom_2.png');
+}
+
+.eventside3 {
+    flex-shrink: 0;
+    width: 300px;
+    height: 200px;
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center;
+    background-image: url('/src/images/Ev_recom_3.png');
+}
