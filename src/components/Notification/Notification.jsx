@@ -5,9 +5,13 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
 const Notification = () => {
+  const [activeComponent, setActiveComponent] = useState("Notifications");
   const navigate = useNavigate();
 
   useEffect(() => {
+    setTimeout(() => {
+      setActiveComponent('Notifications');
+    }, 100);
   }, []);
 
 
@@ -17,7 +21,7 @@ const Notification = () => {
       <div className="notificationContainer">
         <h1>Notification</h1>
       </div>
-      <Footer />
+      <Footer activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
     </>
   );
 };

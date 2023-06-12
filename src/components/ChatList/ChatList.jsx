@@ -10,10 +10,14 @@ import groupChats from "../../../src/images/groupal_chats.png";
 const ChatList = () => {
   const { user, chats, getUser, getChatsFromUser } = useContext(UserContext);
   const navigate = useNavigate();
+  const [activeComponent, setActiveComponent] = useState("ChatList");
   const [isSingle, setIsSingle] = useState(true);
 
   useEffect(() => {
     getUser(), getChatsFromUser();
+    setTimeout(() => {
+      setActiveComponent('ChatList');
+    }, 100);
   });
 
   const API_URL = "http://localhost:8080/";
@@ -139,7 +143,7 @@ const ChatList = () => {
         </div>
         <div className="chatListDiv">{isSingle ? chatList : groupChatImage}</div>
       </div>
-      <Footer />
+      <Footer activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
     </>
   );
 };

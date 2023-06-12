@@ -13,7 +13,8 @@ const Contacts = () => {
   const { user, getUser, makeContactFavourite, filterByUsername } =
     useContext(UserContext);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true); // Add this line
+  const [loading, setLoading] = useState(true);
+  const [activeComponent, setActiveComponent] = useState("Contacts");
   const [data, setData] = useState({
     username: "",
   });
@@ -24,6 +25,9 @@ const Contacts = () => {
       setLoading(false); // Set loading to false when data has been loaded
     }
     fetchData();
+    setTimeout(() => {
+      setActiveComponent('Contacts');
+    }, 100);
   }, []);
 
   if (loading) {
@@ -173,7 +177,7 @@ const Contacts = () => {
         {user.contacts && contactsList}
         {!user.contacts && noContactsDisplay}
       </div>
-      <Footer />
+      <Footer activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
     </>
   );
 };

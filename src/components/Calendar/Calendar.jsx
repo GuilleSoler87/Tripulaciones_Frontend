@@ -6,8 +6,13 @@ import Footer from "../Footer/Footer";
 
 const Calendar = () => {
   const navigate = useNavigate();
+  const [activeComponent, setActiveComponent] = useState("Calendar");
+
 
   useEffect(() => {
+    setTimeout(() => {
+      setActiveComponent('Calendar');
+    }, 100);
   }, []);
 
 
@@ -17,7 +22,7 @@ const Calendar = () => {
       <div className="calendarContainer">
         <h1>Calendar</h1>
       </div>
-      <Footer />
+      <Footer activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
     </>
   );
 };

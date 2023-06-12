@@ -11,6 +11,8 @@ import MdENotices from '../MdENotices/MdENotices';
 
 const Home = () => {
   const navigate = useNavigate();
+  const [activeComponent, setActiveComponent] = useState("Home");
+
 
   const handleMenuClick = () => {
     navigate("/menu");
@@ -21,6 +23,9 @@ const Home = () => {
   };
 
   useEffect(() => {
+    setTimeout(() => {
+      setActiveComponent('Home');
+    }, 100);
   }, []);
 
 
@@ -56,7 +61,7 @@ const Home = () => {
 
 
       </div>
-      <Footer />
+      <Footer activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
     </>
   );
 };

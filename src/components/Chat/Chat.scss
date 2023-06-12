@@ -40,7 +40,7 @@
   // --- THREAD ---
   .chatThread {
     height: fit-content;
-    padding: 2% 3%;
+    padding: 2% 5%;
     z-index: 1;
     .messageLine {
       width: fit-content;
@@ -107,34 +107,48 @@
   }
   // --- SEND MESSAGE ---
   .sendMessage {
-    height: 45px;
+    height: 92px;
     margin-top: auto;
-    padding: 6px 0;
+    // padding: 6px 0;
     position: sticky;
     bottom: 0;
     z-index: 2;
-    background-color: $whitemde;
+    background-color: $creammde;
+    border: none;
+    .blankSpace {
+      margin-top: 0;
+      height: 5px;
+      width: 100%;
+      background-color: $whitemde;
+    }
     form {
+      position: relative;
+      top: 22px;
       display: flex;
       align-items: center;
       gap: 10px;
       input {
-        width: 85%;
+        width: 55%;
         height: 40px;
         border: none;
-        border-radius: 20px;
-        margin-left: 3%;
+        border-radius: 4px;
+        margin-left: 30px;
+        background-color: $lightbluemde;
+        padding-left: 15px;
       }
       button {
         width: 40px;
         height: 40px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        span {
-          margin-left: 2px;
-        }
+        border: none;
+        background: none;
+        font-size: 30px;
+        color: $darkbluemde;
+      }
+      .sendIcon {
+        transform: rotate(-45deg);
+      }
+      .attachIcon {
+        transform: rotate(45deg);
       }
     }
   }

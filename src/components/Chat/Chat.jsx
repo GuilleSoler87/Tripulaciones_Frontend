@@ -4,6 +4,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./Chat.scss";
 import { ChatContext } from "../../context/ChatContext/ChatState";
 import { UserContext } from "../../context/UserContext/UserState";
+import { MdSend, MdAttachFile } from "react-icons/md";
+
 
 let socket;
 
@@ -176,6 +178,7 @@ const Chat = () => {
         <div className="chatThread">{threadDiv}</div>
         <div ref={messagesEndRef} /> {/* Add this line */}
         <div className="sendMessage">
+          <div className="blankSpace"> </div>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -185,8 +188,11 @@ const Chat = () => {
               onKeyDown={handleKeyDown}
               name="message"
             />
-            <button type="submit" className="submitLR">
-              <span className="material-symbols-outlined">send</span>
+            <button disabled className="attachIcon">
+              <MdAttachFile />
+            </button>
+            <button type="submit" className="sendIcon">
+              <MdSend />
             </button>
           </form>
         </div>
