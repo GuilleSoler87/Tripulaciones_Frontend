@@ -1,18 +1,17 @@
 const users = (state, action) => {
   switch (action.type) {
-
     case "LOGIN":
       return {
         ...state,
         token: action.payload.token,
         message: action.payload.message,
-        user: action.payload.user
+        user: action.payload.user,
       };
 
     case "LOGIN_ERROR":
       return {
         ...state,
-        message: action.payload
+        message: action.payload,
       };
 
     case "GET_USER_INFO":
@@ -34,7 +33,7 @@ const users = (state, action) => {
     case "LOGOUT_ERROR":
       return {
         ...state,
-        message: action.payload
+        message: action.payload,
       };
 
     case "GET_CHATS_FROM_USER":
@@ -79,7 +78,19 @@ const users = (state, action) => {
         ...state,
         user: action.payload,
       };
-      
+
+    case "FILTER_BY_USERNAME":
+      const pattern = action.payload;
+      const contactsDeepCopy = [ ...state.contacts ];
+      const filteredContactsByUsername = contactsDeepCopy.filter((contact) =>
+        contact.userId.username.toLowerCase().includes(pattern.toLowerCase())
+      );
+
+      return {
+        ...state,
+        contacts: filteredContactsByUsername,
+      };
+
     default:
       return state;
   }
