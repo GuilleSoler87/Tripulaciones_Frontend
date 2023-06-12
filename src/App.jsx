@@ -19,6 +19,7 @@ import RecoverPass from './components/RecoverPass/RecoverPass';
 import HomeTab from './components/HomeTab/HomeTab';
 import Menu from './components/Menu/Menu';
 import Events from './components/Events/Events';
+import EventSingle from './components/EventSingle/EventSingle';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
               <Route path="/homeTab" element={<HomeTab />} /> 
               <Route path="/menu" element={<Menu />} /> 
               <Route path="/events" element={<Events />} />        
+              <Route path="/eventsSingle" element={<EventSingle />} />        
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/notification" element={<Notification />} />

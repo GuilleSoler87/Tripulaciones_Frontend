@@ -25,26 +25,27 @@ const Events = () => {
             <Header />
             <div className='main_eventsContainer'>
                 <div className='events_top_header'>
+
                     <p className="events_title">Eventos</p>
                     <div className="tipImgContainer">
-                    <div className='toolTipFather'>
-                        <div className='tooltipTextContainer'>
-                            <p className='tooltipText'>Mis eventos</p>
-                        </div>
-                        <div className='tooltipArrow'>
-                           
+                        <div className='toolTipFather'>
+                            <div className='tooltipTextContainer'>
+                                <p className='tooltipText'>Mis eventos</p>
+                            </div>
+                            <div className='tooltipArrow'>
 
+
+                            </div>
                         </div>
+                        <Link to="/calendar" className="go_to_calendar" onClick={handleCalendarClick}>
+                            <img src={CalendarImg} alt="Calendario" className="img_calendar" />
+                        </Link>
                     </div>
-                    <Link to="/calendar" className="go_to_calendar" onClick={handleCalendarClick}>
-                        <img src={CalendarImg} alt="Calendario" className="img_calendar" />
-                    </Link>
+
+                    <div className="div_img_points">
+                        <img src={PointsWhite} alt="Points" className="img_points_white" />
                     </div>
                 </div>
-                <div className="div_img_points">
-                    <img src={PointsWhite} alt="Points" className="img_points_white" />
-                </div>
-
 
 
                 <div className='events_component_container'>
