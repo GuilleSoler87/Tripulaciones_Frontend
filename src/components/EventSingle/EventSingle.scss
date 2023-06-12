@@ -1,0 +1,56 @@
+@import "../../colors";
+
+
+
+.singleEventMain {
+
+    display: flex;
+    flex-direction: column;
+    // margin-top: 250px;
+
+    .eventPic {
+        display: flex;
+        width: 100%;
+        height: 37vh;
+        margin-top: 30.8%;
+
+        background-image: url('/src/images/EventSingle_1.png');
+        background-size: auto;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .eventPicFooter {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: right;
+        width: 100%;
+        height: 5vh;
+        background-color: $orangemde;
+        column-gap: 10px;
+
+
+        .picFooterText {
+            font-family: $atkinsonmde;
+            font-weight: 600;
+            font-size: 17px;
+            color: $whitemde;
+        }
+
+        .picFooterIcon {
+            display: flex;
+            flex-grow: 0.1;
+
+        }
+
+    }
+    .dotsOverlay{
+        position: fixed;
+        margin-top: 92%;
+        left: -20%;
+        transform: translateX(50%);
+        z-index: 21;
+    }
+    
+}
