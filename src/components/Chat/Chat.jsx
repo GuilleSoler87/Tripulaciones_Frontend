@@ -148,10 +148,12 @@ const Chat = () => {
               <span>{formatDate(item.date)}</span>
             </div>
           )}
+          {item.message && (
           <div className="messageLine" id={`${speakerId}`}>
             <span className="textMessage">{item.message}</span>
             <span className="textTime">{formatTime(item.date)}</span>
           </div>
+          )}
         </React.Fragment>
       </>
     );

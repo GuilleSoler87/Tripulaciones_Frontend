@@ -29,6 +29,16 @@
   .profileInfoContainer {
     display: flex;
     flex-direction: column;
+    .goToChat {
+      margin-left: 25px;
+      margin-bottom: 10px;
+      background-color: $orangemde;
+      color: $creammde;
+      width: 57px;
+      height: 28px;
+      border: 1px solid $orangemde;
+      border-radius: 4px;
+    }
     p {
       text-align: left;
       margin-left: 25px;
