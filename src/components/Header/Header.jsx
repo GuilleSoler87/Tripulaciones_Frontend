@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import FoldableMenu from "../FoldableMenu/FoldableMenu";
-import profileLogo from "../../../src/images/profile_logo.png";
+import profileLogo from "../../../src/images/header_icon_profile.png";
 import { FiMenu, FiX } from "react-icons/fi";
 import "./Header.scss";
 
@@ -51,10 +51,8 @@ const Header = () => {
           </FoldableMenu>
         </div>
         <div className="profileButtonContainer">
-          <Link to="/profile">
-            <div className="profileLogoDiv">
-              <img src={profileLogo} />
-            </div>
+          <Link to="/profile" className="profileLogoDiv">            
+              <img src={profileLogo} className="img_profile_header" />            
           </Link>
         </div>
       </div>

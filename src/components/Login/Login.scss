@@ -117,8 +117,14 @@
         display: flex;
         justify-content: center;
         margin-top: 90%;
-        left: 50%;
-        transform: translateX(-50%);
+                
+        .recaptcha_img {
+            
+            transform: scale(1.5);
+            transform-origin: 0 0;
+    
+        }
+
     }
 
     .error-captcha {
@@ -160,4 +166,3 @@
 
 
 }
-
