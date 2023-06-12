@@ -6,13 +6,15 @@ import { NoticeContext } from '../../context/NoticeContext/NoticeState';
 const MdENoticesSingle = () => {
     const { _id } = useParams();
     const { getNoticeId, notice } = useContext(NoticeContext);
-
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-      getNoticeId(_id);
-    }, [_id]);
-
-
+      async function fetchData() {
+        await getNoticeId(_id);
+        setLoading(false); // Set loading to false when data has been loaded
+      }
+      fetchData();
+    }, []);
 
 
 
