@@ -6,7 +6,7 @@ const token = JSON.parse(localStorage.getItem("token"));
 
 const initialState = {
     token: token ? token : null,
-    //   notice: notice ? notice : null,
+    // notice: notice ? notice : null,
     notices: [],
 
 };
@@ -21,7 +21,7 @@ export const NoticeProvider = ({ children }) => {
 
     const getNotices = async () => {
         try {
-            const res = await axios.get(API_URL + '/notices/get');
+            const res = await axios.get(API_URL + '/notices/getAllNotices');
             dispatch({
                 type: 'GET_NOTICES',
                 payload: res.data,
@@ -33,7 +33,7 @@ export const NoticeProvider = ({ children }) => {
 
     const getNoticeId = async (id) => {
         try {
-            const res = await axios.get(API_URL + '/notices/get/' + id);
+            const res = await axios.get(API_URL + '/notices/getNoticeById/' + id);
             dispatch({
                 type: 'GET_NOTICE_ID',
                 payload: res.data,
@@ -61,7 +61,7 @@ export const NoticeProvider = ({ children }) => {
             console.error(error);
         }
     };
-    
+
     const unlikeNotice = async (noticeId) => {
         try {
             const token = JSON.parse(localStorage.getItem("token"));

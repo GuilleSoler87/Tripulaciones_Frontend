@@ -41,7 +41,7 @@ const MdENotices = () => {
     setShowPopup(false);
   };
 
-
+  // const imageSrc = notice &&notice.img ? `https://desafio-backend-production.up.railway.app/${notice.img}` : '';
 
   return (
     <>
@@ -60,7 +60,7 @@ const MdENotices = () => {
               </div>
               <div className='buttons_notices'>
                 <div className='all_buttons_notice'>
-                  <Link to={`/get/${notice._id}`}>
+                  <Link to={`/getNoticeById/${notice._id}`}>
                     <div className='button_comments_notices'>
                       <img src={CommentButt} alt="CommentButt" className="comments_notices" />
                     </div>

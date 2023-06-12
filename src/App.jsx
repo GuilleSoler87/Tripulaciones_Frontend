@@ -21,6 +21,7 @@ import RecoverPass from './components/RecoverPass/RecoverPass';
 import HomeTab from './components/HomeTab/HomeTab';
 import Menu from './components/Menu/Menu';
 import Events from './components/Events/Events';
+import MdENoticesSingle from './components/MdENoticesSingle/MdENoticesSingle';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
                 <Route path="/password" element={<Password />} />
                 <Route path="/recoverPass/:recoverToken" element={<RecoverPass />} />
                 <Route path="/home" element={<Home />} />
+                <Route path="/getNoticeById/:_id" element={<MdENoticesSingle />} />
                 <Route path="/homeTab" element={<HomeTab />} />
                 <Route path="/menu" element={<Menu />} />
                 <Route path="/events" element={<Events />} />
