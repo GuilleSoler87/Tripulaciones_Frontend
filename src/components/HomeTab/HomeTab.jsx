@@ -27,27 +27,30 @@ const HomeTab = () => {
   return (
     <>
       <Header />
-      <div className="main_homeTabContainer">
+      <div className="main_homeTab_Container">
 
-        <div className="top_Tabnotices">
-          <p className="noticesTab_title">Noticias</p>
-          <Link to="/menu" className="go_to_menu" onClick={handleMenuClick}>
-            <img src={MenuImg} alt="Menu" className="img_menu" />
-          </Link>
-        </div>
-        <div className="div_img_points">
-          <img src={PointsUpAll} alt="Points" className="img_points_up_all" />
+        
+          <div className="top_notices_tab">
+            <p className="notices_title_tab">Noticias</p>
+            <Link to="/menu" className="go_to_menu" onClick={handleMenuClick}>
+              <img src={MenuImg} alt="Menu" className="img_menu" />
+            </Link>
+          </div>
+        
+
+        <div className="div_img_points_tab">
+          <img src={PointsUpAll} alt="Points" className="img_points_up_all_tab" />
         </div>
 
-        <div className="div_buttons_homeTab">
-          <button type="submit" className="submit_MdEtab" onClick={handleTabClick}>
+        <div className="div_buttons_home_tab">
+          <button type="submit" className="submit_MdE_tab" onClick={handleTabClick}>
             MdE
-          </button><button type="submit" className="submit_tabtab_not">
+          </button><button type="submit" className="submit_tab_not_tab">
             Tablón de anuncios
           </button>
         </div>
 
-        <div className="navigation_homeContainerTab">
+        <div className="navigation_homeTabContainer">
           <TabNotices />
         </div>
 
