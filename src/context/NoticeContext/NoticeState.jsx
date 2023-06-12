@@ -7,6 +7,7 @@ const token = JSON.parse(localStorage.getItem("token"));
 const initialState = {
     token: token ? token : null,
     // notice: notice ? notice : null,
+    notice: null,
     notices: [],
 
 };
@@ -33,7 +34,9 @@ export const NoticeProvider = ({ children }) => {
 
     const getNoticeId = async (id) => {
         try {
+          console.log("URL que atacamos", API_URL + '/notices/getNoticeById/' + id);
             const res = await axios.get(API_URL + '/notices/getNoticeById/' + id);
+            console.log("respuesta del servidor por axios", res);
             dispatch({
                 type: 'GET_NOTICE_ID',
                 payload: res.data,

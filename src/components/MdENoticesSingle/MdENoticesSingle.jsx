@@ -4,13 +4,14 @@ import { useParams } from 'react-router-dom';
 import { NoticeContext } from '../../context/NoticeContext/NoticeState';
 
 const MdENoticesSingle = () => {
-    const { id } = useParams();
+    const { _id } = useParams();
     const { getNoticeId, notice } = useContext(NoticeContext);
 
 
     useEffect(() => {
-        getNoticeId(id);
-    }, [id]);
+      getNoticeId(_id);
+    }, [_id]);
+
 
 
 
