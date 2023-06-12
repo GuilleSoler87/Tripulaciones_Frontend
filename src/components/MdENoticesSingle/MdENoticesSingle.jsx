@@ -5,7 +5,7 @@ import { NoticeContext } from '../../context/NoticeContext/NoticeState';
 
 const MdENoticesSingle = () => {
     const { _id } = useParams();
-    const { getNoticeId, notice } = useContext(NoticeContext);
+    const { getNoticeId, notice, token } = useContext(NoticeContext);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -16,25 +16,21 @@ const MdENoticesSingle = () => {
       fetchData();
     }, []);
 
+    if (loading) {
+      return "loading";
+    }
+
 
 
     return (
         <>
-
             <div>MdENoticesSingle</div>
             <div>{notice.img}</div>
             <div>{notice.title}</div>
             <div>{notice.description}</div>
             <div>{notice.time}</div>
-
-
         </>
-
-
-
-
-
     );
 };
 
-export default MdENoticesSingle
+export default MdENoticesSingle;

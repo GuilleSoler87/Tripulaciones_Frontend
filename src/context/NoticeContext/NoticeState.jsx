@@ -6,10 +6,8 @@ const token = JSON.parse(localStorage.getItem("token"));
 
 const initialState = {
     token: token ? token : null,
-    // notice: notice ? notice : null,
-    notice: null,
+    notice: {},
     notices: [],
-
 };
 
 const API_URL = "https://desafio-backend-production.up.railway.app";
@@ -89,7 +87,7 @@ export const NoticeProvider = ({ children }) => {
         <NoticeContext.Provider
             value={{
                 token: state.token,
-                // notice: state.notice,
+                notice: state.notice,
                 notices: state.notices,
                 getNotices,
                 getNoticeId,
