@@ -146,6 +146,7 @@ const Login = () => {
 
             <div className="recaptcha">
               <ReCAPTCHA
+                className="recaptcha_img"
                 ref={captcha}
                 sitekey="6LdRwnomAAAAAAk7f8Oi04ddDXjI0Yb3q0_YkYcV"
                 onChange={onChangeCaptcha}

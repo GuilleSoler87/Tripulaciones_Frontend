@@ -1,7 +1,7 @@
 import React from "react";
 import "./Welcome.scss";
 import { useNavigate } from "react-router-dom";
-import AgoraIllustration from "../../../src/images/agora_illustration.png";
+import WelcomeHands from "../../../src/images/welcome_hands.png";
 import RiskyPeople from "../../../src/images/risky_people.png";
 import LogoAgora from "../../../src/images/logo_agora.png";
 
@@ -17,24 +17,24 @@ const Welcome = () => {
     <>
       <div className="main-container-welcome">
         <div className="logo-risky-people">
-          <img src={RiskyPeople} />
+          <img src={RiskyPeople} className="logo-risky-people_img" />
         </div>
-        <div className="logoDiv">
-          <img src={AgoraIllustration} />
+        <div className="logoDiv_welcome">
+          <img src={WelcomeHands} className="welcome_hands" />
         </div>
-        <div className="appTitle">
-          <img src={LogoAgora} />
+        <div className="appTitle_welcome">
+          <img src={LogoAgora} className="appTitle_welcome_img" />
         </div>
-        <div className="introText">
-          <p className="p_introtext">
+        <div className="introText_welcome">
+          <p className="p_introtext_welcome">
             {" "}
             Únete a la comunidad de <strong>MdE</strong> para informarte de las
             últimas noticias y conectar con alumnos de EDEM, startups de
             Lanzadera y Angels
           </p>
         </div>
-        <div className="startButton" onClick={handleSubmit}>
-          <button>Empezar</button>
+        <div className="startButton_welcome" onClick={handleSubmit}>
+          <button className="button_welcome">Empezar</button>
         </div>
       </div>
     </>
