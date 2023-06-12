@@ -111,4 +111,41 @@
             }
         }
     }
+
+}
+.Popup_add_Notices {
+    position: fixed;
+    background-color: $darkbluemde;
+    height: 220px;
+    margin-top: -52.2%;
+    z-index: 3;
+
+    .icon_close_notices_white {
+        margin-top: 4%;
+        margin-right: -86%;
+    }
+
+    .title_popup_add_notices {
+        width: 84%;
+        margin: 0 auto;
+        margin-top: 6%;
+
+        .main_popup_text {
+            font-family: $atkinsonmde;
+            font-size: 18px;
+            line-height: 20px;
+            color: white;
+        }
+        
+    }
+    .email_add_notices{
+        .email_popup_text{
+            font-family: $atkinsonmde;
+            font-size: 18px;
+            line-height: 20px;
+            color: white;
+            font-weight: bold;
+        }
+    }
+
 }
