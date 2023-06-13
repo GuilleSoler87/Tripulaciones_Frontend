@@ -24,7 +24,7 @@ const Footer = ({ activeComponent, setActiveComponent }) => {
           <MdHome />
         </Link>
         <Link
-          to="/calendar"
+          to="/events"
           className="icon"
           style={{
             color: activeComponent === "Calendar" ? "coral" : "ligthgray",
