@@ -27,9 +27,9 @@ const Footer = ({ activeComponent, setActiveComponent }) => {
           to="/events"
           className="icon"
           style={{
-            color: activeComponent === "Calendar" ? "coral" : "ligthgray",
+            color: activeComponent === "Events" ? "coral" : "ligthgray",
           }}
-          onClick={() => setActiveComponent("Calendar")}
+          onClick={() => setActiveComponent("Events")}
         >
           <MdDateRange />
         </Link>

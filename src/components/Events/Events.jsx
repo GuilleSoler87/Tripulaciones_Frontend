@@ -9,6 +9,7 @@ import PointsWhite from "../../../src/images/points_vertWhite.png";
 
 const Events = () => {
     const navigate = useNavigate();
+    const [activeComponent, setActiveComponent] = useState("Events");
 
     const handleCalendarClick = () => {
         navigate("/calendar");
@@ -19,6 +20,9 @@ const Events = () => {
     };
 
     useEffect(() => {
+      setTimeout(() => {
+        setActiveComponent('Events');
+      }, 100);
     }, []);
     return (
         <>
@@ -52,7 +56,7 @@ const Events = () => {
                     <NavigationEvents />
                 </div>
             </div>
-            <Footer />
+            <Footer activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
         </>
     )
 }

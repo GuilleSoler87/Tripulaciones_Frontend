@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Welcome from "./components/Welcome/Welcome";
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
-import Calendar from './components/Calendar/Calendar';
 import Contacts from './components/Contacts/Contacts';
 import Notification from './components/Notification/Notification';
 import Password from './components/Password/Password';
@@ -46,10 +45,10 @@ function App() {
                 <Route path="/menu" element={<Menu />} />
                 <Route path="/events" element={<Events />} />
                 <Route path="/eventSingle" element={<EventSingle />} />
-                <Route path="/calendar" element={<Calendar />} />
                 <Route path="/contacts" element={<Contacts />} />
                 <Route path="/notification" element={<Notification />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/otherprofile/:_id" element={<OtherProfile />} />
                 <Route path="/chatlist" element={<ChatList />} />
                 <Route path="/chat/:_id" element={<Chat />} />
                 <Route path="/developer" element={<Developer />} />
