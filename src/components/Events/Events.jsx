@@ -39,7 +39,7 @@ const Events = () => {
 
                             </div>
                         </div>
-                        <Link to="/calendar" className="go_to_calendar" onClick={handleCalendarClick}>
+                        <Link to="/maincalendar" className="go_to_calendar" onClick={handleCalendarClick}>
                             <img src={CalendarImg} alt="Calendario" className="img_calendar" />
                         </Link>
                     </div>
