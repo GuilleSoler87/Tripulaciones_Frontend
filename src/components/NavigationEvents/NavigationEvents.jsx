@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import "./NavigationEvents.scss";
+import { EventContext } from '../../context/EventContext/EventState';
 
 const NavigationEvents = () => {
+  const { events, getEvents } = useContext(EventContext);
+
+
+  useEffect(() => {
+    getEvents();
+  }, []);
+
   return (
     <>
 

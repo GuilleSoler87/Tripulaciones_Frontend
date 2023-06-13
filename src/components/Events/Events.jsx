@@ -14,16 +14,14 @@ const Events = () => {
     const handleCalendarClick = () => {
         navigate("/calendar");
     };
-
-    const handleHomeClick = () => {
-        navigate("/homeTab");
-    };
+   
 
     useEffect(() => {
       setTimeout(() => {
         setActiveComponent('Events');
       }, 100);
     }, []);
+
     return (
         <>
             <Header />

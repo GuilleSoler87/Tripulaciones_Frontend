@@ -15,6 +15,7 @@ import { ChatProvider } from './context/ChatContext/ChatState';
 import { UserProvider } from './context/UserContext/UserState';
 import { NoticeProvider } from './context/NoticeContext/NoticeState';
 import { CommentProvider } from './context/CommentsContext/CommentState';
+import { EventProvider } from './context/EventContext/EventState';
 import Developer from './components/Developer/Developer';
 import Mailer from './components/Mailer/Mailer';
 import RecoverPass from './components/RecoverPass/RecoverPass';
@@ -34,27 +35,29 @@ function App() {
           <ChatProvider>
             <NoticeProvider>
               <CommentProvider>
-                <Routes>
-                  <Route path="/" element={<Welcome />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/mailer" element={<Mailer />} />
-                  <Route path="/blocked" element={<Blocked />} />
-                  <Route path="/password" element={<Password />} />
-                  <Route path="/recoverPass/:recoverToken" element={<RecoverPass />} />
-                  <Route path="/home" element={<Home />} />
-                  <Route path="/getNoticeById/:_id" element={<MdENoticesSingle />} />
-                  <Route path="/homeTab" element={<HomeTab />} />
-                  <Route path="/menu" element={<Menu />} />
-                  <Route path="/events" element={<Events />} />
-                  <Route path="/eventSingle" element={<EventSingle />} />
-                  <Route path="/contacts" element={<Contacts />} />
-                  <Route path="/notification" element={<Notification />} />
-                  <Route path="/profile" element={<Profile />} />
-                  <Route path="/otherprofile/:_id" element={<OtherProfile />} />
-                  <Route path="/chatlist" element={<ChatList />} />
-                  <Route path="/chat/:_id" element={<Chat />} />
-                  <Route path="/developer" element={<Developer />} />
-                </Routes>
+                <EventProvider>
+                  <Routes>
+                    <Route path="/" element={<Welcome />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/mailer" element={<Mailer />} />
+                    <Route path="/blocked" element={<Blocked />} />
+                    <Route path="/password" element={<Password />} />
+                    <Route path="/recoverPass/:recoverToken" element={<RecoverPass />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/getNoticeById/:_id" element={<MdENoticesSingle />} />
+                    <Route path="/homeTab" element={<HomeTab />} />
+                    <Route path="/menu" element={<Menu />} />
+                    <Route path="/events" element={<Events />} />
+                    <Route path="/eventSingle" element={<EventSingle />} />
+                    <Route path="/contacts" element={<Contacts />} />
+                    <Route path="/notification" element={<Notification />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/otherprofile/:_id" element={<OtherProfile />} />
+                    <Route path="/chatlist" element={<ChatList />} />
+                    <Route path="/chat/:_id" element={<Chat />} />
+                    <Route path="/developer" element={<Developer />} />
+                  </Routes>
+                </EventProvider>
               </CommentProvider>
             </NoticeProvider>
           </ChatProvider>
