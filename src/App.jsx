@@ -24,7 +24,7 @@ import Menu from './components/Menu/Menu';
 import Events from './components/Events/Events';
 import EventSingle from './components/EventSingle/EventSingle';
 import MdENoticesSingle from './components/MdENoticesSingle/MdENoticesSingle';
-
+import Calendar from './components/Calendar/Calendar';
 
 function App() {
 
@@ -56,6 +56,7 @@ function App() {
                     <Route path="/chatlist" element={<ChatList />} />
                     <Route path="/chat/:_id" element={<Chat />} />
                     <Route path="/developer" element={<Developer />} />
+                    <Route path="/calendar" element={<Calendar />} />
                   </Routes>
                 </EventProvider>
               </CommentProvider>
