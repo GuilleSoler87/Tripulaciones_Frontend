@@ -114,7 +114,7 @@ const MdENoticesSingle = () => {
                             <div className='user_img_profile_comments'>
                                 <img src={UserCommDemo} className="userimgcomm" alt="user_img_comment" />
                             </div>
-                            <p className='body_text_comments'>¡Me encantó la charla de Feending! Trabajar con ellos sería muy top!</p>
+                            <p className='body_text_comments'>¡Me encantó la charla de Feending! Trabajar con ellos sería muy top!A</p>
                         </div>
                         <hr className="separator_line_comments_single_notices" />
                     </div>
