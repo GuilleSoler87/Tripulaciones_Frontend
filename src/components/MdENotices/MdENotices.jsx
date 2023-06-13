@@ -41,7 +41,11 @@ const MdENotices = () => {
     setShowPopup(false);
   };
 
-  // const imageSrc = notice &&notice.img ? `https://desafio-backend-production.up.railway.app/${notice.img}` : '';
+  const formatImageURL = (path) => {
+    const API_URL = "https://desafio-backend-production.up.railway.app/";
+    const correctedPath = path.replace("uploads", "")
+    return API_URL + correctedPath;
+  }
 
   return (
     <>
@@ -53,7 +57,8 @@ const MdENotices = () => {
             <div className='main_notice_box'>
               <div className='img_notice_box'>
                 <div className='img_notice_box'>
-                  <img src={"https://desafio-backend-production.up.railway.app/" + notice.img} alt={notice.title} className="img_notices_home" />
+                  {/* <img src={"https://desafio-backend-production.up.railway.app/" + notice.img} alt={notice.title} className="img_notices_home" /> */}
+                  <img src={formatImageURL(notice.img)} alt={notice.title} className="img_notices_home" />
 
                 </div>
 
@@ -87,7 +92,7 @@ const MdENotices = () => {
                       Ver más
                     </p>
                   </div>
-                  <Link to={`/get/${notice._id}`}>
+                  <Link to={`/getNoticeById/${notice._id}`}>
                     <div className='view_comments_button'>
                       Ver los comentarios
                     </div>

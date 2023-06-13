@@ -6,9 +6,8 @@ const token = JSON.parse(localStorage.getItem("token"));
 
 const initialState = {
     token: token ? token : null,
-    // notice: notice ? notice : null,
+    notice: {},
     notices: [],
-
 };
 
 const API_URL = "https://desafio-backend-production.up.railway.app";
@@ -34,6 +33,7 @@ export const NoticeProvider = ({ children }) => {
     const getNoticeId = async (id) => {
         try {
             const res = await axios.get(API_URL + '/notices/getNoticeById/' + id);
+            console.log("respuesta del servidor por axios", res);
             dispatch({
                 type: 'GET_NOTICE_ID',
                 payload: res.data,
@@ -86,7 +86,7 @@ export const NoticeProvider = ({ children }) => {
         <NoticeContext.Provider
             value={{
                 token: state.token,
-                // notice: state.notice,
+                notice: state.notice,
                 notices: state.notices,
                 getNotices,
                 getNoticeId,
