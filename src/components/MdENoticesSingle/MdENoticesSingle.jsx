@@ -3,20 +3,23 @@ import { useNavigate } from "react-router-dom";
 import './MdENoticesSingle.scss';
 import { useParams } from 'react-router-dom';
 import { NoticeContext } from '../../context/NoticeContext/NoticeState';
+import { CommentContext } from '../../context/CommentsContext/CommentState';
+import { UserContext } from '../../context/UserContext/UserState';
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import SendButton from "../../images/send_button.png"
-import UserCommDemo from "../../images/user_demo_comments.png"
 import BackButton from "../../images/icon_return_back.png"
+
 
 const MdENoticesSingle = () => {
     const { _id } = useParams();
     const navigate = useNavigate();
     const { getNoticeId, notice, token } = useContext(NoticeContext);
+    const { createComment, comments } = useContext(CommentContext);
     const [loading, setLoading] = useState(true);
-    const [data, setData] = useState({
-        comment: "",
-    });
+    const [comment, setComment] = useState('');
+
+
 
     useEffect(() => {
         async function fetchData() {
@@ -26,13 +29,19 @@ const MdENoticesSingle = () => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        setComment('');
+        getNoticeId(_id);
+        console.log("esto es el useEffect", comment)
+    }, [comments]);
+
     if (loading) {
         return "loading";
     }
 
     const handleButtonClick = () => {
         navigate("/home");
-      };
+    };
 
     const formatImageURL = (path) => {
         const API_URL = "https://desafio-backend-production.up.railway.app/";
@@ -41,21 +50,38 @@ const MdENoticesSingle = () => {
     }
 
     const handleInputChange = (event) => {
-        setData(event.target.value);
+        setComment(event.target.value);
     };
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            handleSubmit(event);
+            handleAddComment(event);
         }
     };
 
-    const handleSubmit = (event) => {
+    const handleAddComment = async (event) => {
         event.preventDefault();
-        // Aquí puedes agregar la lógica para manejar el envío del comentario
-        console.log('Comentario enviado:', data);
-        setData(''); // Restablecer el valor del input después de enviar el comentario
+        try {
+            const response = await createComment({ body: comment }, notice._id);
+            console.log("mostrando response", response);
+            if (response.success) {
+                console.log('se ejecuta el response success')
+                setComment('');
+                getNoticeId(_id);
+            }
+        } catch (error) {
+            console.log(error);
+            setComment('');
+        }
+        console.log('Comentario enviado:', comment);
     };
+
+    const formatImageCommentsURL = (path) => {
+        const API_URL = "https://desafio-backend-production.up.railway.app/";
+        const correctedPath = path.replace("uploads", "")
+        return API_URL + correctedPath;
+    }
+
 
     return (
         <>
@@ -67,7 +93,7 @@ const MdENoticesSingle = () => {
                         <img src={BackButton} className="userimgcomm" alt="user_img_comment" />
                     </div>
                     <div className='main_img_single_notice'>
-                        <img src={formatImageURL(notice.img)} alt={notice.title} className="single_notice" />
+                        <img src={formatImageCommentsURL(notice.img)} alt={notice.title} className="single_notice" />
                     </div>
 
                     <div className='main_div_text_single_notices'>
@@ -83,44 +109,44 @@ const MdENoticesSingle = () => {
                     <div className="div_add_comments">
                         <div className="div_background_comment">
 
-                            <form className="comments_form" onSubmit={handleSubmit}>
-                                <label className="comment_label" htmlFor="comment_label">
+                            <form className="comments_form" onSubmit={handleAddComment}>
+                                <div className="comment_label" htmlFor="comment_label">
                                     Comentarios
-                                </label>
+                                </div>
                                 <div className='input_div_with_button'>
                                     <input
                                         className="comment_input"
                                         type="text"
                                         placeholder="Escribe un comentario"
-                                        value={data.comment}
+                                        value={comment}
                                         onChange={handleInputChange}
                                         onKeyDown={handleKeyDown}
-                                        name="text"
+                                        name="comment_input"
                                     />
-                                    <div className='send_button_div'>
+                                    <button className='send_button_div' type="submit" >
                                         <img src={SendButton} className="send_button_img" alt="Send_comment" />
-                                    </div>
+                                    </button>
                                 </div>
                             </form>
                         </div>
                     </div>
-
-                    <div className="div_show_all_comments">
-                        <div className='user_profile_comments'>
-                            <p className='user_name_comments'>Laura Gómez</p>
-                            <p className='user_name_userType_comments'>Estudiante EDEM</p>
-                        </div>
-                        <div className='body_user_comment_profile'>
-                            <div className='user_img_profile_comments'>
-                                <img src={UserCommDemo} className="userimgcomm" alt="user_img_comment" />
+                    <div className='main_container_all_notices'>
+                        {notice.commentIds.map((comment) => (
+                            <div className="div_show_all_comments" key={comment._id}>
+                                <div className="user_profile_comments">
+                                    <p className="user_name_comments">{comment.userId.username}</p>
+                                    <p className="user_name_userType_comments">{comment.userId.userType.name}</p>
+                                </div>
+                                <div className="body_user_comment_profile">
+                                    <div className="user_img_profile_comments">
+                                        <img src={formatImageURL(comment.userId.img)} className="userimgcomm" alt="user_img_comment" />
+                                    </div>
+                                    <p className="body_text_comments">{comment.body}</p>
+                                </div>
+                                <hr className="separator_line_comments_single_notices" />
                             </div>
-                            <p className='body_text_comments'>¡Me encantó la charla de Feending! Trabajar con ellos sería muy top!A</p>
-                        </div>
-                        <hr className="separator_line_comments_single_notices" />
+                        ))}
                     </div>
-
-
-
                 </div>
 
             </div>
