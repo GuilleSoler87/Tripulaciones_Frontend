@@ -33,13 +33,18 @@ const EventSingle = () => {
               <p className='eventTitle'>Juan Roig</p>
             </div>
             <div className='headerMainRight'>
+              <div className='mainButton'>
+
               <p className='mainButtonText'>Asistiré</p>
+              </div>
             </div>
           </div>
           <div className='bodyContentMain'>
-            <p className='bodyContentText'>El próximo martes 6 de junio, nuestro querido Juan Roig vendrá a las instalaciones de EDEM para hablarnos sobre emprendimiento. <br />
-              Es una charla dedicada especialmente para los alumnos de primero de grado, pero todos sois bienvenidos. <br />
-              Hablaremos de la expansión que está teniendo Mercadona, las empresas imlicadas en el proceso y cómo ha ido evolucionando en estos últimos años. </p>
+            <p className='bodyContentText1'>El próximo martes 6 de junio, nuestro querido Juan Roig vendrá a las instalaciones de EDEM para hablarnos sobre emprendimiento. </p>
+            
+            <p className='bodyContentText2'>Es una charla dedicada especialmente para los alumnos de primero de grado, pero todos sois bienvenidos. </p>
+
+            <p className='bodyContentText3'>Hablaremos de la expansión que está teniendo Mercadona, las empresas imlicadas en el proceso y cómo ha ido evolucionando en estos últimos años. </p>
           </div>
           <div className='bodyFooterUp'>
             <p className='footerUpTime'>17:00h</p>
