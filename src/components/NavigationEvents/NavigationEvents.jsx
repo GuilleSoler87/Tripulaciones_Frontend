@@ -111,13 +111,85 @@ const NavigationEvents = () => {
         </div>
         <div className='eventList_Down'>
 
+          <div className='eventBig1'>
+            <div className='bigUpContainer'>
+              <div className='iconarrowblue'>
+                <img src="./src/images/IconArrow_Ev_BLUE.png" alt="Flecha" />
 
-          <div className='eventDown1'>
+              </div>
+            </div>
+            <div className='bigDownContainer'>
+              <div className='bDownLeft'>
+                <p className='bLeftEventType'> Charla</p>
+                <p className='bLeftEventTitle'>Juan Roig </p>
+                <p className='bLeftEventTime'>17:00 </p>
+                <p className='bLeftEventDate'> Martes 6 de Junio</p>
+
+              </div>
+              <div className='bDownRight'>
+                <div className='bRightButtonTag1'>
+                  <p className='bTagText1'>Emprendimiento</p>
+                </div>
+                <div className='bRightButtonTag2'>
+                  <p className='bTagText2'>Marketing</p>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <div className='eventDown2'>
+          <div className='eventBig1'>
+            <div className='bigUpContainer'>
+              <div className='iconarrowblue'>
+                <img src="./src/images/IconArrow_Ev_BLUE.png" alt="Flecha" />
+
+              </div>
+            </div>
+            <div className='bigDownContainer'>
+              <div className='bDownLeft'>
+                <p className='bLeftEventType'> Charla</p>
+                <p className='bLeftEventTitle'>Juan Roig </p>
+                <p className='bLeftEventTime'>17:00 </p>
+                <p className='bLeftEventDate'> Martes 6 de Junio</p>
+
+              </div>
+              <div className='bDownRight'>
+                <div className='bRightButtonTag1'>
+                  <p className='bTagText1'>Emprendimiento</p>
+                </div>
+                <div className='bRightButtonTag2'>
+                  <p className='bTagText2'>Marketing</p>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <div className='eventDown3'>
+          <div className='eventBig1'>
+            <div className='bigUpContainer'>
+              <div className='iconarrowblue'>
+                <img src="./src/images/IconArrow_Ev_BLUE.png" alt="Flecha" />
+
+              </div>
+            </div>
+            <div className='bigDownContainer'>
+              <div className='bDownLeft'>
+                <p className='bLeftEventType'> Charla</p>
+                <p className='bLeftEventTitle'>Juan Roig </p>
+                <p className='bLeftEventTime'>17:00 </p>
+                <p className='bLeftEventDate'> Martes 6 de Junio</p>
+
+              </div>
+              <div className='bDownRight'>
+                <div className='bRightButtonTag1'>
+                  <p className='bTagText1'>Emprendimiento</p>
+                </div>
+                <div className='bRightButtonTag2'>
+                  <p className='bTagText2'>Marketing</p>
+                </div>
+              </div>
+            </div>
+
           </div>
+         
         </div>
       </div>
 

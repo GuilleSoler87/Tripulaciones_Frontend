@@ -56,14 +56,9 @@
             .eventside1 {
                 display: flex;
                 flex-direction: column;
-                // border-radius: 10px;
-                // flex: 1;
                 width: 251px;
                 height: 20vh;
 
-                // background-size: cover;
-                // background-position: center;
-                // background-image: url('/src/images/Ev_recom_1.png');
                 //MITAD DE ARRIBA
                 .sideUpContainer {
                     display: flex;
@@ -77,12 +72,12 @@
                     border-top-left-radius: 10px;
                     border-top-right-radius: 10px;
 
-                    .iconarrow{
+                    // ICON ARROW
+                    .iconarrow {
                         display: flex;
                         align-self: flex-end;
                         margin-top: 24%;
                         margin-right: 10px;
-                        // transform: translateX(50%);
                         z-index: 2;
                     }
                 }
@@ -101,8 +96,6 @@
                         display: flex;
                         flex-direction: column;
                         flex-grow: 1;
-                        // align-content: center;
-                        // justify-content: flex-start;
 
 
                         .leftEventType {
@@ -210,8 +203,8 @@
                     }
                 }
 
- // ICON ARROW
-              
+
+
             }
 
         }
@@ -244,41 +237,194 @@
         width: 100%;
         row-gap: 10px;
 
-        .eventDown1 {
+//BIG CARD
+        .eventBig1 {
             display: flex;
-            flex-shrink: 1;
-            border-radius: 10px;
+            flex-direction: column;
+            align-content: center;
+            // justify-content: center;
+            
+            // flex-shrink: 1;
+            // border-radius: 10px;
             width: 100%;
-            background-image: url('/src/images/Event_Down_1.png');
-            background-size: auto;
-            background-position: center;
-            background-repeat: no-repeat;
+            // background-image: url('/src/images/0_CardSmall_Test.png');
+            // background-size: auto;
+            // background-position: center;
+            // background-repeat: no-repeat;
             height: 33vh;
+
+            //MITAD DE ARRIBA
+            .bigUpContainer {
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                height: 60%;
+                width: 100%;
+                background-size: cover;
+                background-position: center;
+                background-image: url('/src/images/0_CardSmall_TEST.png');
+                background-repeat: no-repeat;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+
+                // ICON ARROW
+                .iconarrowblue {
+                    display: flex;
+                    align-self: flex-end;
+                    margin-top: 31%;
+                    margin-right: 10px;
+                    z-index: 2;
+                }
+            }
+
+            //MITAD DE ABAJO
+            .bigDownContainer {
+                display: flex;
+                flex-direction: row;
+                align-content: space-between;
+                height: 40%;
+                width: 100%;
+                background-color: $purplemde;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+               
+
+                .bDownLeft {
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+
+
+                    .bLeftEventType {
+                        align-self: flex-start;
+                        margin-top: 10px;
+                        margin-bottom: 0;
+                        margin-right: 0;
+                        margin-left: 20px;
+                        font-family: $atkinsonmde;
+                        font-size: 12px;
+                        font-weight: 400;
+                        color: $darkbluemde;
+                    }
+
+                    .bLeftEventTitle {
+                        align-self: flex-start;
+                        margin-top: 0;
+                        margin-bottom: 0;
+                        margin-right: 0;
+                        margin-left: 20px;
+                        font-family: $atkinsonmde;
+                        font-size: 17px;
+                        font-weight: 600;
+                        color: $darkbluemde;
+
+                    }
+
+                    .bLeftEventTime {
+                        align-self: flex-start;
+                        margin-top: 30px;
+                        margin-bottom: 0;
+                        margin-right: 0;
+                        margin-left: 20px;
+                        font-family: $atkinsonmde;
+                        font-size: 10px;
+                        font-weight: 400;
+                        color: $darkbluemde;
+                    }
+
+                    .bLeftEventDate {
+                        align-self: flex-start;
+                        margin-top: -2px;
+                        margin-bottom: 0;
+                        margin-right: 0;
+                        margin-left: 20px;
+                        font-family: $atkinsonmde;
+                        font-weight: 400;
+                        font-size: 10px;
+                        color: $darkbluemde;
+                    }
+                }
+
+                .bDownRight {
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    align-items: center;
+                    justify-content: flex-end;
+
+                    .bRightButtonTag1 {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        background-color: $lightbluemde;
+                        border-top-left-radius: 10px;
+                        border-bottom-left-radius: 10px;
+                        border-top-right-radius: 10px;
+                        border-bottom-right-radius: 10px;
+                        height: 20px;
+                        margin-bottom: 15px;
+
+                        .bTagText1 {
+                            font-family: $atkinsonmde;
+                            font-size: 9px;
+                            color: $darkbluemde;
+                            font-weight: lighter;
+                            margin-left: 10px;
+                            margin-right: 10px;
+                        }
+                    }
+
+                    .bRightButtonTag2 {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        background-color: $lightbluemde;
+                        border-top-left-radius: 10px;
+                        border-bottom-left-radius: 10px;
+                        border-top-right-radius: 10px;
+                        border-bottom-right-radius: 10px;
+                        height: 20px;
+                        margin-bottom: 15px;
+
+                        .bTagText2 {
+                            font-family: $atkinsonmde;
+                            font-size: 9px;
+                            color: $darkbluemde;
+                            font-weight: lighter;
+                            margin-left: 10px;
+                            margin-right: 10px;
+
+                        }
+                    }
+
+                }
+            }
+
         }
 
-        .eventDown2 {
-            display: flex;
-            flex-shrink: 1;
-            border-radius: 10px;
-            width: 100%;
-            background-image: url('/src/images/Event_Down_2.png');
-            background-size: auto;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 33vh;
-        }
+        // .eventDown2 {
+        //     display: flex;
+        //     flex-shrink: 1;
+        //     border-radius: 10px;
+        //     width: 100%;
+        //     background-image: url('/src/images/Event_Down_2.png');
+        //     background-size: auto;
+        //     background-position: center;
+        //     background-repeat: no-repeat;
+        //     height: 33vh;
+        // }
 
-        .eventDown3 {
-            display: flex;
-            flex-shrink: 1;
-            border-radius: 10px;
-            width: 100%;
-            background-image: url('/src/images/Event_Down_3.png');
-            background-size: auto;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 33vh;
-            margin-bottom: 30%;
-        }
+        // .eventDown3 {
+        //     display: flex;
+        //     flex-shrink: 1;
+        //     border-radius: 10px;
+        //     width: 100%;
+        //     background-image: url('/src/images/Event_Down_3.png');
+        //     background-size: auto;
+        //     background-position: center;
+        //     background-repeat: no-repeat;
+        //     height: 33vh;
+        //     margin-bottom: 30%;
+        // }
     }
 }
