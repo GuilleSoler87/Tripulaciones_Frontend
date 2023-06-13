@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 const Notification = () => {
   const [activeComponent, setActiveComponent] = useState("Notifications");
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     setTimeout(() => {
