@@ -22,10 +22,18 @@ const EventSingle = () => {
         </div>
 
         <div className='dotsOverlay'>
-            <img src="./src/images/points_horWhite.png" alt="Puntos" />
+          <img src="./src/images/points_horWhite.png" alt="Puntos" />
 
         </div>
 
+        <div className='eventBodyMain'>
+          <div className='bodyHeaderMain'></div>
+          <div className='bodyContentMain'></div>
+          <div className='bodyFooterUp'></div>
+          <div className='bodyFooterDown'></div>
+          
+
+        </div>
       </div>
 
 
