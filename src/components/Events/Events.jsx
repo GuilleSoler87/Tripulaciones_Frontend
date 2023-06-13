@@ -12,7 +12,7 @@ const Events = () => {
     const [activeComponent, setActiveComponent] = useState("Events");
 
     const handleCalendarClick = () => {
-        navigate("/calendar");
+        navigate("/maincalendar");
     };
    
 
