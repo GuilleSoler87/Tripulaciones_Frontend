@@ -1,13 +1,17 @@
 import React, { useEffect, useContext, useState } from "react";
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import { useNavigate } from "react-router-dom";
 import "./Calendar.scss";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 
-const Calendar = () => {
+const CalendarView = () => {
+  const [selectedDate, setSelectedDate] = useState(null);
   const navigate = useNavigate();
   const [activeComponent, setActiveComponent] = useState("Calendar");
 
+  const handleDateClick = (date) => {
+    setSelectedDate(date);
+  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -18,13 +22,22 @@ const Calendar = () => {
 
   return (
     <>
-      <Header />
-      <div className="calendarContainer">
-        <h1>Calendar</h1>
-      </div>
-      <Footer activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
+
+      <div className="main_calendar">
+        <div className='calendar'>
+          <div className='calendar-container'>
+            <Calendar className='react-calendar' onChange={handleDateClick} value={selectedDate} />
+          </div>
+
+          <div className='all_events_inscriptions'>
+
+          </div>
+        </div>
+      </div >
     </>
   );
 };
 
-export default Calendar;
+export default CalendarView;
+
+
