@@ -32,7 +32,6 @@ export const NoticeProvider = ({ children }) => {
 
     const getNoticeId = async (id) => {
         try {
-          console.log("URL que atacamos", API_URL + '/notices/getNoticeById/' + id);
             const res = await axios.get(API_URL + '/notices/getNoticeById/' + id);
             console.log("respuesta del servidor por axios", res);
             dispatch({

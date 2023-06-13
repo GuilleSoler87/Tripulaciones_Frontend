@@ -92,7 +92,7 @@ const MdENotices = () => {
                       Ver más
                     </p>
                   </div>
-                  <Link to={`/get/${notice._id}`}>
+                  <Link to={`/getNoticeById/${notice._id}`}>
                     <div className='view_comments_button'>
                       Ver los comentarios
                     </div>
