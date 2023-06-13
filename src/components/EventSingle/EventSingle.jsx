@@ -48,11 +48,11 @@ const EventSingle = () => {
           </div>
           <div className='bodyFooterUp'>
             <p className='footerUpTime'>17:00h</p>
-            <p className='footerUpAsistentes'>43 asistentes</p>
+            <p className='footerUpAsistentes'><strong>43</strong> asistentes</p>
           </div>
           <div className='bodyFooterDown'>
             <p className='footerDownDate'>Martes 6 de junio de 2023</p>
-            <p className='footerDownInscritos'>112 inscritos online</p>
+            <p className='footerDownInscritos'><strong>112</strong> inscritos online</p>
           </div>
 
 
