@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import noPic from "../../../src/images/no_pic.png";
 import noBgPic from "../../../src/images/no_bg_pic.png";
+import progressBar from "../../../src/images/medallas.png";
 
 const Profile = () => {
   const { user, getUser } = useContext(UserContext);
@@ -59,6 +60,13 @@ const Profile = () => {
               className="profileImage"
               src={user.img ? extractFilePathFromImage(user.img) : noPic}
             />
+          </div>
+        </div>
+        <div className="gamingContainer">
+          <p className="totalPoints">150 puntosssshh</p>
+          <p className="howTo">¿Cómo ganar puntos?</p>
+          <div className="progressBar">
+            <img src={progressBar} />
           </div>
         </div>
         <div className="profileInfoContainer">
