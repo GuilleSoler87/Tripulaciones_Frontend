@@ -18,7 +18,7 @@ const ChatList = () => {
     setTimeout(() => {
       setActiveComponent('ChatList');
     }, 100);
-  });
+  }, []);
 
   const API_URL = "http://localhost:8080/";
 
