@@ -5,6 +5,8 @@ import "./Chat.scss";
 import { ChatContext } from "../../context/ChatContext/ChatState";
 import { UserContext } from "../../context/UserContext/UserState";
 import { MdSend, MdAttachFile } from "react-icons/md";
+import emptyChat from "../../../src/images/empty_chat.png";
+import noPic from "../../../src/images/no_pic.png";
 
 
 let socket;
@@ -31,7 +33,6 @@ const Chat = () => {
 
   useEffect(() => {
     socket = io("https://desafio-backend-production.up.railway.app/"); // CHANGE this with your server URL
-    // socket = io("http://localhost:8080/"); // CHANGE this with your server URL
     return () => {
       socket.disconnect();
       socket.off();
@@ -40,14 +41,9 @@ const Chat = () => {
 
   useEffect(() => {
     const handler = () => {
-      console.log("HANDLED!!!!!!!!!!!!!!!!!");
       getSingleChat(_id);
     };
     socket.on("chat update", handler);
-    // console.log(socket);
-    // socket.on("connect_error", (err) => {
-    //   console.log(`connect_error due to ${err.message}`);
-    // });
     socket.on("connect", () => {
       console.log(socket);
     });
@@ -65,6 +61,7 @@ const Chat = () => {
     const sender = usersArray.find(x => x.username === user.username);
     return sender._id;
   }
+  
   const getReceiver = (chat) => {
     const usersArray = chat.users;
     const receiver = usersArray.find(x => x.username !== user.username);
@@ -72,15 +69,12 @@ const Chat = () => {
   }
 
   const sender = getUserID(chat)
-  const receiver = getReceiver(chat)._id;
+  const receiver = getReceiver(chat);
 
   const formatTime = (utcDate) => {
     let date = new Date(utcDate);
-    let hours = date.getUTCHours();
-    let minutes = date.getUTCMinutes();
-    if (hours < 10) hours = "0" + hours;
-    if (minutes < 10) minutes = "0" + minutes;
-    return `${hours}:${minutes}`;
+    date.setHours(date.getHours() - 0);
+    return date.toTimeString().slice(0, 5);
   };
 
   const formatDate = (utcDate) => {
@@ -106,10 +100,8 @@ const Chat = () => {
   };
 
   const extractFilePathFromImage = (path) => {
-    // const url = "https://desafio-backend-production.up.railway.app/"; //CHANGE to pertinent URL
-    const url = "http://localhost:8080/"; //CHANGE to pertinent URL
-    const match = path.match(/uploads[\\\/](.+)/);
-    return match ? url + match[1].replace(/\\/g, '/') : null;
+    const url = "https://desafio-backend-production.up.railway.app/"; //CHANGE to pertinent URL
+    return url + path.replace("uploads/", "");
   }
 
   const handleInputChange = (event) => {
@@ -152,14 +144,22 @@ const Chat = () => {
           )}
           {item.message && (
           <div className="messageLine" id={`${speakerId}`}>
-            <span className="textMessage">{item.message}</span>
-            <span className="textTime">{formatTime(item.date)}</span>
+            <div className="messageDiv">
+              <p className="textMessage">{item.message}</p>
+            </div>
+            <div className="timeDiv">
+              <span className="textTime">{formatTime(item.date)}</span>
+            </div>
           </div>
           )}
         </React.Fragment>
       </>
     );
   });
+
+  const emptyChatDiv = (
+    <img src={emptyChat} />
+  );
 
   return (
     <>
@@ -169,14 +169,18 @@ const Chat = () => {
             <span className="material-symbols-outlined">arrow_back</span>
           </div>
           <div className="receiverImage">
-            {/* <img src={extractFilePathFromImage(user.img)} width={50} /> */}
+            <img src={receiver.img ? extractFilePathFromImage(receiver.img) : noPic} />
           </div>
           <div className="receiverUsername">
-            <span>{getReceiver(chat).username}</span>
+            <p>{receiver.username}</p>
+            <span className="receiverCargo">{receiver.cargo ? receiver.cargo : "Estudiante"}</span>
           </div>
         </div>
-        <div className="chatThread">{threadDiv}</div>
-        <div ref={messagesEndRef} /> {/* Add this line */}
+        <div className="chatThread">
+          {/* {threadDiv} */}
+          {(history.length === 1 && history[0].message === "") ? emptyChatDiv : threadDiv}
+        </div>
+        <div ref={messagesEndRef} /> 
         <div className="sendMessage">
           <div className="blankSpace"> </div>
           <form onSubmit={handleSubmit}>

@@ -109,9 +109,6 @@ const Contacts = () => {
   const extractFilePathFromImage = (path) => {
     const url = "https://desafio-backend-production.up.railway.app/";
     return url + path.replace("uploads/", "");
-    // const url = "https://desafio-backend-production.up.railway.app";
-    // const match = path.match(/uploads[\\\/](.+)/);
-    // return match ? url + "/" + match[1].replace(/\\/g, '/') : null;
   };
 
   const noContactsDisplay = (
