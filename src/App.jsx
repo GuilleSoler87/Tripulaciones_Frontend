@@ -27,6 +27,7 @@ import EventSingle from "./components/EventSingle/EventSingle";
 import MdENoticesSingle from "./components/MdENoticesSingle/MdENoticesSingle";
 import MainCalendar from "./components/MainCalendar/MainCalendar";
 import EditProfile from "./components/EditProfile/EditProfile";
+import AppInit from "./components/AppInit/AppInit";
 
 function App() {
   return (
@@ -39,12 +40,13 @@ function App() {
                 <EventProvider>
                   <ProfileProvider>
                     <Routes>
-                      <Route path="/" element={<Welcome />} />
+                      <Route path="/" element={<AppInit />} />
+                      <Route path="/welcome" element={<Welcome />} />
                       <Route path="/login" element={<Login />} />
                       <Route path="/mailer" element={<Mailer />} />
                       <Route path="/blocked" element={<Blocked />} />
                       <Route path="/password" element={<Password />} />
-                      <Route path="/recoverPass/:recoverToken" element={<RecoverPass />}/>
+                      <Route path="/recoverPass/:recoverToken" element={<RecoverPass />} />
                       <Route path="/home" element={<Home />} />
                       <Route path="/getNoticeById/:_id" element={<MdENoticesSingle />} />
                       <Route path="/homeTab" element={<HomeTab />} />
