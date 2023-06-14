@@ -21,6 +21,7 @@ const MainCalendar = () => {
         <>
             <Header />
             <div className='main_calendar_container'>
+
                 <div className="top_background_calendar">
                     <div className='calendar_top_header'>
                         <p className="my_events_title">Mis Eventos</p>
@@ -31,14 +32,14 @@ const MainCalendar = () => {
                         </div>
                     </div>
                 </div>
+
                 <div className="div_img_points">
                     <img src={PointsWhite} alt="Points" className="img_points_white" />
                 </div>
 
-
-                <div className='events_component_container'>
-                    <Calendar />
-                </div>
+            </div>
+            <div className='events_component_container'>
+                <Calendar />
             </div>
             <Footer activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
         </>

@@ -43,15 +43,9 @@ function App() {
                       <Route path="/mailer" element={<Mailer />} />
                       <Route path="/blocked" element={<Blocked />} />
                       <Route path="/password" element={<Password />} />
-                      <Route
-                        path="/recoverPass/:recoverToken"
-                        element={<RecoverPass />}
-                      />
+                      <Route path="/recoverPass/:recoverToken" element={<RecoverPass />}/>
                       <Route path="/home" element={<Home />} />
-                      <Route
-                        path="/getNoticeById/:_id"
-                        element={<MdENoticesSingle />}
-                      />
+                      <Route path="/getNoticeById/:_id" element={<MdENoticesSingle />} />
                       <Route path="/homeTab" element={<HomeTab />} />
                       <Route path="/menu" element={<Menu />} />
                       <Route path="/events" element={<Events />} />
@@ -60,10 +54,7 @@ function App() {
                       <Route path="/notification" element={<Notification />} />
                       <Route path="/profile" element={<Profile />} />
                       <Route path="/editprofile" element={<EditProfile />} />
-                      <Route
-                        path="/otherprofile/:_id"
-                        element={<OtherProfile />}
-                      />
+                      <Route path="/otherprofile/:_id" element={<OtherProfile />} />
                       <Route path="/chatlist" element={<ChatList />} />
                       <Route path="/chat/:_id" element={<Chat />} />
                       <Route path="/developer" element={<Developer />} />
