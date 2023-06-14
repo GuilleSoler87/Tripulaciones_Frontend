@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import './NavigationEvents.scss';
 import { EventContext } from '../../context/EventContext/EventState';
+import { Link } from "react-router-dom";
 
 const NavigationEvents = () => {
   const { events, getEvents } = useContext(EventContext);
@@ -9,7 +10,7 @@ const NavigationEvents = () => {
     getEvents();
   }, []);
 
-  
+
   return (
     <div className='main_container_navigation_events'>
       <div className='eventRecomendFixed'></div>
@@ -76,8 +77,8 @@ const NavigationEvents = () => {
                 <p className='leftEventTitle'>Juan Roig</p>
                 <p className='leftEventTime'>17:00</p>
                 <p className='leftEventDate'>Martes 6 de Junio</p>
-                </div>
-                
+              </div>
+
               <div className='downRight'>
                 <div className='rightButtonTag1'>
                   <p className='tagText1'>Emprendimiento</p>
@@ -97,35 +98,51 @@ const NavigationEvents = () => {
         {events.map(event => (
           <div className='eventBig1' key={event._id}>
             <div className='bigUpContainer'>
+
+              <div className='img_event_box'>
+                <img src={"https://desafio-backend-production.up.railway.app/events/" + event.img} alt={event.event_name} className="img_events_top" />
+              </div>
               <div className='iconarrowblue'>
-                <img src="./src/images/IconArrow_Ev_BLUE.png" alt="Flecha" />
+                <Link to={`/getEventById/${event._id}`}>
+                  <img src="./src/images/IconArrow_Ev_BLUE.png" alt="Flecha" />
+                </Link>
               </div>
-            </div>
-            <div className='img_notice_box'>
-              <img src={"https://desafio-backend-production.up.railway.app/events/" + event.img} alt={event.event_name} className="img_events_top" />
-            </div>
-            <div className='bigDownContainer'>
-              <div className='bDownLeft'>
-                <p className='bLeftEventType'>Evento</p>
-                <p className='bLeftEventTitle'>{event.event_name}</p>
-                <p className='bLeftEventTime'>{event.time?.slice(11, 16)}</p>
-                <p className='bLeftEventDate'>{event.time ? new Date(event.time).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }) : ''}</p>
-              </div>
-              <div className='bDownRight'>
-                <div className='bRightButtonTag1'>
-                  <p className='bTagText1'>{event.eventTags[0]}</p>
+              <div className='bigDownContainer'>
+
+                <div className='bDownLeft'>
+                  <p className='bLeftEventType'>Evento</p>
+                  <p className={`bLeftEventTitle ${event.event_name.length > 30 ? 'two-lines' : ''}`}>
+                    {event.event_name}
+                  </p>
+
+                  <div className='time_main_container_events'>
+                    <p className='bLeftEventTime'>{event.time?.slice(11, 16)}</p>
+                    <p className="bLeftEventDate">
+                      {event.time ? new Date(event.time).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }).charAt(0).toUpperCase() + new Date(event.time).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }).slice(1) : ''}
+                    </p>
+
+                  </div>
                 </div>
-                <div className='bRightButtonTag2'>
-                  <p className='bTagText2'>{event.eventTags[1]}</p>
+
+                <div className='bDownRight'>
+                  {event.eventTags.map((tag, index) => (
+                    <div className={`bRightButtonTag${index + 1}`} key={tag._id}>
+                      <p className={`bTagText${index + 1}`}>{tag.name}</p>
+                    </div>
+                  ))}
                 </div>
+
               </div>
             </div>
           </div>
+
+
+
         ))}
       </div>
     </div>
-  
-);
+
+  );
 };
 
 export default NavigationEvents;

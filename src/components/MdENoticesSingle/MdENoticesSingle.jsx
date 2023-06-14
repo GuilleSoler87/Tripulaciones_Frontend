@@ -93,7 +93,7 @@ const MdENoticesSingle = () => {
                         <img src={BackButton} className="userimgcomm" alt="user_img_comment" />
                     </div>
                     <div className='main_img_single_notice'>
-                        <img src={formatImageCommentsURL(notice.img)} alt={notice.title} className="single_notice" />
+                        <img src={formatImageCommentsURL (notice.img)} alt={notice.title} className="single_notice" />
                     </div>
 
                     <div className='main_div_text_single_notices'>
@@ -139,7 +139,7 @@ const MdENoticesSingle = () => {
                                 </div>
                                 <div className="body_user_comment_profile">
                                     <div className="user_img_profile_comments">
-                                        <img src={formatImageURL(comment.userId.img)} className="userimgcomm" alt="user_img_comment" />
+                                        <img src={"https://desafio-backend-production.up.railway.app/users/" + comment.userId.img} className="userimgcomm" alt="user_img_comment" />
                                     </div>
                                     <p className="body_text_comments">{comment.body}</p>
                                 </div>
