@@ -91,6 +91,35 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const getAllUsers = async () => {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const res = await axios.get(API_URL + "/users/getall", {
+        headers: {
+          Authorization: token,
+        },
+      });
+      const self = await axios.get(API_URL + "/users/getUser", {
+        headers: {
+          Authorization: token,
+        },
+      });
+      const usersWithoutSelf = res.data.filter(
+        (user) => user._id !== self.data._id
+      );
+      dispatch({
+        type: "GET_ALL_USERS",
+        payload: usersWithoutSelf,
+      });
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: "GET_USER_INFO_ERROR",
+        payload: "Error al obtener la información del usuario.",
+      });
+    }
+  };
+
   const logout = async () => {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
@@ -186,32 +215,6 @@ export const UserProvider = ({ children }) => {
   //   }
   // };
 
-  const makeContactFavourite = async (contactId) => {
-    try {
-      const res = await axios.put(
-        API_URL + "/users/makecontactfavourite",
-        {
-          userId: contactId,
-        },
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-      dispatch({
-        type: "MAKE_CONTACT_FAVOURITE",
-        payload: res.data,
-      });
-    } catch (error) {
-      console.error(error);
-      dispatch({
-        type: "RECOVER_PASSWORD_ERROR",
-        payload: error.response.data.message,
-      });
-    }
-  };
-
   const filterByUsername = (pattern) => {
     try {
       dispatch({
@@ -236,25 +239,47 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const addContact = async (userId) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const res = await axios.post(
+        API_URL + "/users/addcontact/",
+        {
+          userId: userId,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      console.log(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
         token: state.token,
         user: state.user,
+        users: state.users,
         message: state.message,
         logoutMessage: state.logoutMessage,
         chats: state.chats,
         login,
         getUser,
         getUserById,
+        getAllUsers,
         getChatsFromUser,
         logout,
         turnOffMessage,
         recoverPassword,
         resetPassword,
-        makeContactFavourite,
         filterByUsername,
         update,
+        addContact,
       }}
     >
       {children}
