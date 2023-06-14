@@ -22,10 +22,41 @@ const EventSingle = () => {
         </div>
 
         <div className='dotsOverlay'>
-            <img src="./src/images/points_horWhite.png" alt="Puntos" />
+          <img src="./src/images/points_horWhite.png" alt="Puntos" />
 
         </div>
 
+        <div className='eventBodyMain'>
+          <div className='bodyHeaderMain'>
+            <div className='headerMainLeft'>
+              <p className='eventType'>Charla</p>
+              <p className='eventTitle'>Juan Roig</p>
+            </div>
+            <div className='headerMainRight'>
+              <div className='mainButton'>
+
+              <p className='mainButtonText'>Asistiré</p>
+              </div>
+            </div>
+          </div>
+          <div className='bodyContentMain'>
+            <p className='bodyContentText1'>El próximo martes 6 de junio, nuestro querido Juan Roig vendrá a las instalaciones de EDEM para hablarnos sobre emprendimiento. </p>
+            
+            <p className='bodyContentText2'>Es una charla dedicada especialmente para los alumnos de primero de grado, pero todos sois bienvenidos. </p>
+
+            <p className='bodyContentText3'>Hablaremos de la expansión que está teniendo Mercadona, las empresas imlicadas en el proceso y cómo ha ido evolucionando en estos últimos años. </p>
+          </div>
+          <div className='bodyFooterUp'>
+            <p className='footerUpTime'>17:00h</p>
+            <p className='footerUpAsistentes'><strong>43</strong> asistentes</p>
+          </div>
+          <div className='bodyFooterDown'>
+            <p className='footerDownDate'>Martes 6 de junio de 2023</p>
+            <p className='footerDownInscritos'><strong>112</strong> inscritos online</p>
+          </div>
+
+
+        </div>
       </div>
 
 
