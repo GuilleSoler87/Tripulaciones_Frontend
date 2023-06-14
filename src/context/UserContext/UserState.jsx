@@ -9,6 +9,7 @@ const initialState = {
   token: token ? token : null,
   user: user ? user : null,
   users: [],
+  filteredUsers: [],
   chats: [],
   message: "",
   logoutMessage: "",
@@ -226,6 +227,17 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const filterByContact = async (onlyContacts) => {
+    try {
+      dispatch({
+        type: "FILTER_BY_CONTACT",
+        payload: onlyContacts,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const update = async (userId, data) => {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
@@ -242,7 +254,7 @@ export const UserProvider = ({ children }) => {
   const addContact = async (userId) => {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
-      const res = await axios.post(
+      await axios.post(
         API_URL + "/users/addcontact/",
         {
           userId: userId,
@@ -253,7 +265,25 @@ export const UserProvider = ({ children }) => {
           },
         }
       );
-      console.log(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const removeContact = async (userId) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      await axios.post(
+        API_URL + "/users/removecontact/",
+        {
+          userId: userId,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
     } catch (error) {
       console.error(error);
     }
@@ -265,6 +295,7 @@ export const UserProvider = ({ children }) => {
         token: state.token,
         user: state.user,
         users: state.users,
+        filteredUsers: state.filteredUsers,
         message: state.message,
         logoutMessage: state.logoutMessage,
         chats: state.chats,
@@ -278,8 +309,10 @@ export const UserProvider = ({ children }) => {
         recoverPassword,
         resetPassword,
         filterByUsername,
+        filterByContact,
         update,
         addContact,
+        removeContact,
       }}
     >
       {children}
