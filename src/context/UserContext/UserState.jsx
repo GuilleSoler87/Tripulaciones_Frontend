@@ -223,6 +223,19 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const update = async (userId, data) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const res = await axios.put(API_URL + "/users/update/" + userId, data, {
+        headers: {
+          Authorization: token,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -241,6 +254,7 @@ export const UserProvider = ({ children }) => {
         resetPassword,
         makeContactFavourite,
         filterByUsername,
+        update,
       }}
     >
       {children}

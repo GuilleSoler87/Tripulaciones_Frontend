@@ -10,7 +10,7 @@ import { MdSend, MdAttachFile } from "react-icons/md";
 let socket;
 
 const Chat = () => {
-  const { chat, history, getSingleChat, sendMessage } = useContext(ChatContext);
+  const { chat, history, token, getSingleChat, sendMessage } = useContext(ChatContext);
   const { user, getUser } = useContext(UserContext);
   const { _id } = useParams();
   const navigate = useNavigate();
@@ -130,7 +130,7 @@ const Chat = () => {
     if (!data.message) {
       return null;
     }
-    sendMessage(chat._id, sender, data);
+    sendMessage(chat._id, sender, data, token);
     socket.emit("chat update", { chatId: chat._id });
     setData({
       message: "",

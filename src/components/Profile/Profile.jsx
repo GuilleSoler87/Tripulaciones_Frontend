@@ -63,7 +63,7 @@ const Profile = () => {
           </div>
         </div>
         <div className="gamingContainer">
-          <p className="totalPoints">150 puntosssshh</p>
+          <p className="totalPoints">150 puntos</p>
           <p className="howTo">¿Cómo ganar puntos?</p>
           <div className="progressBar">
             <img src={progressBar} />

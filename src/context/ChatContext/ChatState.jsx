@@ -9,6 +9,7 @@ const token = JSON.parse(localStorage.getItem("token"));
 const initialState = {
   chat: null,
   history: [],
+  token: token ? token : null,
 };
 
 export const ChatContext = createContext(initialState);
@@ -63,6 +64,7 @@ export const ChatProvider = ({ children }) => {
       value={{
         chat: state.chat,
         history: state.history,
+        token: state.token,
         getSingleChat,
         sendMessage,
       }}
