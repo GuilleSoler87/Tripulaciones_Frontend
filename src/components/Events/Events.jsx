@@ -36,7 +36,6 @@ const Events = () => {
                             </div>
                             <div className='tooltipArrow'>
 
-
                             </div>
                         </div>
                         <Link to="/maincalendar" className="go_to_calendar" onClick={handleCalendarClick}>
