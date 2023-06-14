@@ -40,7 +40,7 @@
         align-items: flex-start;
         justify-content: flex-start;
         overflow-x: auto;
-        padding-bottom: 20px;
+        padding-bottom: 40px;
         max-height: 20vh;
 
         //SIDE X SCROLL MAIN CONTAINER 
@@ -58,6 +58,7 @@
                 flex-direction: column;
                 width: 251px;
                 height: 20vh;
+                margin-bottom: 38%;
 
                 //MITAD DE ARRIBA
                 .sideUpContainer {
@@ -73,13 +74,7 @@
                     border-top-right-radius: 10px;
 
                     // ICON ARROW
-                    .iconarrow {
-                        display: flex;
-                        align-self: flex-end;
-                        margin-top: 24%;
-                        margin-right: 10px;
-                        z-index: 2;
-                    }
+
                 }
 
                 //MITAD DE ABAJO
@@ -236,15 +231,16 @@
         justify-content: flex-start;
         width: 100%;
         row-gap: 10px;
+        margin-bottom: 26%;
 
-//BIG CARD
+        //BIG CARD
         .eventBig1 {
             display: flex;
             flex-direction: column;
-            align-content: center;            
-            width: 100%;            
+            align-content: center;
+            width: 100%;
             height: 33vh;
-            margin-bottom: 28%;
+            margin-bottom: 2%;
 
             //MITAD DE ARRIBA
             .bigUpContainer {
@@ -254,141 +250,222 @@
                 height: 60%;
                 width: 100%;
                 background-size: cover;
-                background-position: center;                
+                background-position: center;
                 background-repeat: no-repeat;
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
 
                 // ICON ARROW
-                .iconarrowblue {
-                    display: flex;
-                    align-self: flex-end;
-                    margin-top: 31%;
-                    margin-right: 10px;
-                    z-index: 2;
-                }
-            }
 
-            //MITAD DE ABAJO
-            .bigDownContainer {
-                display: flex;
-                flex-direction: row;
-                align-content: space-between;
-                height: 40%;
-                width: 100%;
-                background-color: $purplemde;
-                border-bottom-left-radius: 10px;
-                border-bottom-right-radius: 10px;
-               
 
-                .bDownLeft {
+                .img_event_box {
+
                     display: flex;
                     flex-direction: column;
-                    flex-grow: 1;
-
-
-                    .bLeftEventType {
-                        align-self: flex-start;
-                        margin-top: 10px;
-                        margin-bottom: 0;
-                        margin-right: 0;
-                        margin-left: 20px;
-                        font-family: $atkinsonmde;
-                        font-size: 12px;
-                        font-weight: 400;
-                        color: $darkbluemde;
-                    }
-
-                    .bLeftEventTitle {
-                        align-self: flex-start;
-                        margin-top: 0;
-                        margin-bottom: 0;
-                        margin-right: 0;
-                        margin-left: 20px;
-                        font-family: $atkinsonmde;
-                        font-size: 17px;
-                        font-weight: 600;
-                        color: $darkbluemde;
-
-                    }
-
-                    .bLeftEventTime {
-                        align-self: flex-start;
-                        margin-top: 30px;
-                        margin-bottom: 0;
-                        margin-right: 0;
-                        margin-left: 20px;
-                        font-family: $atkinsonmde;
-                        font-size: 10px;
-                        font-weight: 400;
-                        color: $darkbluemde;
-                    }
-
-                    .bLeftEventDate {
-                        align-self: flex-start;
-                        margin-top: -2px;
-                        margin-bottom: 0;
-                        margin-right: 0;
-                        margin-left: 20px;
-                        font-family: $atkinsonmde;
-                        font-weight: 400;
-                        font-size: 10px;
-                        color: $darkbluemde;
-                    }
-                }
-
-                .bDownRight {
-                    display: flex;
-                    flex-direction: column;
-                    flex-grow: 1;
                     align-items: center;
-                    justify-content: flex-end;
 
-                    .bRightButtonTag1 {
+
+                    .img_events_top {
+                        width: 100%;
+                        height: 75%;
+                        border-radius: 10px;
+                    }
+                }
+
+                .iconarrowblue {
+                    position: absolute;
+                    align-self: center;
+                    margin-top: 22%;
+                    margin-right: 10px;
+                    right: 6%;
+
+                }
+
+
+
+                //MITAD DE ABAJO
+
+
+                .bigDownContainer {
+                    display: flex;
+                    flex-direction: row;
+                    align-content: space-between;
+                    margin-top: -30%;
+                    height: 80%;
+                    width: 100%;
+                    background-color: $orangemde;
+                    border-bottom-left-radius: 10px;
+                    border-bottom-right-radius: 10px;
+
+                    .bDownLeft {
                         display: flex;
                         flex-direction: column;
-                        justify-content: center;
-                        background-color: $lightbluemde;
-                        border-top-left-radius: 10px;
-                        border-bottom-left-radius: 10px;
-                        border-top-right-radius: 10px;
-                        border-bottom-right-radius: 10px;
-                        height: 20px;
-                        margin-bottom: 15px;
+                        flex-grow: 1;
 
-                        .bTagText1 {
+
+                        .bLeftEventType {
+                            align-self: flex-start;
+                            margin-top: 10px;
+                            margin-bottom: 0;
+                            margin-right: 0;
+                            margin-left: 20px;
                             font-family: $atkinsonmde;
-                            font-size: 9px;
-                            color: $darkbluemde;
-                            font-weight: lighter;
-                            margin-left: 10px;
-                            margin-right: 10px;
+                            font-size: 12px;
+                            font-weight: 400;
+                            color: $creammde;
+                        }
+
+                        .bLeftEventTitle {
+                            width: 90%;
+                            align-self: flex-start;
+                            margin-top: 0;
+                            margin-bottom: 0;
+                            margin-right: 0;
+                            margin-left: 20px;
+                            font-family: $atkinsonmde;
+                            font-size: 15px;
+                            font-weight: 600;
+                            color: $creammde;
+                            text-align: left;
+                        }
+
+                        .time_main_container_events {
+                            display: flex;
+                            flex-direction: row;
+                            margin-bottom: 10px;
+
+                            .bLeftEventTime {
+                                align-self: flex-start;
+                                margin-bottom: 0;
+                                margin-right: 0;
+                                margin-left: 20px;
+                                font-family: $atkinsonmde;
+                                font-size: 10px;
+                                font-weight: 400;
+                                color: $creammde;
+                            }
+
+                            .bLeftEventDate {
+                                align-self: flex-start;
+
+                                margin-bottom: 1px;
+                                margin-right: 0;
+                                margin-left: 20px;
+                                font-family: $atkinsonmde;
+                                font-weight: 400;
+                                font-size: 10px;
+                                color: $creammde;
+                            }
+
                         }
                     }
 
-                    .bRightButtonTag2 {
+                    .bDownRight {
                         display: flex;
                         flex-direction: column;
                         justify-content: center;
-                        background-color: $lightbluemde;
-                        border-top-left-radius: 10px;
-                        border-bottom-left-radius: 10px;
-                        border-top-right-radius: 10px;
-                        border-bottom-right-radius: 10px;
-                        height: 20px;
-                        margin-bottom: 15px;
+                        margin-top: 1px;
+                        margin-right: 2%;
+                        width: 40%;
 
-                        .bTagText2 {
-                            font-family: $atkinsonmde;
-                            font-size: 9px;
-                            color: $darkbluemde;
-                            font-weight: lighter;
-                            margin-left: 10px;
-                            margin-right: 10px;
+                        .bRightButtonTag1 {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-self: flex-end;
+                            margin-bottom: -10%;
+                            margin-right: 5%;
 
+                            .bTagText1 {
+                                font-family: $atkinsonmde;
+                                font-size: 9px;
+                                color: $darkbluemde;
+                                font-weight: lighter;
+                                background-color: $lightbluemde;
+                                border-radius: 10px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 3px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                            }
+                        }
+
+                        .bRightButtonTag2 {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-self: flex-end;
+                            margin-bottom: -10%;
+                            margin-right: 5%;
+
+                            .bTagText2 {
+                                font-family: $atkinsonmde;
+                                font-size: 9px;
+                                color: $darkbluemde;
+                                font-weight: lighter;
+                                background-color: $lightbluemde;
+                                border-radius: 10px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 3px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+
+                            }
+                        }
+
+                        .bRightButtonTag3 {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-self: flex-end;
+                            margin-bottom: -10%;
+                            margin-right: 5%;
+
+                            .bTagText3 {
+                                font-family: $atkinsonmde;
+                                font-size: 9px;
+                                color: $darkbluemde;
+                                font-weight: lighter;
+                                background-color: $lightbluemde;
+                                border-radius: 10px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 3px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                            }
+                        }
+
+                        .bRightButtonTag4 {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-self: flex-end;
+                            margin-right: 5%;
+
+
+                            .bTagText4 {
+                                font-family: $atkinsonmde;
+                                font-size: 9px;
+                                color: $darkbluemde;
+                                font-weight: lighter;
+                                background-color: $lightbluemde;
+                                border-radius: 10px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 3px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+
+                            }
                         }
                     }
-
                 }
             }
 
