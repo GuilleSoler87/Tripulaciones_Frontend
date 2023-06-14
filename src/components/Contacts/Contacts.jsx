@@ -102,7 +102,8 @@ const Contacts = () => {
   };
 
   const handleFilterContacts = () => {
-    filterByContact(true);
+    filterByContact(toggleContacts);
+    setToggleContacts(!toggleContacts);
   };
 
   const extractFilePathFromImage = (path) => {
@@ -171,7 +172,12 @@ const Contacts = () => {
           <div className="titleAndButtonContainer">
             <h1>Contactos</h1>
             <button onClick={handleFilterContacts}>
-              <MdStar className="filterFavouriteButton" />
+              {/* <MdStar className="filterFavouriteButton" /> */}
+              {toggleContacts ? (
+                <MdStar className="filterFavouriteButton" />
+              ) : (
+                <MdStarBorder className="filterFavouriteButton" />
+              )}
             </button>
           </div>
           <div className="searchBar">
@@ -193,7 +199,7 @@ const Contacts = () => {
         {/* {user.contacts && contactsList}
         {!user.contacts && noContactsDisplay} */}
         {filteredUsers && contactsList}
-        {!filteredUsers && noContactsDisplay}
+        {filteredUsers.length === 0 ? noContactsDisplay : null}
       </div>
       <Footer
         activeComponent={activeComponent}
