@@ -33,7 +33,6 @@ export const EventProvider = ({ children }) => {
     const getEventId = async (id) => {
         try {
             const res = await axios.get(API_URL + '/events/getEventById/' + id);
-            console.log("respuesta del servidor por axios", res);
             dispatch({
                 type: 'GET_EVENT_ID',
                 payload: res.data,
