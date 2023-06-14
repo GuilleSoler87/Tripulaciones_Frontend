@@ -8,6 +8,24 @@
   width: 435px;
   .imageContainer {
     height: 180px;
+    position: relative;
+    .editButton {
+      position: absolute;
+      top: 140px;
+      left: 385px;
+      background-color: $darkbluemde;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .editIcon {
+        color: #FFFFFF;
+        font-size: 16px;
+      }
+    }
     .profileImageContainer {
       position: relative;
       top: -100px;

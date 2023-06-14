@@ -7,6 +7,8 @@ import Header from "../Header/Header";
 import noPic from "../../../src/images/no_pic.png";
 import noBgPic from "../../../src/images/no_bg_pic.png";
 import progressBar from "../../../src/images/medallas.png";
+import { FaPencilAlt } from "react-icons/fa";
+
 
 const Profile = () => {
   const { user, getUser } = useContext(UserContext);
@@ -55,6 +57,9 @@ const Profile = () => {
                 : noBgPic
             }
           />
+          <button className="editButton" onClick={() => navigate("/editprofile")}>
+            <FaPencilAlt className="editIcon" />
+          </button>
           <div className="profileImageContainer">
             <img
               className="profileImage"
