@@ -10,8 +10,14 @@ import { MdStar, MdStarBorder } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 
 const Contacts = () => {
-  const { user, getUser, makeContactFavourite, filterByUsername } =
-    useContext(UserContext);
+  const {
+    user,
+    users,
+    getUser,
+    getAllUsers,
+    filterByUsername,
+    addContact,
+  } = useContext(UserContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [activeComponent, setActiveComponent] = useState("Contacts");
@@ -22,11 +28,12 @@ const Contacts = () => {
   useEffect(() => {
     async function fetchData() {
       await getUser();
+      await getAllUsers();
       setLoading(false); // Set loading to false when data has been loaded
     }
     fetchData();
     setTimeout(() => {
-      setActiveComponent('Contacts');
+      setActiveComponent("Contacts");
     }, 100);
   }, []);
 
@@ -63,6 +70,8 @@ const Contacts = () => {
     );
   }
 
+  const userContactList = user.contacts.map((x) => x._id);
+
   const handleInputChange = (event) => {
     setData({
       ...data,
@@ -80,8 +89,8 @@ const Contacts = () => {
     filterByUsername(data.username);
   };
 
-  const handleMakeFavourite = (userId) => {
-    makeContactFavourite(userId);
+  const handleAddContact = (userId) => {
+    addContact(userId);
     setTimeout(() => {
       getUser();
     }, 500);
@@ -113,38 +122,70 @@ const Contacts = () => {
 
   const contactsList = (
     <div className="contactsList">
-      {user.contacts.map((item) => {
-        if (!item.userId.img) {
-          item.userId.img = noPic;
-        } else {
-          item.userId.img = extractFilePathFromImage(item.userId.img);
-        }
-        if (!item.userId.cargo) {
-          item.userId.cargo = "Estudiante";
-        }
+      {users.map((item) => {
+        const isContact = userContactList.includes(item._id);
         return (
           <div className="contactCard">
             <button
               className="favourite"
-              onClick={() => handleMakeFavourite(item.userId._id)}
+              onClick={() => handleAddContact(item._id)}
             >
-              {item.favourite ? (
+              {isContact ? (
                 <MdStar className="favouriteButton" />
               ) : (
                 <MdStarBorder className="favouriteButton" />
               )}
             </button>
             <div className="contactImage">
-              <img src={item.userId.img} />
+              <img src={item.img ? extractFilePathFromImage(item.img) : noPic} />
             </div>
-            <p className="contactUsername">{item.userId.username}</p>
-            <p className="contactPosition">{item.userId.cargo}</p>
-            <button className="seeProfile" onClick={() => navigate(`/otherprofile/${item.userId._id}`)}>Ver perfil</button>
+            <p className="contactUsername">{item.username}</p>
+            <p className="contactPosition">{item.cargo ? item.cargo : "Estudiante"}</p>
+            <button
+              className="seeProfile"
+              onClick={() => navigate(`/otherprofile/${item._id}`)}
+            >
+              Ver perfil
+            </button>
           </div>
         );
       })}
     </div>
   );
+  // const contactsList = (
+  //   <div className="contactsList">
+  //     {user.contacts.map((item) => {
+  //       if (!item.userId.img) {
+  //         item.userId.img = noPic;
+  //       } else {
+  //         item.userId.img = extractFilePathFromImage(item.userId.img);
+  //       }
+  //       if (!item.userId.cargo) {
+  //         item.userId.cargo = "Estudiante";
+  //       }
+  //       return (
+  //         <div className="contactCard">
+  //           <button
+  //             className="favourite"
+  //             onClick={() => handleMakeFavourite(item.userId._id)}
+  //           >
+  //             {item.favourite ? (
+  //               <MdStar className="favouriteButton" />
+  //             ) : (
+  //               <MdStarBorder className="favouriteButton" />
+  //             )}
+  //           </button>
+  //           <div className="contactImage">
+  //             <img src={item.userId.img} />
+  //           </div>
+  //           <p className="contactUsername">{item.userId.username}</p>
+  //           <p className="contactPosition">{item.userId.cargo}</p>
+  //           <button className="seeProfile" onClick={() => navigate(`/otherprofile/${item.userId._id}`)}>Ver perfil</button>
+  //         </div>
+  //       );
+  //     })}
+  //   </div>
+  // );
 
   return (
     <>
@@ -177,7 +218,10 @@ const Contacts = () => {
         {user.contacts && contactsList}
         {!user.contacts && noContactsDisplay}
       </div>
-      <Footer activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
+      <Footer
+        activeComponent={activeComponent}
+        setActiveComponent={setActiveComponent}
+      />
     </>
   );
 };

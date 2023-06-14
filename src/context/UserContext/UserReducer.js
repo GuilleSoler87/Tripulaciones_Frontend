@@ -21,6 +21,13 @@ const users = (state, action) => {
         message: "",
       };
 
+    case "GET_ALL_USERS":
+      return {
+        ...state,
+        users: action.payload,
+        message: "",
+      };
+
     case "LOGOUT":
       return {
         ...state,
