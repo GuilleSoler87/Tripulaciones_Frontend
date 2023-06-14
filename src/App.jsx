@@ -52,7 +52,7 @@ function App() {
                       <Route path="/homeTab" element={<HomeTab />} />
                       <Route path="/menu" element={<Menu />} />
                       <Route path="/events" element={<Events />} />
-                      <Route path="/eventSingle" element={<EventSingle />} />
+                      <Route path="/getEventById/:_id" element={<EventSingle />} />
                       <Route path="/contacts" element={<Contacts />} />
                       <Route path="/notification" element={<Notification />} />
                       <Route path="/profile" element={<Profile />} />

@@ -9,16 +9,30 @@
     flex-direction: column;
     align-items: center;
     background-color: $creammde;
-
+    width: 100vw;
+    height: 100vh;
+    
     .eventPic {
         display: flex;
         width: 100%;
         height: 37vh;
         margin-top: 30.8%;
-        background-image: url('/src/images/EventSingle_1.png');
         background-size: auto;
         background-position: center;
         background-repeat: no-repeat;
+    }
+    .return_to_events_button {
+        background-color: rgba(0, 67, 104, 1);
+        border-radius: 50%;
+        width: 5.3%;
+        margin-top: 36%;
+        padding: 1%;
+        z-index: 2;
+        position: absolute;
+        display: flex;
+        padding-left: 2%;
+        margin-left: -77%;
+
     }
 
     .eventPicFooter {
@@ -64,46 +78,45 @@
 
         .bodyHeaderMain {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: space-between;
 
-            .headerMainLeft {
-                display: flex;
-                flex-direction: column;
-
-                .eventType {
-                    align-self: flex-start;
-                    font-family: $atkinsonmde;
-                    font-size: 18px;
-                    color: $darkbluemde;
-                    font-weight: 500;
-                    margin-top: 8%;
-                    margin-bottom: 0%;
-                    margin-left: 0%;
-                    margin-right: 0%;
-                }
-
-                .eventTitle {
-                    align-self: flex-start;
-                    line-height: normal;
-                    font-family: $atkinsonmde;
-                    font-size: 29px;
-                    color: $darkbluemde;
-                    font-weight: 600;
-                    margin-top: -8%;
-                    margin-bottom: 0%;
-                    margin-left: 0%;
-                    margin-right: 0%;
-
-                }
-            }
-
-            .headerMainRight {
+            .head_event_single_desing {
                 display: flex;
                 flex-direction: row;
-                justify-content: center;
-                align-content: center;
+                gap:3%;
+                .headerMainLeft {
+                    display: flex;
+                    flex-direction: column;
+                    width: 75%;
+                    
+                    .eventType {
+                        align-self: flex-start;
+                        font-family: $atkinsonmde;
+                        font-size: 18px;
+                        color: $darkbluemde;
+                        font-weight: 500;
+                        margin-top: 4%;
+                        margin-bottom: 0%;
+                        margin-left: 0%;
+                        margin-right: 0%;
+                    }
 
+                    .eventTitle {
+                        align-self: flex-start;
+                        line-height: normal;
+                        font-family: $atkinsonmde;
+                        text-align: left;
+                        font-size: 26px;
+                        color: $darkbluemde;
+                        font-weight: 600;
+                        margin-top: 0;
+                        margin-bottom: 0%;
+                        margin-left: 0%;
+                        margin-right: 0%;
+                        width: 94%;
+                    }
+                }
 
                 .mainButton {
                     display: flex;
@@ -127,46 +140,27 @@
                     }
                 }
             }
-            
-        }
-        .bodyContentMain {
-            display: inline;
-            margin-top: -10px;
-           
-            .bodyContentText1 {
+
+            .bodyContentMain {
+                display: inline;
                 margin-top: 25px;
                 font-family: $atkinsonmde;
                 font-size: 15px;
                 text-align: justify;
                 color: $blackmde;
                 font-weight: 400;
-                line-height: 20px;
-                word-spacing: -2px;
+                line-height: 20px;                
+                text-align: left;
+                width: 100%;
+                margin-bottom: 6%;
             }
-            .bodyContentText2 {
-                margin-top: -10px;
-                font-family: $atkinsonmde;
-                font-size: 15px;
-                text-align: justify;
-                color: $blackmde;
-                font-weight: 400;
-                line-height: 20px;
-                word-spacing: -2px;
-            }
-            .bodyContentText3 {
-                 margin-top: -10px;
-                font-family: $atkinsonmde;
-                font-size: 15px;
-                text-align: justify;
-                color: $blackmde;
-                font-weight: 400;
-                line-height: 20px;
-                word-spacing: -2px;
-            }
+
         }
 
 
-        
+
+
+
         .bodyFooterUp {
             display: flex;
             flex-direction: row;
@@ -186,7 +180,7 @@
                 font-size: 13px;
                 color: $darkbluemde;
                 font-weight: 400;
-               
+
             }
         }
 
@@ -211,7 +205,7 @@
                 font-weight: 400;
             }
         }
-        
+
     }
 
 }

@@ -1,57 +1,95 @@
-import React from 'react'
-import "./EventSingle.scss";
+import React, { useContext, useEffect, useState } from 'react';
+import './EventSingle.scss';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-
+import ButtonShare from '../../images/share_notices_button.png';
+import PointsImg from '../../images/points_horWhite.png';
+import { useNavigate, useParams } from 'react-router-dom';
+import { EventContext } from '../../context/EventContext/EventState';
+import BackButton from '../../images/icon_return_back.png';
 
 const EventSingle = () => {
+  const { _id } = useParams();
+  const navigate = useNavigate();
+  const { getEventId, event, token } = useContext(EventContext);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      await getEventId(_id);
+      setLoading(false); // Set loading to false when data has been loaded
+    }
+    fetchData();
+  }, []);
+
+  const handleButtonClick = () => {
+    navigate('/events');
+  };
+
+  const renderImage = () => {
+    if (!event || !event.img) {
+      return null; // Si no hay evento o no hay imagen, no se muestra nada
+    }
+  
+    try {
+      return (
+        <img
+          src={`https://desafio-backend-production.up.railway.app/events/${event.img}`}
+          alt={event.event_name}
+          className='img_events_top'
+        />
+      );
+    } catch (error) {
+      // Manejar el error
+      console.error(error);
+      return null; // Otra opción es mostrar una imagen de error o un mensaje alternativo
+    }
+  };
+  
+
   return (
     <>
       <Header />
 
-
       <div className='singleEventMain'>
-
-        <div className='eventPic'></div>
+        <div className='return_to_events_button' onClick={handleButtonClick}>
+          <img src={BackButton} className='userimgcomm' alt='user_img_comment' />
+        </div>
+        <div className='eventPic'>{renderImage()}</div>
 
         <div className='eventPicFooter'>
-          <p className='picFooterText'>Auditorio Paco Pons - EDEM</p>
+          <p className='picFooterText'>{event.place}</p>
           <div className='picFooterIcon'>
-            <img src="./src/images/icon_share.png" alt="Compartir" />
+            <img src={ButtonShare} alt='Compartir' />
           </div>
         </div>
 
         <div className='dotsOverlay'>
-          <img src="./src/images/points_horWhite.png" alt="Puntos" />
-
+          <img src={PointsImg} alt='Puntos' />
         </div>
 
         <div className='eventBodyMain'>
           <div className='bodyHeaderMain'>
-            <div className='headerMainLeft'>
-              <p className='eventType'>Charla</p>
-              <p className='eventTitle'>Juan Roig</p>
-            </div>
-            <div className='headerMainRight'>
-              <div className='mainButton'>
+            <div className='head_event_single_desing'>
+              <div className='headerMainLeft'>
+                <p className='eventType'>Evento</p>
+                <p className='eventTitle'>{event.event_name}</p>
+              </div>
 
-              <p className='mainButtonText'>Asistiré</p>
+              <div className='mainButton'>
+                <p className='mainButtonText'>Asistiré</p>
               </div>
             </div>
-          </div>
-          <div className='bodyContentMain'>
-            <p className='bodyContentText1'>El próximo martes 6 de junio, nuestro querido Juan Roig vendrá a las instalaciones de EDEM para hablarnos sobre emprendimiento. </p>
-            
-            <p className='bodyContentText2'>Es una charla dedicada especialmente para los alumnos de primero de grado, pero todos sois bienvenidos. </p>
-
-            <p className='bodyContentText3'>Hablaremos de la expansión que está teniendo Mercadona, las empresas imlicadas en el proceso y cómo ha ido evolucionando en estos últimos años. </p>
+            <div className='bodyContentMain'>{event.description}</div>
           </div>
           <div className='bodyFooterUp'>
-            <p className='footerUpTime'>17:00h</p>
-            <p className='footerUpAsistentes'><strong>43</strong> asistentes</p>
+            <p className='footerUpTime'>{event.time?.slice(11, 16)}h</p>
+            <p className='footerUpAsistentes'>
+              <strong>43</strong> asistentes
+            </p>
           </div>
           <div className='bodyFooterDown'>
-            <p className='footerDownDate'>Martes 6 de junio de 2023</p>
+            <p className='footerDownDate'>{event.time ? new Date(event.time).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }).charAt(0).toUpperCase() + new Date(event.time).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }).slice(1) : ''}</p>
             <p className='footerDownInscritos'><strong>112</strong> inscritos online</p>
           </div>
 
