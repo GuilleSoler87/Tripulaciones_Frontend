@@ -11,8 +11,9 @@ import BackButton from '../../images/icon_return_back.png';
 const EventSingle = () => {
   const { _id } = useParams();
   const navigate = useNavigate();
-  const { getEventId, event, token } = useContext(EventContext);
+  const { getEventId, event, likeEvent, token } = useContext(EventContext);
   const [loading, setLoading] = useState(true);
+  const [liked, setLiked] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -26,11 +27,21 @@ const EventSingle = () => {
     navigate('/events');
   };
 
+  const handleButtoninscription = async (eventId) => {
+    if (!liked) {
+      await likeEvent(eventId);
+      setLiked(true); // Actualizar el estado de liked a true después de la inscripción
+      setTimeout(() => {
+        navigate('/maincalendar'); // Navegar a /maincalendar después de 2 segundos
+      }, 2000);
+    }
+  };
+
   const renderImage = () => {
     if (!event || !event.img) {
       return null; // Si no hay evento o no hay imagen, no se muestra nada
     }
-  
+
     try {
       return (
         <img
@@ -45,7 +56,7 @@ const EventSingle = () => {
       return null; // Otra opción es mostrar una imagen de error o un mensaje alternativo
     }
   };
-  
+
 
   return (
     <>
@@ -76,8 +87,8 @@ const EventSingle = () => {
                 <p className='eventTitle'>{event.event_name}</p>
               </div>
 
-              <div className='mainButton'>
-                <p className='mainButtonText'>Asistiré</p>
+              <div className={`mainButton ${liked ? 'liked_notices' : ''}`} onClick={() => handleButtoninscription(event._id)}>
+                <p className='mainButtonText'>{liked ? 'Inscrito' : 'Asistiré'}</p>
               </div>
             </div>
             <div className='bodyContentMain'>{event.description}</div>
