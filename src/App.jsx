@@ -26,6 +26,7 @@ import Events from "./components/Events/Events";
 import EventSingle from "./components/EventSingle/EventSingle";
 import MdENoticesSingle from "./components/MdENoticesSingle/MdENoticesSingle";
 import MainCalendar from "./components/MainCalendar/MainCalendar";
+import EditProfile from "./components/EditProfile/EditProfile";
 
 function App() {
   return (

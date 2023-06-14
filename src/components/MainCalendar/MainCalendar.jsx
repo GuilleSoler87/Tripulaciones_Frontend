@@ -26,9 +26,9 @@ const MainCalendar = () => {
                     <div className='calendar_top_header'>
                         <p className="my_events_title">Mis Eventos</p>
                         <div className="tipImgContainer_calendar">
-                            <Link to="/events" className="go_back_to_events_calendar" onClick={handleCalendarClick}>
+                            <div className="go_back_to_events_calendar" onClick={handleCalendarClick}>
                                 <img src={CalendarImgActive} alt="Calendario" className="img_calendar_active" />
-                            </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
