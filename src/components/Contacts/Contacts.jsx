@@ -117,7 +117,7 @@ const Contacts = () => {
   };
 
   const extractFilePathFromImage = (path) => {
-    const url = "https://desafio-backend-production.up.railway.app/";
+    const url = "https://desafio-backend-production.up.railway.app/users/";
     return url + path.replace("uploads/", "");
   };
 
