@@ -30,9 +30,10 @@ const Notification = () => {
     <>
       <Header />
       <div className="main_notificationContainer">
-        <NotificationsScroll />
+        <div className="main_scrollContainer">
+          <NotificationsScroll />
+        </div>
       </div>
-
       <Footer activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
     </>
   );

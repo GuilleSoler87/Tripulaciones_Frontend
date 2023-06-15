@@ -2,8 +2,11 @@
 
 .main_notificationContainer {
   background-color: $backcolormde;
-  margin-bottom: 17%;
+  margin-bottom: 37%;
   height: 100vh;
 
-  
+  .main_scrollContainer {
+    background-color: $backcolormde;
+  }
+
 }
