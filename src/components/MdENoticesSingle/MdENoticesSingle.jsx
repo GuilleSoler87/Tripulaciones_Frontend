@@ -9,6 +9,7 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import SendButton from "../../images/send_button.png"
 import BackButton from "../../images/icon_return_back.png"
+import noPic from "../../../src/images/no_pic.png";
 
 
 const MdENoticesSingle = () => {
@@ -138,7 +139,7 @@ const MdENoticesSingle = () => {
                                 </div>
                                 <div className="body_user_comment_profile">
                                     <div className="user_img_profile_comments">
-                                        <img src={"https://desafio-backend-production.up.railway.app/users/" + comment.userId.img} className="userimgcomm" alt="user_img_comment" />
+                                        <img src={comment.userId.img ? formatImageCommentsURL(comment.userId.img) : noPic} className="userimgcomm" alt="user_img_comment" />
                                     </div>
                                     <p className="body_text_comments">{comment.body}</p>
                                 </div>
