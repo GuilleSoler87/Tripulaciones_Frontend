@@ -121,8 +121,8 @@ Disponibilidad del tablero depende del creador del grupo de trabajo, ya que est�
 # Herramientas empleadas en el proyecto (TOOLSET) ⚙️
 [⬆️](#índice)
 
->* [*TRELLO*](https://trello.com/) - Planificador de tareas (Versión: no disponible)
->* [*POSTMAN*](https://www.postman.com/) - Software para probar y documentar endpoints (Versión: 10.13.5)
+>* [*Sass *](https://sass-lang.com/) - Framework CSS (Versión: 1.62.1)
+>* [*Axios *](https://www.npmjs.com/package/axios) - Librería JavasCript que nos permite realizar peticiones a un servidor (Versión: 1.4.0)
 >* [*SWAGGER*](https://swagger.io/) - Plataforma de documentación de API's (Versión: 4.6.2)
 >* [*VISUAL STUDIO CODE*](https://code.visualstudio.com/) - Editor de código (Versión: 1.75.1)
 >* [*NodeJS*](https://code.visualstudio.com/) - Entorno de ejecución para crear servidores en backend (Versión: 18.15.0)
