@@ -44,14 +44,25 @@ Disponibilidad del tablero depende del creador del grupo de trabajo, ya que est�
 # VISTAS
 ## Login
 >Secuencia de vistas que incluye. Por orden:
->- [X] Pantalla de splash!
->- [X] Vista de LOGIN con triple factor de autenticación (mail + contraseña + captcha)
->- [X] Vista de recuperación de contraseña
->- [X] Vista de confirmación de correo electrónico
+>- [X] Pantalla de splash!.
+>- [X] Vista de LOGIN con triple factor de autenticación (mail + contraseña + captcha).
+>- [X] Vista de recuperación de contraseña.
+>- [X] Vista de confirmación de correo electrónico.
 >- [X] Vista de bloqueo temporal de pantalla login con desactivación de botón.
 
 ![](./assets/View_Login.jpg)
 ***
+## Acceso usuarios
+>Secuencia de vistas que incluye. Por orden:
+>- [X] Pantalla de bienvenida.
+>- [X] Vista de TAGS para configurar perfil usuario.
+>- [X] Vista de información de algoritmo inteligente.
+>- [X] Vista de información de "match" de usuarios,eventos e intereses.
+>- [X] Vista para informar de la edición de perfil
+
+![](./assets/View_Splash.jpg)
+***
+
 # Herramientas empleadas en el proyecto (TOOLSET) ⚙️
 [⬆️](#índice)
 
