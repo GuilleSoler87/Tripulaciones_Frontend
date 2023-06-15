@@ -62,7 +62,7 @@ Disponibilidad del tablero depende del creador del grupo de trabajo, ya que est�
 
 ![](./assets/View_Splash.jpg)
 ***
-## HOME (Noticias - Tablón de anucios)
+## HOME (Noticias - Tablón de anuncios)
 >Secuencia de vistas que incluye. Por orden:
 >- [X] Menú diario de la cafetería del complejo Marina de Empresas.
 >- [X] Vista (tab izquierdo) de la home de NOTICIAS.
@@ -71,6 +71,14 @@ Disponibilidad del tablero depende del creador del grupo de trabajo, ya que est�
 >- [X] Vista detalle del anuncio del tablón seleccionado.
 
 ![](./assets/View_Noticias.jpg)
+***
+## EVENTOS
+>Secuencia de vistas que incluye. Por orden:
+>- [X] Vista general del menú eventos.
+>- [X] Vista detalle del EVENTO seleccionado.
+>- [X] Vista calendario de eventos.
+
+![](./assets/View_Eventos.jpg)
 ***
 ## CONTACTOS
 >Secuencia de vistas que incluye. Por orden:
@@ -90,19 +98,26 @@ Disponibilidad del tablero depende del creador del grupo de trabajo, ya que est�
 
 ## CHAT
 >Secuencia de vistas que incluye. Por orden:
->- [X] Menú diario de la cafetería del complejo Marina de Empresas.
->- [X] Vista (tab izquierdo) de la home de NOTICIAS.
->- [X] Vista detalle de la NOTICIA seleccionada.
->- [X] Vista (tab derecho) de la home de TABLÓN DE ANUNCIOS
->- [X] Vista detalle del anuncio del tablón seleccionado.
+>- [X] Vista (tab izquierdo) general de conversaciones individuales.
+>- [X] Vista (tab derecho) general de conversaciones grupales.
+>- [X] Vista detalle del chat.
+>- [X] Vista del chat para un usuario bloqueado.
+>- [X] Vista detalle sugerencia inicio de chat.
 
 ![](./assets/View_Chat.jpg)
 ***
 
+## NOTIFICACIONES
+>Secuencia de vistas que incluye. Por orden:
+>- [X] Vista general de las notificaciones.
+>- [X] Vista menú deslizante con opciones "eliminar" y "marcar como vista"
+>- [X] Vista detalle de una notificación eliminada.
+>- [X] Vista detalle de la lista de notificaciones tras eliminar una.
+>- [X] Vista detalle de una notificación marcada como "vista".
 
-
-
+![](./assets/View_Notificaciones.jpg)
 ***
+
 # Herramientas empleadas en el proyecto (TOOLSET) ⚙️
 [⬆️](#índice)
 
