@@ -3,15 +3,15 @@ import { useNavigate } from "react-router-dom";
 import "./Notification.scss";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import Notification1 from "../../../src/images/notifications/Card_horizontales1.png";
-import Notification2 from "../../../src/images/notifications/Card_horizontales2.png";
-import Notification3 from "../../../src/images/notifications/Card_horizontales3.png";
-import Notification4 from "../../../src/images/notifications/Card_horizontales4.png";
-import Notification5 from "../../../src/images/notifications/Card_horizontales5.png";
-import Notification6 from "../../../src/images/notifications/Card_horizontales6.png";
-import Notification7 from "../../../src/images/notifications/Card_horizontales7.png";
-import Notification8 from "../../../src/images/notifications/Card_horizontales8.png";
-import Notification9 from "../../../src/images/notifications/Card_horizontales9.png";
+import Notification1 from "../../images/Card_horizontales.png";
+import Notification2 from "../../images/Card_horizontales2.png";
+import Notification3 from "../../images/Card_horizontales3.png";
+import Notification4 from "../..//images/Card_horizontales4.png";
+import Notification5 from "../../images/Card_horizontales5.png";
+import Notification6 from "../../images/Card_horizontales6.png";
+import Notification7 from "../../images/Card_horizontales7.png";
+import Notification8 from "../../images/Card_horizontales8.png";
+import Notification9 from "../../images/Card_horizontales9.png";
 
 const Notification = () => {
   const [activeComponent, setActiveComponent] = useState("Notifications");
