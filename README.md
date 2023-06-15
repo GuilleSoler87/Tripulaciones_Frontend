@@ -62,6 +62,16 @@ Disponibilidad del tablero depende del creador del grupo de trabajo, ya que est�
 
 ![](./assets/View_Splash.jpg)
 ***
+## Menú HOME (Noticias - Tablón de eventos)
+>Secuencia de vistas que incluye. Por orden:
+>- [X] Menú diario de la cafetería del complejo Marina de Empresas.
+>- [X] Vista (tab izquierdo) de la home de NOTICIAS.
+>- [X] Vista detalle de la NOTICIA seleccionada.
+>- [X] Vista (tab derecho) de la home de TABLÓN DE ANUNCIOS
+>- [X] Vista detalle del anuncio del tablón seleccionado.
+
+![](./assets/View_Noticias.jpg)
+***
 
 # Herramientas empleadas en el proyecto (TOOLSET) ⚙️
 [⬆️](#índice)
