@@ -123,18 +123,11 @@ Disponibilidad del tablero depende del creador del grupo de trabajo, ya que est�
 
 >* [*Sass *](https://sass-lang.com/) - Framework CSS (Versión: 1.62.1)
 >* [*Axios *](https://www.npmjs.com/package/axios) - Librería JavasCript que nos permite realizar peticiones a un servidor (Versión: 1.4.0)
->* [*SWAGGER*](https://swagger.io/) - Plataforma de documentación de API's (Versión: 4.6.2)
+>* [*Vitejs *](https://es.vitejs.dev) - Vitejs es una herramienta de compilación que tiene como objetivo proporcionar una experiencia de desarrollo más rápida y ágil para proyectos web modernos en React (Versión: 4.6.2)
 >* [*VISUAL STUDIO CODE*](https://code.visualstudio.com/) - Editor de código (Versión: 1.75.1)
->* [*NodeJS*](https://code.visualstudio.com/) - Entorno de ejecución para crear servidores en backend (Versión: 18.15.0)
->* [*Nodemon*](https://www.npmjs.com/package/nodemon/) - Herramienta para desarrollo que levanta el servidor automáticamente tras cada cambio realizado en el código (Versión: 18.15.0)
->* [*MONGODB*](https://www.mongodb.com//) - Gestor de base de datos (Versión: 6.0)
->* [*MONGOOSE*](https://mongoosejs.com/) - Herramienta de modelado de objetos para Node Js (Versión: 7.0.4)
->* [*ATLAS (MONGODB)*](https://cloud.mongodb.com/) - Alojamiento de MONGODB para la/s base/s de datos empleando clústers (Versión: 6.0)
->* [*BCRYPT*](https://code.visualstudio.com/) - Dependencia para la encriptación y comprobación de contraseñas (Versión: 1.4.3)
->* [*JASON WEB TOKEN*](https://code.visualstudio.com/) - Dependencia para generar tokens de acceso (Versión: 9.0.0)
->* [*DOTENV*](https://code.visualstudio.com/) - Dependencia para establecer las variables globales y poder desplegar (Versión: 16.0.3)
->* [*VERCEL*](https://code.visualstudio.com/) - Plataforma para el despliegue del servidor(Versión: 1.75.1)
->* [*Live Server*](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) -Extension de Visual Studio para check durante la fase de desarrollo y en entorno local.
+>* [*React*](https://es.react.dev/reference/react) - Framework para creación interfaces frontend (-Versión: 18.2.0)
+>* [*React Dom*](https://es.legacy.reactjs.org/docs/react-dom.html) - Librería que se encarga de renderizr -dibujar- los componentes de React en el navegador. Nota: componente es cada elemento gráfico o parte de la interface (Versión: 18.2.0)
+
 
 ***
 # Autores ✒️
