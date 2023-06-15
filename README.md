@@ -62,7 +62,7 @@ Disponibilidad del tablero depende del creador del grupo de trabajo, ya que est�
 
 ![](./assets/View_Splash.jpg)
 ***
-## Menú HOME (Noticias - Tablón de anucios)
+## HOME (Noticias - Tablón de anucios)
 >Secuencia de vistas que incluye. Por orden:
 >- [X] Menú diario de la cafetería del complejo Marina de Empresas.
 >- [X] Vista (tab izquierdo) de la home de NOTICIAS.
@@ -72,7 +72,7 @@ Disponibilidad del tablero depende del creador del grupo de trabajo, ya que est�
 
 ![](./assets/View_Noticias.jpg)
 ***
-## Menú CONTACTOS
+## CONTACTOS
 >Secuencia de vistas que incluye. Por orden:
 >- [X] Vista principal de con resultado de contactos.
 >- [X] Vista notificación de lista de contactos vacía.
@@ -80,7 +80,7 @@ Disponibilidad del tablero depende del creador del grupo de trabajo, ya que est�
 
 ![](./assets/View_Contactos.jpg)
 ***
-## Menú PERFIL DEL USUARIO
+## PERFIL DEL USUARIO
 >Secuencia de vistas que incluye. Por orden:
 >- [X] Vista menú con opciones del perfil del usuario
 >- [X] Vista notificación de lista de contactos vacía.
@@ -88,7 +88,7 @@ Disponibilidad del tablero depende del creador del grupo de trabajo, ya que est�
 
 ![](./assets/View_Perfil.jpg)
 
-## Menú HOM--
+## CHAT
 >Secuencia de vistas que incluye. Por orden:
 >- [X] Menú diario de la cafetería del complejo Marina de Empresas.
 >- [X] Vista (tab izquierdo) de la home de NOTICIAS.
@@ -96,7 +96,7 @@ Disponibilidad del tablero depende del creador del grupo de trabajo, ya que est�
 >- [X] Vista (tab derecho) de la home de TABLÓN DE ANUNCIOS
 >- [X] Vista detalle del anuncio del tablón seleccionado.
 
-![](./assets/View_Noticias.jpg)
+![](./assets/View_Chat.jpg)
 ***
 
 
