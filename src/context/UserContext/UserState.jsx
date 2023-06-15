@@ -9,6 +9,7 @@ const initialState = {
   token: token ? token : null,
   user: user ? user : null,
   users: [],
+  filteredUsers: [],
   chats: [],
   message: "",
   logoutMessage: "",
@@ -81,6 +82,35 @@ export const UserProvider = ({ children }) => {
       dispatch({
         type: "GET_USER_INFO",
         payload: res.data,
+      });
+    } catch (error) {
+      console.error(error);
+      dispatch({
+        type: "GET_USER_INFO_ERROR",
+        payload: "Error al obtener la información del usuario.",
+      });
+    }
+  };
+
+  const getAllUsers = async () => {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const res = await axios.get(API_URL + "/users/getall", {
+        headers: {
+          Authorization: token,
+        },
+      });
+      const self = await axios.get(API_URL + "/users/getUser", {
+        headers: {
+          Authorization: token,
+        },
+      });
+      const usersWithoutSelf = res.data.filter(
+        (user) => user._id !== self.data._id
+      );
+      dispatch({
+        type: "GET_ALL_USERS",
+        payload: usersWithoutSelf,
       });
     } catch (error) {
       console.error(error);
@@ -186,32 +216,6 @@ export const UserProvider = ({ children }) => {
   //   }
   // };
 
-  const makeContactFavourite = async (contactId) => {
-    try {
-      const res = await axios.put(
-        API_URL + "/users/makecontactfavourite",
-        {
-          userId: contactId,
-        },
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-      dispatch({
-        type: "MAKE_CONTACT_FAVOURITE",
-        payload: res.data,
-      });
-    } catch (error) {
-      console.error(error);
-      dispatch({
-        type: "RECOVER_PASSWORD_ERROR",
-        payload: error.response.data.message,
-      });
-    }
-  };
-
   const filterByUsername = (pattern) => {
     try {
       dispatch({
@@ -223,24 +227,92 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const filterByContact = async (onlyContacts) => {
+    try {
+      dispatch({
+        type: "FILTER_BY_CONTACT",
+        payload: onlyContacts,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const update = async (userId, data) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const res = await axios.put(API_URL + "/users/update/" + userId, data, {
+        headers: {
+          Authorization: token,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const addContact = async (userId) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      await axios.post(
+        API_URL + "/users/addcontact/",
+        {
+          userId: userId,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const removeContact = async (userId) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      await axios.post(
+        API_URL + "/users/removecontact/",
+        {
+          userId: userId,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
         token: state.token,
         user: state.user,
+        users: state.users,
+        filteredUsers: state.filteredUsers,
         message: state.message,
         logoutMessage: state.logoutMessage,
         chats: state.chats,
         login,
         getUser,
         getUserById,
+        getAllUsers,
         getChatsFromUser,
         logout,
         turnOffMessage,
         recoverPassword,
         resetPassword,
-        makeContactFavourite,
         filterByUsername,
+        filterByContact,
+        update,
+        addContact,
+        removeContact,
       }}
     >
       {children}

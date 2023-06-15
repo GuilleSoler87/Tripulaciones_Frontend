@@ -10,6 +10,7 @@ import TabNotices from '../TabNotices/TabNotices';
 
 
 const HomeTab = () => {
+  const [activeComponent, setActiveComponent] = useState("HomeTab");
   const navigate = useNavigate();
 
   const handleMenuClick = () => {
@@ -21,6 +22,9 @@ const HomeTab = () => {
   };
 
   useEffect(() => {
+    setTimeout(() => {
+      setActiveComponent("HomeTab");
+    }, 100);
   }, []);
 
 
@@ -56,7 +60,10 @@ const HomeTab = () => {
 
 
       </div>
-      <Footer />
+      <Footer
+        activeComponent={activeComponent}
+        setActiveComponent={setActiveComponent}
+      />
     </>
   );
 };

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./OtherProfile.scss";
 import { UserContext } from "../../context/UserContext/UserState";
@@ -9,8 +9,8 @@ import noPic from "../../../src/images/no_pic.png";
 import noBgPic from "../../../src/images/no_bg_pic.png";
 
 const OtherProfile = () => {
-  const { user, getUserById } =
-    useContext(UserContext);
+  const { user, getUserById } = useContext(UserContext);
+  const [activeComponent, setActiveComponent] = useState("OtherProfile");
   const { _id } = useParams();
   const navigate = useNavigate();
 
@@ -18,6 +18,9 @@ const OtherProfile = () => {
 
   useEffect(() => {
     getUserById(_id);
+    setTimeout(() => {
+      setActiveComponent("OtherProfile");
+    }, 100);
   }, []);
 
   if (!user) {
@@ -28,7 +31,10 @@ const OtherProfile = () => {
           <div className="imageContainer"></div>
           <div className="profileInfoContainer"></div>
         </div>
-        <Footer />
+        <Footer
+          activeComponent={activeComponent}
+          setActiveComponent={setActiveComponent}
+        />
       </>
     );
   }
@@ -69,7 +75,7 @@ const OtherProfile = () => {
     );
 
     setTimeout(() => {
-      navigate(`/chat/${chatCreated.data.chat._id}`)
+      navigate(`/chat/${chatCreated.data.chat._id}`);
     }, 1000);
   };
 
@@ -123,7 +129,10 @@ const OtherProfile = () => {
           <div className="hobbiesContainer">{hobbiesDiv}</div>
         </div>
       </div>
-      <Footer />
+      <Footer
+        activeComponent={activeComponent}
+        setActiveComponent={setActiveComponent}
+      />
     </>
   );
 };

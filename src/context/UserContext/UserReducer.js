@@ -21,6 +21,14 @@ const users = (state, action) => {
         message: "",
       };
 
+    case "GET_ALL_USERS":
+      return {
+        ...state,
+        users: action.payload,
+        filteredUsers: action.payload,
+        message: "",
+      };
+
     case "LOGOUT":
       return {
         ...state,
@@ -81,15 +89,35 @@ const users = (state, action) => {
 
     case "FILTER_BY_USERNAME":
       const pattern = action.payload;
-      const contactsDeepCopy = [ ...state.contacts ];
-      const filteredContactsByUsername = contactsDeepCopy.filter((contact) =>
-        contact.userId.username.toLowerCase().includes(pattern.toLowerCase())
+      state.filteredUsers = state.users;
+      const filteredUsersByUsername = state.filteredUsers.filter((item) =>
+        item.username.toLowerCase().includes(pattern.toLowerCase())
       );
-
       return {
         ...state,
-        contacts: filteredContactsByUsername,
+        filteredUsers: filteredUsersByUsername,
       };
+
+    case "FILTER_BY_CONTACT":
+      state.filteredUsers = state.users;
+      const userContactList = state.user.contacts.map((x) => x._id);
+
+      if (action.payload) {
+        const filteredOnlyContacts = state.filteredUsers.filter((item) => {
+          const isContact = userContactList.includes(item._id);
+          if (isContact) {
+            return item;
+          }
+        });
+        return {
+          ...state,
+          filteredUsers: filteredOnlyContacts,
+        };
+      } else {
+        return {
+          ...state,
+        };
+      }
 
     default:
       return state;

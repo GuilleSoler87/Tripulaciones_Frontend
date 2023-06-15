@@ -7,8 +7,25 @@
   min-height: 740px;
   width: 435px;
   .imageContainer {
-    height: 250px;
-
+    height: 180px;
+    position: relative;
+    .editButton {
+      position: absolute;
+      top: 140px;
+      left: 385px;
+      background-color: $darkbluemde;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .editIcon {
+        color: #FFFFFF;
+        font-size: 16px;
+      }
+    }
     .profileImageContainer {
       position: relative;
       top: -100px;
@@ -25,6 +42,26 @@
       img {
         width: 188px;
       }
+    }
+  }
+  .gamingContainer {
+    .totalPoints {
+      color: $darkbluemde;
+      font-family: $atkinsonmde;
+      font-weight: 700;
+      font-size: 22px;
+      margin: 10px 0 0px 0;
+    }
+    .howTo {
+      font-family: $atkinsonmde;
+      font-weight: 400;
+      font-size: 13px;
+      color: #847c7b;
+      margin-top: 0px;
+      margin-bottom: 25px;
+    }
+    .progressBar {
+      margin-bottom: 10px;
     }
   }
   .profileInfoContainer {

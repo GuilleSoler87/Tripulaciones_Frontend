@@ -12,28 +12,41 @@
     top: 0;
     z-index: 2;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    height: 9vh;
+    height: 90px;
     width: 100%;
+    padding-top: 20px;
     background-color: $darkbluemde;
     .backArrow {
-      width: 8%;
+      width: 50px;
       span {
         color: $creammde;
       }
     }
     .receiverImage {
-      width: 15%;
+      width: 70px;
+      img {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%
+      };
     }
     .receiverUsername {
-      width: 77%;
       display: flex;
-      justify-content: left;
-      span {
-        margin-left: 10px;
+      flex-direction: column;
+      p {
+        margin: 0px 0px 0px 10px;
         color: $creammde;
         font-weight: 600;
+        text-align: left;
+      }
+      .receiverCargo {
+        margin: 3px 0px 0px 10px;
+        color: $creammde;
+        font-size: 12px;
+        font-weight: 400;
+        text-align: left;
       }
     }
   }
@@ -49,10 +62,18 @@
       padding: 1%;
       word-wrap: break-word;
       overflow-wrap: break-word;
+      display: flex;
+      .messageDiv {
+        max-width: 250px;
+      }
+      .timeDiv {
+        width: 50px;
+      }
       span {
         padding: 0 8px;
       }
       .textMessage {
+        margin: 0px 10px 0px 10px;
         text-align: left;
       }
     }
@@ -128,7 +149,7 @@
       align-items: center;
       gap: 10px;
       input {
-        width: 55%;
+        width: 60%;
         height: 40px;
         border: none;
         border-radius: 4px;

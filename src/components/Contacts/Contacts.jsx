@@ -10,10 +10,20 @@ import { MdStar, MdStarBorder } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 
 const Contacts = () => {
-  const { user, getUser, makeContactFavourite, filterByUsername } =
-    useContext(UserContext);
+  const {
+    user,
+    filteredUsers,
+    getUser,
+    getAllUsers,
+    filterByUsername,
+    filterByContact,
+    addContact,
+    removeContact,
+  } = useContext(UserContext);
+
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [toggleContacts, setToggleContacts] = useState(true);
   const [activeComponent, setActiveComponent] = useState("Contacts");
   const [data, setData] = useState({
     username: "",
@@ -22,13 +32,23 @@ const Contacts = () => {
   useEffect(() => {
     async function fetchData() {
       await getUser();
+      await getAllUsers();
       setLoading(false); // Set loading to false when data has been loaded
     }
     fetchData();
     setTimeout(() => {
-      setActiveComponent('Contacts');
+      setActiveComponent("Contacts");
     }, 100);
   }, []);
+
+  const handleInputChange = (event) => {
+    const updatedValue = event.target.value;
+    setData({
+      ...data,
+      [event.target.name]: updatedValue,
+    });
+    handleSubmit(event, updatedValue);
+  };
 
   if (loading) {
     return (
@@ -49,6 +69,7 @@ const Contacts = () => {
                   type="text"
                   placeholder="Buscar contacto"
                   value="Buscar contacto"
+                  onChange={handleInputChange}
                   name="username"
                 />
                 <button className="searchButton" type="submit">
@@ -63,36 +84,41 @@ const Contacts = () => {
     );
   }
 
-  const handleInputChange = (event) => {
-    setData({
-      ...data,
-      [event.target.name]: event.target.value,
-    });
-  };
+  const userContactList = user.contacts.map((x) => x._id);
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      handleSubmit(event);
-    }
-  };
-  const handleSubmit = (event) => {
+  // const handleInputChange = (event) => {
+  //   const updatedValue = event.target.value;
+  //   setData({
+  //     ...data,
+  //     [event.target.name]: updatedValue,
+  //   });
+  //   handleSubmit(event, updatedValue);
+  // };
+  
+  const handleSubmit = (event, value) => {
     event.preventDefault();
-    filterByUsername(data.username);
+    filterByUsername(value);
   };
 
-  const handleMakeFavourite = (userId) => {
-    makeContactFavourite(userId);
+  const handleAddContact = (userId, isContact) => {
+    if (isContact) {
+      removeContact(userId);
+    } else {
+      addContact(userId);
+    }
     setTimeout(() => {
       getUser();
     }, 500);
   };
 
+  const handleFilterContacts = () => {
+    filterByContact(toggleContacts);
+    setToggleContacts(!toggleContacts);
+  };
+
   const extractFilePathFromImage = (path) => {
     const url = "https://desafio-backend-production.up.railway.app/";
     return url + path.replace("uploads/", "");
-    // const url = "https://desafio-backend-production.up.railway.app";
-    // const match = path.match(/uploads[\\\/](.+)/);
-    // return match ? url + "/" + match[1].replace(/\\/g, '/') : null;
   };
 
   const noContactsDisplay = (
@@ -113,38 +139,37 @@ const Contacts = () => {
 
   const contactsList = (
     <div className="contactsList">
-      {user.contacts.map((item) => {
-        if (!item.userId.img) {
-          item.userId.img = noPic;
-        } else {
-          item.userId.img = extractFilePathFromImage(item.userId.img);
-        }
-        if (!item.userId.cargo) {
-          item.userId.cargo = "Estudiante";
-        }
+      {filteredUsers.map((item, index) => {
+        const isContact = userContactList.includes(item._id);
         return (
-          <div className="contactCard">
+          <div className="contactCard" key={index}>
             <button
               className="favourite"
-              onClick={() => handleMakeFavourite(item.userId._id)}
+              onClick={() => handleAddContact(item._id, isContact)}
             >
-              {item.favourite ? (
+              {isContact ? (
                 <MdStar className="favouriteButton" />
               ) : (
                 <MdStarBorder className="favouriteButton" />
               )}
             </button>
             <div className="contactImage">
-              <img src={item.userId.img} />
+              <img src={item.img ? extractFilePathFromImage(item.img) : noPic} />
             </div>
-            <p className="contactUsername">{item.userId.username}</p>
-            <p className="contactPosition">{item.userId.cargo}</p>
-            <button className="seeProfile" onClick={() => navigate(`/otherprofile/${item.userId._id}`)}>Ver perfil</button>
+            <p className="contactUsername">{item.username}</p>
+            <p className="contactPosition">{item.cargo ? item.cargo : "Estudiante"}</p>
+            <button
+              className="seeProfile"
+              onClick={() => navigate(`/otherprofile/${item._id}`)}
+            >
+              Ver perfil
+            </button>
           </div>
         );
       })}
     </div>
   );
+
 
   return (
     <>
@@ -153,8 +178,13 @@ const Contacts = () => {
         <div className="searchBarContainer">
           <div className="titleAndButtonContainer">
             <h1>Contactos</h1>
-            <button>
-              <MdStar className="filterFavouriteButton" />
+            <button onClick={handleFilterContacts}>
+              {/* <MdStar className="filterFavouriteButton" /> */}
+              {toggleContacts ? (
+                <MdStar className="filterFavouriteButton" />
+              ) : (
+                <MdStarBorder className="filterFavouriteButton" />
+              )}
             </button>
           </div>
           <div className="searchBar">
@@ -165,7 +195,6 @@ const Contacts = () => {
                 placeholder="Buscar contacto"
                 value={data.username}
                 onChange={handleInputChange}
-                onKeyDown={handleKeyDown}
                 name="username"
               />
               <button className="searchButton" type="submit">
@@ -174,10 +203,15 @@ const Contacts = () => {
             </form>
           </div>
         </div>
-        {user.contacts && contactsList}
-        {!user.contacts && noContactsDisplay}
+        {/* {user.contacts && contactsList}
+        {!user.contacts && noContactsDisplay} */}
+        {filteredUsers && contactsList}
+        {filteredUsers.length === 0 ? noContactsDisplay : null}
       </div>
-      <Footer activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
+      <Footer
+        activeComponent={activeComponent}
+        setActiveComponent={setActiveComponent}
+      />
     </>
   );
 };

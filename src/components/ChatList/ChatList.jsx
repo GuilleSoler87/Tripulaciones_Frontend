@@ -18,7 +18,7 @@ const ChatList = () => {
     setTimeout(() => {
       setActiveComponent('ChatList');
     }, 100);
-  });
+  }, []);
 
   const API_URL = "http://localhost:8080/";
 
@@ -78,7 +78,7 @@ const ChatList = () => {
   };
 
   const formatLastMessage = (message) => {
-    const maxLength = 25;
+    const maxLength = 15;
     if (message.length > maxLength) {
       return message.slice(0, maxLength) + "...";
     }
@@ -86,7 +86,7 @@ const ChatList = () => {
   };
 
   const groupChatImage = (
-    <img src={groupChats}></img>
+    <img src={groupChats} width={428}></img>
   )
 
   const chatList = chats.map((chat, index) => {

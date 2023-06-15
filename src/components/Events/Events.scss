@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: -2;
+    
 
     .events_top_header {
         // position: absolute;
@@ -20,7 +20,7 @@
         margin-right: 6%;
         align-items: baseline;
         justify-content: space-around;
-        // z-index: 1;
+        z-index: 1;
         background-color: $backcolormde;
 
         .events_title {
@@ -34,15 +34,16 @@
             display: flex;
             flex-direction: row;
             align-items: center;
+            gap: 10px;
+            margin-left: 74px;
+            position: relative;
+            top: -8px;
 
-            column-gap: 10px;
-            // z-index: 2;
 
             .toolTipFather {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                
 
                 .tooltipArrow {
                     border-radius: 0.2rem;
@@ -52,27 +53,32 @@
                     transform: rotate(45deg);
                     margin-left: -8px;
                 }
+
+                .tooltipText {
+                    font-family: $atkinsonmde;
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: $darkbluemde;
+                    margin-left: 10px;
+                    margin-right: 10px;
+
+                }
+
+
+
             }
 
-            .tooltipText {
-                font-family: $atkinsonmde;
-                font-weight: 400;
-                font-size: 16px;
-                color: $darkbluemde;
-                margin-left: 10px;
-                margin-right: 10px;
-
-            }
         }
     }
 
     .div_img_points {
         position: fixed;
-        margin-top: -15%;
+        margin-top: -16.8%;
+        margin-left: 2%;
         left: 50%;
         transform: translateX(50%);
         z-index: 1;
-        
+
     }
 
     .tooltipTextContainer {

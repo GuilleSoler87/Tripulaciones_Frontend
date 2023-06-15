@@ -3,12 +3,12 @@ import ChatReducer from "./ChatReducer";
 import axios from "axios";
 
 const API_URL = "https://desafio-backend-production.up.railway.app";
-// const API_URL = "http://localhost:8080";
 const token = JSON.parse(localStorage.getItem("token"));
 
 const initialState = {
   chat: null,
   history: [],
+  token: token ? token : null,
 };
 
 export const ChatContext = createContext(initialState);
@@ -63,6 +63,7 @@ export const ChatProvider = ({ children }) => {
       value={{
         chat: state.chat,
         history: state.history,
+        token: state.token,
         getSingleChat,
         sendMessage,
       }}

@@ -9,17 +9,19 @@ import PointsWhite from "../../../src/images/points_vertWhite.png";
 
 const Events = () => {
     const navigate = useNavigate();
+    const [activeComponent, setActiveComponent] = useState("Events");
 
     const handleCalendarClick = () => {
-        navigate("/calendar");
+        navigate("/maincalendar");
     };
-
-    const handleHomeClick = () => {
-        navigate("/homeTab");
-    };
+   
 
     useEffect(() => {
+      setTimeout(() => {
+        setActiveComponent('Events');
+      }, 100);
     }, []);
+
     return (
         <>
             <Header />
@@ -34,10 +36,9 @@ const Events = () => {
                             </div>
                             <div className='tooltipArrow'>
 
-
                             </div>
                         </div>
-                        <Link to="/calendar" className="go_to_calendar" onClick={handleCalendarClick}>
+                        <Link to="/maincalendar" className="go_to_calendar" onClick={handleCalendarClick}>
                             <img src={CalendarImg} alt="Calendario" className="img_calendar" />
                         </Link>
                     </div>
@@ -52,7 +53,7 @@ const Events = () => {
                     <NavigationEvents />
                 </div>
             </div>
-            <Footer />
+            <Footer activeComponent={activeComponent} setActiveComponent={setActiveComponent} />
         </>
     )
 }

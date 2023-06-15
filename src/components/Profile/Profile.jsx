@@ -6,6 +6,9 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import noPic from "../../../src/images/no_pic.png";
 import noBgPic from "../../../src/images/no_bg_pic.png";
+import progressBar from "../../../src/images/medallas.png";
+import { FaPencilAlt } from "react-icons/fa";
+
 
 const Profile = () => {
   const { user, getUser } = useContext(UserContext);
@@ -33,12 +36,12 @@ const Profile = () => {
     return url + path.replace("uploads/", "");
   };
 
-  const interestsDiv = user.interest.map((item) => {
-    return <p className="item">{item.name}</p>;
+  const interestsDiv = user.interest.map((item, index) => {
+    return <p className="item" key={index}>{item.name}</p>;
   });
 
-  const hobbiesDiv = user.hobbies.map((item) => {
-    return <p className="item">{item.name}</p>;
+  const hobbiesDiv = user.hobbies.map((item, index) => {
+    return <p className="item" key={index}>{item.name}</p>;
   });
 
   return (
@@ -54,11 +57,21 @@ const Profile = () => {
                 : noBgPic
             }
           />
+          <button className="editButton" onClick={() => navigate("/editprofile")}>
+            <FaPencilAlt className="editIcon" />
+          </button>
           <div className="profileImageContainer">
             <img
               className="profileImage"
               src={user.img ? extractFilePathFromImage(user.img) : noPic}
             />
+          </div>
+        </div>
+        <div className="gamingContainer">
+          <p className="totalPoints">150 puntos</p>
+          <p className="howTo">¿Cómo ganar puntos?</p>
+          <div className="progressBar">
+            <img src={progressBar} />
           </div>
         </div>
         <div className="profileInfoContainer">

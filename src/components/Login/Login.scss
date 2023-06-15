@@ -114,14 +114,14 @@
 
     .recaptcha {
         position: absolute;
-        display: flex;
-        justify-content: center;
+        margin-left: 6%;
         margin-top: 90%;
                 
         .recaptcha_img {
             
-            transform: scale(1.5);
+            transform: scale(1);
             transform-origin: 0 0;
+            border:none
     
         }
 
