@@ -100,7 +100,24 @@ const EventSingle = () => {
             </p>
           </div>
           <div className='bodyFooterDown'>
-            <p className='footerDownDate'>{event.time ? new Date(event.time).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }).charAt(0).toUpperCase() + new Date(event.time).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }).slice(1) : ''}</p>
+            <p className='footerDownDate'>
+              {event.time ? (
+                new Date(event.time).toLocaleDateString('es-ES', {
+                  weekday: 'long',
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric' // Agregar 'year' para incluir el año en la fecha
+                }).charAt(0).toUpperCase() +
+                new Date(event.time).toLocaleDateString('es-ES', {
+                  weekday: 'long',
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric' // Agregar 'year' para incluir el año en la fecha
+                }).slice(1)
+              ) : (
+                ''
+              )}
+            </p>
             <p className='footerDownInscritos'><strong>112</strong> inscritos online</p>
           </div>
 
