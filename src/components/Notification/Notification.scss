@@ -1,3 +1,20 @@
-.notificationContainer  {
-  margin-top: 132px;
+@import "../../colors";
+
+.main_notificationContainer {
+  background-color: $backcolormde;
+  margin-bottom: 17%;
+  height: 100vh;
+
+  .scroll_notificationContainer {
+
+    .notification_card {
+      width: 100%;
+
+
+
+
+
+
+    }
+  }
 }
