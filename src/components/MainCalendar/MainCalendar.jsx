@@ -11,6 +11,12 @@ const MainCalendar = () => {
     const navigate = useNavigate();
     const [activeComponent, setActiveComponent] = useState("MainCalendar");
 
+    useEffect(() => {
+      setTimeout(() => {
+        setActiveComponent("MainCalendar");
+      }, 100);
+    }, []);
+
     const handleCalendarClick = () => {
         navigate("/events");
     };

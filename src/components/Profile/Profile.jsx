@@ -36,12 +36,12 @@ const Profile = () => {
     return url + path.replace("uploads/", "");
   };
 
-  const interestsDiv = user.interest.map((item) => {
-    return <p className="item">{item.name}</p>;
+  const interestsDiv = user.interest.map((item, index) => {
+    return <p className="item" key={index}>{item.name}</p>;
   });
 
-  const hobbiesDiv = user.hobbies.map((item) => {
-    return <p className="item">{item.name}</p>;
+  const hobbiesDiv = user.hobbies.map((item, index) => {
+    return <p className="item" key={index}>{item.name}</p>;
   });
 
   return (

@@ -17,7 +17,7 @@ const Footer = ({ activeComponent, setActiveComponent }) => {
           to="/home"
           className="icon"
           style={{
-            color: activeComponent === "Home" ? "coral" : "ligthgray",
+            color: ["Home", "HomeTab"].includes(activeComponent) ? "coral" : "ligthgray",
           }}
           onClick={() => setActiveComponent("Home")}
         >
@@ -27,7 +27,7 @@ const Footer = ({ activeComponent, setActiveComponent }) => {
           to="/events"
           className="icon"
           style={{
-            color: activeComponent === "Events" ? "coral" : "ligthgray",
+            color: ["Events", "MainCalendar"].includes(activeComponent) ? "coral" : "ligthgray",
           }}
           onClick={() => setActiveComponent("Events")}
         >
@@ -37,7 +37,7 @@ const Footer = ({ activeComponent, setActiveComponent }) => {
           to="/contacts"
           className="icon"
           style={{
-            color: activeComponent === "Contacts" ? "coral" : "ligthgray",
+            color: ["Contacts", "OtherProfile"].includes(activeComponent) ? "coral" : "ligthgray",
           }}
           onClick={() => setActiveComponent("Contacts")}
         >

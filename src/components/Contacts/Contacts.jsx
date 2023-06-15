@@ -41,6 +41,15 @@ const Contacts = () => {
     }, 100);
   }, []);
 
+  const handleInputChange = (event) => {
+    const updatedValue = event.target.value;
+    setData({
+      ...data,
+      [event.target.name]: updatedValue,
+    });
+    handleSubmit(event, updatedValue);
+  };
+
   if (loading) {
     return (
       <>
@@ -60,6 +69,7 @@ const Contacts = () => {
                   type="text"
                   placeholder="Buscar contacto"
                   value="Buscar contacto"
+                  onChange={handleInputChange}
                   name="username"
                 />
                 <button className="searchButton" type="submit">
@@ -76,14 +86,14 @@ const Contacts = () => {
 
   const userContactList = user.contacts.map((x) => x._id);
 
-  const handleInputChange = (event) => {
-    const updatedValue = event.target.value;
-    setData({
-      ...data,
-      [event.target.name]: updatedValue,
-    });
-    handleSubmit(event, updatedValue);
-  };
+  // const handleInputChange = (event) => {
+  //   const updatedValue = event.target.value;
+  //   setData({
+  //     ...data,
+  //     [event.target.name]: updatedValue,
+  //   });
+  //   handleSubmit(event, updatedValue);
+  // };
   
   const handleSubmit = (event, value) => {
     event.preventDefault();
@@ -129,10 +139,10 @@ const Contacts = () => {
 
   const contactsList = (
     <div className="contactsList">
-      {filteredUsers.map((item) => {
+      {filteredUsers.map((item, index) => {
         const isContact = userContactList.includes(item._id);
         return (
-          <div className="contactCard">
+          <div className="contactCard" key={index}>
             <button
               className="favourite"
               onClick={() => handleAddContact(item._id, isContact)}

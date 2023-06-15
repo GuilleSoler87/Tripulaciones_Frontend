@@ -23,6 +23,7 @@ const Chat = () => {
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
+    setLoading(true)
     getUser();
     getSingleChat(_id).then(() => setLoading(false));
   }, []);
@@ -53,11 +54,38 @@ const Chat = () => {
   }, []);
 
   if (loading) {
-    return <div> </div>;
+    return (  <div className="chatContainer">
+        <div className="singleChatHeader">
+          <div className="backArrow" onClick={() => navigate("/chatlist")}>
+            <span className="material-symbols-outlined">arrow_back</span>
+          </div>
+          <div className="receiverImage">
+            <img src={noPic} />
+          </div>
+        </div>
+        <div ref={messagesEndRef} /> 
+        <div className="sendMessage">
+          <div className="blankSpace"> </div>
+          <form>
+            <input
+              type="text"
+              placeholder="Message"
+              name="message"
+            />
+            <button disabled className="attachIcon">
+              <MdAttachFile />
+            </button>
+            <button type="submit" className="sendIcon">
+              <MdSend />
+            </button>
+          </form>
+        </div>
+      </div>);
   }
 
   const getUserID = (chat) => {
     const usersArray = chat.users;
+    console.log(usersArray);
     const sender = usersArray.find(x => x.username === user.username);
     return sender._id;
   }
