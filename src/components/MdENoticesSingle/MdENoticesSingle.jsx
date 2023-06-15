@@ -32,7 +32,6 @@ const MdENoticesSingle = () => {
     useEffect(() => {
         setComment('');
         getNoticeId(_id);
-        console.log("esto es el useEffect", comment)
     }, [comments]);
 
     if (loading) {
@@ -93,7 +92,7 @@ const MdENoticesSingle = () => {
                         <img src={BackButton} className="userimgcomm" alt="user_img_comment" />
                     </div>
                     <div className='main_img_single_notice'>
-                        <img src={formatImageCommentsURL (notice.img)} alt={notice.title} className="single_notice" />
+                        <img src={formatImageCommentsURL(notice.img)} alt={notice.title} className="single_notice" />
                     </div>
 
                     <div className='main_div_text_single_notices'>

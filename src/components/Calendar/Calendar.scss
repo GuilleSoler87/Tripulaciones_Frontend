@@ -241,6 +241,7 @@
     max-height: 32vh;
     overflow-y: scroll;
     top: 68%;
+    bottom: 8%;
 
 
     .card_events_inscriptions {
@@ -257,15 +258,17 @@
         width: 88%;
         justify-content: space-between;
         margin-left: 5.9%;
+        margin-top: 5px;
 
         .type_event_inscription {
-          font-size: 13px;
+
+          font-size: 11px;
           color: $creammde;
           font-family: $atkinsonmde;
         }
 
         .hour_event_inscription {
-          font-size: 13px;
+          font-size: 11px;
           color: $creammde;
           font-family: $atkinsonmde;
         }
@@ -279,20 +282,25 @@
         width: 88%;
         justify-content: space-between;
         margin-left: 5.9%;
+        padding-top: 5px;
 
-
-        .type_event_inscription {
-          font-size: 16px;
-          color: $creammde;
-          font-family: $atkinsonmde;
-          font-weight: bold;
-
-        }
-
-        .hour_event_inscription {
+        .name_event_inscription {
           font-size: 13px;
           color: $creammde;
           font-family: $atkinsonmde;
+          font-weight: bold;
+          text-align: left;
+          max-width: 70%;
+
+        }
+
+        .date_event_inscription {
+          margin-top: 13px;
+          font-size: 10px;
+          color: $creammde;
+          font-family: $atkinsonmde;
+          width: 25%;
+          text-align: right;
         }
 
       }
@@ -307,7 +315,7 @@
 
 
         .location_event_inscription {
-          font-size: 12px;
+          font-size: 11px;
           color: $creammde;
           font-family: $atkinsonmde;
 
