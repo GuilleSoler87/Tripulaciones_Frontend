@@ -14,7 +14,7 @@ const Profile = () => {
   const { tags, hobbies, getTags, getHobbies, getUserTypes } =
     useContext(ProfileContext);
   const navigate = useNavigate();
-
+  const [isOwnProfile, setIsOwnProfile] = useState(true);
   const [selectedInterestButtons, setSelectedInterestButtons] = useState({});
   const [selectedHobbyButtons, setSelectedHobbyButtons] = useState({});
   const [bioText, setBioText] = useState("");
@@ -66,7 +66,7 @@ const Profile = () => {
   if (!user) {
     return (
       <>
-        <Header />
+        <Header isOwnProfile={isOwnProfile} />
         <div className="profileContainer">
           <div className="imageContainer"></div>
           <div className="profileInfoContainer"></div>
@@ -105,7 +105,7 @@ const Profile = () => {
     const formattedFormData = {
       interest: Object.keys(selectedInterestButtons),
       hobbies: Object.keys(selectedHobbyButtons),
-      bio: bioText
+      bio: bioText,
     };
     // console.log(formattedFormData);
     update(user._id, formattedFormData);
@@ -113,7 +113,6 @@ const Profile = () => {
       navigate("/profile");
     }, 1000);
   };
-
 
   const extractFilePathFromImage = (path) => {
     const url = "https://desafio-backend-production.up.railway.app/";
@@ -152,7 +151,7 @@ const Profile = () => {
 
   return (
     <>
-      <Header />
+      <Header isOwnProfile={isOwnProfile} />
       <div className="profileContainer">
         <div className="imageContainer">
           <img
@@ -177,7 +176,9 @@ const Profile = () => {
             <img src={progressBar} />
           </div>
         </div>
-        <button onClick={handleSubmit}>PRESS</button>
+        <button className="saveButton" onClick={handleSubmit}>
+          Guardar
+        </button>
         <div className="profileInfoContainer">
           <p className="profileUsername">{user.username}</p>
           <p className="profileUsertype">
@@ -192,8 +193,7 @@ const Profile = () => {
               className="bioInputArea"
               value={bioText}
               onChange={(e) => setBioText(e.target.value)}
-            >
-            </textarea>
+            ></textarea>
           </form>
 
           <p className="profileTitle">Intereses</p>

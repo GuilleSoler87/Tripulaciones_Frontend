@@ -79,8 +79,11 @@ const OtherProfile = () => {
     }, 1000);
   };
 
+  console.log(user.userType.name);
+  console.log(user.userType.name === "Empresa");
+
   const extractFilePathFromImage = (path) => {
-    const url = "https://desafio-backend-production.up.railway.app/";
+    const url = "https://desafio-backend-production.up.railway.app/users/";
     return url + path.replace("uploads/", "");
   };
 
@@ -91,6 +94,16 @@ const OtherProfile = () => {
   const hobbiesDiv = user.hobbies.map((item) => {
     return <p className="item">{item.name}</p>;
   });
+
+  const entrerpriseDiv = (
+    <div className="profileInfoContainer">
+      <p className="profileUsername">{user.username}</p>
+      <p className="profileUsertype">{user.userType.name}</p>
+      <button className="goToChat" onClick={handleGoToChat}>
+        Chat
+      </button>
+    </div>
+  );
 
   return (
     <>
@@ -112,22 +125,26 @@ const OtherProfile = () => {
             />
           </div>
         </div>
-        <div className="profileInfoContainer">
-          <p className="profileUsername">{user.username}</p>
-          <p className="profileUsertype">
-            {user.userType.name.replace("Usuario ", "")}
-          </p>
-          <p className="profileDegree">{user.degree.name}</p>
-          <p className="profilePosition">{user.cargo || "Estudiante"}</p>
-          <p className="profileBio">{user.bio}</p>
-          <button className="goToChat" onClick={handleGoToChat}>
-            Chat
-          </button>
-          <p className="profileTitle">Intereses</p>
-          <div className="interestsContainer">{interestsDiv}</div>
-          <p className="profileTitle">Hobbies</p>
-          <div className="hobbiesContainer">{hobbiesDiv}</div>
-        </div>
+        {user.userType.name === "Empresa" ? (
+          entrerpriseDiv
+        ) : (
+          <div className="profileInfoContainer">
+            <p className="profileUsername">{user.username}</p>
+            <p className="profileUsertype">
+              {user.userType.name.replace("Usuario ", "")}
+            </p>
+            <p className="profileDegree">{user.degree.name}</p>
+            <p className="profilePosition">{user.cargo || "Estudiante"}</p>
+            <p className="profileBio">{user.bio}</p>
+            <button className="goToChat" onClick={handleGoToChat}>
+              Chat
+            </button>
+            <p className="profileTitle">Intereses</p>
+            <div className="interestsContainer">{interestsDiv}</div>
+            <p className="profileTitle">Hobbies</p>
+            <div className="hobbiesContainer">{hobbiesDiv}</div>
+          </div>
+        )}
       </div>
       <Footer
         activeComponent={activeComponent}

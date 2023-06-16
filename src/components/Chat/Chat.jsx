@@ -7,6 +7,8 @@ import { UserContext } from "../../context/UserContext/UserState";
 import { MdSend, MdAttachFile } from "react-icons/md";
 import emptyChat from "../../../src/images/empty_chat.png";
 import noPic from "../../../src/images/no_pic.png";
+import block from "../../../src/images/block_contact.png";
+import backChat from "../../../src/images/back_chat.png";
 
 
 let socket;
@@ -85,7 +87,6 @@ const Chat = () => {
 
   const getUserID = (chat) => {
     const usersArray = chat.users;
-    console.log(usersArray);
     const sender = usersArray.find(x => x.username === user.username);
     return sender._id;
   }
@@ -128,7 +129,7 @@ const Chat = () => {
   };
 
   const extractFilePathFromImage = (path) => {
-    const url = "https://desafio-backend-production.up.railway.app/"; //CHANGE to pertinent URL
+    const url = "https://desafio-backend-production.up.railway.app/users/"; //CHANGE to pertinent URL
     return url + path.replace("uploads/", "");
   }
 
@@ -203,7 +204,11 @@ const Chat = () => {
             <p>{receiver.username}</p>
             <span className="receiverCargo">{receiver.cargo ? receiver.cargo : "Estudiante"}</span>
           </div>
+          <div className="blockContactDiv">
+            <img src={block} />
+          </div>
         </div>
+        <img className="backChat" src={backChat} />
         <div className="chatThread">
           {/* {threadDiv} */}
           {(history.length === 1 && history[0].message === "") ? emptyChatDiv : threadDiv}

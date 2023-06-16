@@ -6,6 +6,12 @@
   background-color: $whitemde;
   display: flex;
   flex-direction: column;
+  // --- CHAT BACKGROUND ---
+  .backChat {
+    position: fixed;
+    margin-top: 120px;
+    // width: 428px;
+  }
   // --- HEADER ---
   .singleChatHeader {
     position: sticky;
@@ -35,6 +41,7 @@
     .receiverUsername {
       display: flex;
       flex-direction: column;
+      width: 250px;
       p {
         margin: 0px 0px 0px 10px;
         color: $creammde;
@@ -47,6 +54,10 @@
         font-size: 12px;
         font-weight: 400;
         text-align: left;
+      }
+    }
+    .blockContactDiv {
+      img {
       }
     }
   }
@@ -113,6 +124,7 @@
       justify-content: center;
       align-items: center;
       span {
+        margin-top: 10px;
         display: inline-flex;
         align-items: center;
         height: 18px;

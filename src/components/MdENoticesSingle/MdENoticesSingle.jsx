@@ -76,6 +76,11 @@ const MdENoticesSingle = () => {
         console.log('Comentario enviado:', comment);
     };
 
+    const formatImageCommentsURLAddUsersPAth = (path) => {
+        const API_URL = "https://desafio-backend-production.up.railway.app/users/";
+        const correctedPath = path.replace("uploads", "")
+        return API_URL + correctedPath;
+    }
     const formatImageCommentsURL = (path) => {
         const API_URL = "https://desafio-backend-production.up.railway.app/";
         const correctedPath = path.replace("uploads", "")
@@ -139,7 +144,7 @@ const MdENoticesSingle = () => {
                                 </div>
                                 <div className="body_user_comment_profile">
                                     <div className="user_img_profile_comments">
-                                        <img src={comment.userId.img ? formatImageCommentsURL(comment.userId.img) : noPic} className="userimgcomm" alt="user_img_comment" />
+                                        <img src={comment.userId.img ? formatImageCommentsURLAddUsersPAth(comment.userId.img) : noPic} className="userimgcomm" alt="user_img_comment" />
                                     </div>
                                     <p className="body_text_comments">{comment.body}</p>
                                 </div>

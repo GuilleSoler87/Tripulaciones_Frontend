@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import FoldableMenu from "../FoldableMenu/FoldableMenu";
 import profileLogo from "../../../src/images/header_icon_profile.png";
+import ownProfileLogo from "../../../src/images/own_profile_icon.png";
 import { FiMenu, FiX } from "react-icons/fi";
 import "./Header.scss";
 
-const Header = () => {
+const Header = ({ isOwnProfile }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -51,8 +52,12 @@ const Header = () => {
           </FoldableMenu>
         </div>
         <div className="profileButtonContainer">
-          <Link to="/profile" className="profileLogoDiv">            
-              <img src={profileLogo} className="img_profile_header" />            
+          <Link to="/profile" className="profileLogoDiv">
+            {isOwnProfile ? (
+              <img src={ownProfileLogo} className="img_profile_header" />
+            ) : (
+              <img src={profileLogo} className="img_profile_header" />
+            )}
           </Link>
         </div>
       </div>

@@ -117,7 +117,7 @@ const Contacts = () => {
   };
 
   const extractFilePathFromImage = (path) => {
-    const url = "https://desafio-backend-production.up.railway.app/";
+    const url = "https://desafio-backend-production.up.railway.app/users/";
     return url + path.replace("uploads/", "");
   };
 
@@ -181,9 +181,9 @@ const Contacts = () => {
             <button onClick={handleFilterContacts}>
               {/* <MdStar className="filterFavouriteButton" /> */}
               {toggleContacts ? (
-                <MdStar className="filterFavouriteButton" />
-              ) : (
                 <MdStarBorder className="filterFavouriteButton" />
+                ) : (
+                  <MdStar className="filterFavouriteButton" />
               )}
             </button>
           </div>
