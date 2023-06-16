@@ -1,5 +1,5 @@
-import React, { useEffect, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Profile.scss";
 import { UserContext } from "../../context/UserContext/UserState";
 import Footer from "../Footer/Footer";
@@ -12,16 +12,18 @@ import { FaPencilAlt } from "react-icons/fa";
 
 const Profile = () => {
   const { user, getUser } = useContext(UserContext);
+  const [isOwnProfile, setIsOwnProfile] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     getUser();
+    setIsOwnProfile(true);
   }, []);
 
   if (!user) {
     return (
       <>
-        <Header />
+        <Header isOwnProfile={isOwnProfile} />
         <div className="profileContainer">
           <div className="imageContainer"></div>
           <div className="profileInfoContainer"></div>
@@ -46,7 +48,7 @@ const Profile = () => {
 
   return (
     <>
-      <Header />
+      <Header isOwnProfile={isOwnProfile} />
       <div className="profileContainer">
         <div className="imageContainer">
           <img

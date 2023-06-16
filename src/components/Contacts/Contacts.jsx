@@ -181,9 +181,9 @@ const Contacts = () => {
             <button onClick={handleFilterContacts}>
               {/* <MdStar className="filterFavouriteButton" /> */}
               {toggleContacts ? (
-                <MdStar className="filterFavouriteButton" />
-              ) : (
                 <MdStarBorder className="filterFavouriteButton" />
+                ) : (
+                  <MdStar className="filterFavouriteButton" />
               )}
             </button>
           </div>

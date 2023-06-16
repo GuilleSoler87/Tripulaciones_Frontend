@@ -6,6 +6,8 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import points from "../../../src/images/points_upAll.png";
 import groupChats from "../../../src/images/groupal_chats.png";
+import noPic from "../../../src/images/no_pic.png";
+
 
 const ChatList = () => {
   const { user, chats, getUser, getChatsFromUser } = useContext(UserContext);
@@ -29,15 +31,9 @@ const ChatList = () => {
   };
 
   const extractFilePathFromImage = (path) => {
-    const url = "https://desafio-backend-production.up.railway.app/"; //CHANGE to pertinent URL
-    // const url = "http://localhost:8080/"; //CHANGE to pertinent URL
-    try {
-      const match = path.match(/uploads[\\\/](.+)/);
-      return match ? url + match[1].replace(/\\/g, "/") : null;
-    } catch {
-      return "../../src/images/no_pic.png";
-    }
-  };
+    const url = "https://desafio-backend-production.up.railway.app/users/"; //CHANGE to pertinent URL
+    return url + path.replace("uploads/", "");
+  }
 
   const formatTime = (utcDate) => {
     let date = new Date(utcDate);
@@ -78,7 +74,7 @@ const ChatList = () => {
   };
 
   const formatLastMessage = (message) => {
-    const maxLength = 15;
+    const maxLength = 30;
     if (message.length > maxLength) {
       return message.slice(0, maxLength) + "...";
     }
@@ -100,9 +96,9 @@ const ChatList = () => {
           <div className="imageContainer">
             <img
               src={
-                extractFilePathFromImage(getReceiver(chat).img)
+                getReceiver(chat).img
                   ? extractFilePathFromImage(getReceiver(chat).img)
-                  : "/uploads/users/no_pic.png"
+                  : noPic
               }
               width={150}
             />
@@ -134,10 +130,10 @@ const ChatList = () => {
           <img className="pointsImage" src={points} />
         </div>
         <div className="switchingButtonsContainer">
-          <button className="single" onClick={() => setIsSingle(true)}>
+          <button className={`single ${isSingle}`} onClick={() => setIsSingle(true)}>
             Individuales
           </button>
-          <button className="group" onClick={() => setIsSingle(false)}>
+          <button className={`group ${isSingle}`} onClick={() => setIsSingle(false)}>
             Grupales
           </button>
         </div>

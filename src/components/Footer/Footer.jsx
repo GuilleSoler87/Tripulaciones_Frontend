@@ -17,7 +17,7 @@ const Footer = ({ activeComponent, setActiveComponent }) => {
           to="/home"
           className="icon"
           style={{
-            color: ["Home", "HomeTab"].includes(activeComponent) ? "coral" : "ligthgray",
+            color: ["Home", "HomeTab"].includes(activeComponent) ? "#CB7862" : "ligthgray",
           }}
           onClick={() => setActiveComponent("Home")}
         >
@@ -27,7 +27,7 @@ const Footer = ({ activeComponent, setActiveComponent }) => {
           to="/events"
           className="icon"
           style={{
-            color: ["Events", "MainCalendar"].includes(activeComponent) ? "coral" : "ligthgray",
+            color: ["Events","EventsSingle", "MainCalendar"].includes(activeComponent) ? "#CB7862" : "ligthgray",
           }}
           onClick={() => setActiveComponent("Events")}
         >
@@ -37,7 +37,7 @@ const Footer = ({ activeComponent, setActiveComponent }) => {
           to="/contacts"
           className="icon"
           style={{
-            color: ["Contacts", "OtherProfile"].includes(activeComponent) ? "coral" : "ligthgray",
+            color: ["Contacts", "OtherProfile"].includes(activeComponent) ? "#CB7862" : "ligthgray",
           }}
           onClick={() => setActiveComponent("Contacts")}
         >
@@ -47,7 +47,7 @@ const Footer = ({ activeComponent, setActiveComponent }) => {
           to="/notification"
           className="icon"
           style={{
-            color: activeComponent === "Notifications" ? "coral" : "ligthgray",
+            color: activeComponent === "Notifications" ? "#CB7862" : "ligthgray",
           }}
           onClick={() => setActiveComponent("Notifications")}
         >
@@ -57,7 +57,7 @@ const Footer = ({ activeComponent, setActiveComponent }) => {
           to="/chatlist"
           className="icon"
           style={{
-            color: activeComponent === "ChatList" ? "coral" : "ligthgray",
+            color: activeComponent === "ChatList" ? "#CB7862" : "ligthgray",
           }}
           onClick={() => setActiveComponent("ChatList")}
         >

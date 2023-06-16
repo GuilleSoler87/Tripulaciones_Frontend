@@ -14,3 +14,16 @@
   font-size: 14px;
   line-height: 17px;
 }
+
+.saveButton {
+  background-color: $darkbluemde;
+  width: 85px;
+  height: 30px;
+  border: 1px solid $darkbluemde;
+  border-radius: 4px;
+  font-family: "Atkinson Hyperlegible";
+  font-weight: 400;
+  font-size: 16px;
+  color: $creammde;
+  margin: 10px;
+}
