@@ -6,6 +6,12 @@
   background-color: $whitemde;
   display: flex;
   flex-direction: column;
+  // --- CHAT BACKGROUND ---
+  .backChat {
+    position: fixed;
+    margin-top: 120px;
+    // width: 428px;
+  }
   // --- HEADER ---
   .singleChatHeader {
     position: sticky;
