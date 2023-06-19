@@ -31,22 +31,22 @@ const Menu = () => {
 
                 <div className='first_dinner'>
                     <p className='first_dinner_title'>Primer plato</p>
-                    <p className='first_dinner_menu1'>Ensalada de col y nueces</p>
-                    <p className='first_dinner_menu2'>Albóndigas de rabo de toro con cheddar</p>
-                    <p className='first_dinner_menu3'>Salmorejo</p>
+                    <p className='first_dinner_menu1'>Nem vietnamita</p>
+                    <p className='first_dinner_menu2'>Ensalada de pasta</p>
+                    {/* <p className='first_dinner_menu3'>Salmorejo</p> */}
                 </div>
                 <div className='second_dinner'>
                     <p className='second_dinner_title'>Segundo plato</p>
-                    <p className='second_dinner_menu1'>Paella Valenciana</p>
-                    <p className='second_dinner_menu2'>Gnocci boloñesa</p>
-                    <p className='second_dinner_menu3'>Merluza al pesto con patatas al horno</p>
+                    <p className='second_dinner_menu1'>Arroz al horno</p>
+                    <p className='second_dinner_menu2'>Osobuco</p>
+                    <p className='second_dinner_menu3'>Pescado de lonja</p>
 
                 </div>
                 <div className='sweet_dinner'>
                     <p className='sweet_dinner_title'>Postre</p>
-                    <p className='sweet_dinner_menu1'>Tarta de queso</p>
-                    <p className='sweet_dinner_menu2'>Natilla de la abuela</p>
-                    <p className='sweet_dinner_menu3'>Fruta</p>
+                    <p className='sweet_dinner_menu1'>Fruta</p>
+                    <p className='sweet_dinner_menu2'>Lácteos</p>
+                    <p className='sweet_dinner_menu3'>Postre casero</p>
 
                 </div>
                 <div className='dinner_img'>
