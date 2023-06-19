@@ -14,7 +14,7 @@ const OtherProfile = () => {
   const { _id } = useParams();
   const navigate = useNavigate();
 
-  const API_URL = "https://desafio-backend-production.up.railway.app";
+  const API_URL = "http://localhost:8080";
 
   useEffect(() => {
     getUserById(_id);
@@ -80,7 +80,7 @@ const OtherProfile = () => {
   };
 
   const extractFilePathFromImage = (path) => {
-    const url = "https://desafio-backend-production.up.railway.app/users/";
+    const url = "http://localhost:8080/users/";
     return url + path.replace("uploads/", "");
   };
 

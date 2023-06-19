@@ -115,7 +115,7 @@ const Profile = () => {
   };
 
   const extractFilePathFromImage = (path) => {
-    const url = "https://desafio-backend-production.up.railway.app/";
+    const url = "http://localhost:8080/";
     return url + path.replace("uploads/", "");
   };
 

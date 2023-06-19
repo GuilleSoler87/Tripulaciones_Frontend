@@ -31,7 +31,7 @@ const ChatList = () => {
   };
 
   const extractFilePathFromImage = (path) => {
-    const url = "https://desafio-backend-production.up.railway.app/users/"; //CHANGE to pertinent URL
+    const url = "http://localhost:8080/users/"; //CHANGE to pertinent URL
     return url + path.replace("uploads/", "");
   }
 

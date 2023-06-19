@@ -104,7 +104,7 @@ const NavigationEvents = () => {
           <div className="eventBig1" key={event._id}>
             <div className="bigUpContainer">
               <div className="img_event_box">
-                <img src={`https://desafio-backend-production.up.railway.app/events/${event.img}`} alt={event.event_name} className="img_events_top" />
+                <img src={`http://localhost:8080/events/${event.img}`} alt={event.event_name} className="img_events_top" />
               </div>
               <div className="iconarrowblue">
                 <Link to={`/getEventById/${event._id}`}>

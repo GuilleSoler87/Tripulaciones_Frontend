@@ -35,7 +35,7 @@ const Chat = () => {
   }, [history]);
 
   useEffect(() => {
-    socket = io("https://desafio-backend-production.up.railway.app/"); // CHANGE this with your server URL
+    socket = io("http://localhost:8080/"); // CHANGE this with your server URL
     return () => {
       socket.disconnect();
       socket.off();
@@ -129,7 +129,7 @@ const Chat = () => {
   };
 
   const extractFilePathFromImage = (path) => {
-    const url = "https://desafio-backend-production.up.railway.app/users/"; //CHANGE to pertinent URL
+    const url = "http://localhost:8080/users/"; //CHANGE to pertinent URL
     return url + path.replace("uploads/", "");
   }
 

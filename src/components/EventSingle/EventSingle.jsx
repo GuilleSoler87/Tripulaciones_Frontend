@@ -49,7 +49,7 @@ const EventSingle = () => {
     try {
       return (
         <img
-          src={`https://desafio-backend-production.up.railway.app/events/${event.img}`}
+          src={`http://localhost:8080/events/${event.img}`}
           alt={event.event_name}
           className="img_events_top"
         />
