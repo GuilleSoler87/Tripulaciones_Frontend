@@ -10,7 +10,7 @@ const initialState = {
     events: [],
 };
 
-const API_URL = "https://desafio-backend-production.up.railway.app";
+const API_URL = "http://localhost:8080";
 
 
 export const EventContext = createContext(initialState);

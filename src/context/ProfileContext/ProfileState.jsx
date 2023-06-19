@@ -14,8 +14,8 @@ const initialState = {
   positions: ["Estudiante", "Profesor", "Staff", "Mentor", "Startup", "Angels"],
 };
 
-const API_URL = "https://desafio-backend-production.up.railway.app";
-// const API_URL = "http://localhost:8080";
+// const API_URL = "https://desafio-backend-production.up.railway.app";
+const API_URL = "http://localhost:8080";
 
 export const ProfileContext = createContext(initialState);
 
